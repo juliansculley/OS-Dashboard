@@ -2,7 +2,7 @@
 
 ## Current Status
 
-**Active Phase:** 1 — Foundation (Planning pending)
+**Active Phase:** 1 — Foundation (UI-SPEC approved, planning next)
 **Last Updated:** 2026-06-04
 
 ## Phase Status
