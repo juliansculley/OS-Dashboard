@@ -10,7 +10,7 @@
 
 ### v1 — Current Milestone
 
-- [ ] **Phase 1: Foundation** — Working plugin scaffold with dev environment, GitHub publishing, and security baseline
+- [x] **Phase 1: Foundation** — Working plugin scaffold with dev environment, GitHub publishing, and security baseline (completed 2026-06-05)
 - [ ] **Phase 2: Dashboard Features** — All v1 pages (Home, Social Stats) and skill triggers functional inside Obsidian
 
 ### v2 — Future Milestone
@@ -43,7 +43,7 @@
 - [x] 01-P1-PLAN.md — Plugin scaffold and toolchain (package.json, tsconfig, esbuild, manifest, main.ts, styles.css, full source tree, npm run build) — completed 2026-06-05
 
 **Wave 2** *(blocked on Wave 1 completion)*
-- [ ] 01-P2-PLAN.md — Dev loop, security baseline, and Obsidian verification (symlink, gitleaks+husky, sanitizeHTMLToDom, human load test)
+- [x] 01-P2-PLAN.md — Dev loop, security baseline, and Obsidian verification (symlink, gitleaks+husky, sanitizeHTMLToDom, human load test) — completed 2026-06-05
 
 **Cross-cutting constraints:**
 - `main.js` and `manifest.json` must be present at repo root (not in .gitignore) — required for FOUND-05 and SEC-02 gitleaks scan
@@ -106,7 +106,7 @@ These phases are documented requirements, not yet planned. Start with `/gsd-disc
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 1/2 | In Progress | P1: 2026-06-05 |
+| 1. Foundation | 2/2 | Complete | P1: 2026-06-05, P2: 2026-06-05 |
 | 2. Dashboard Features | 0/3 | Not started | - |
 | 3. Social Data Pipeline | TBD | Future | - |
 | 4. Newsletter Workflow | TBD | Future | - |
