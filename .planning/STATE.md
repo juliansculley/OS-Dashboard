@@ -2,14 +2,14 @@
 
 ## Current Status
 
-**Active Phase:** None — Ready to start Phase 1
+**Active Phase:** 1 — Foundation (UI-SPEC in progress)
 **Last Updated:** 2026-06-04
 
 ## Phase Status
 
 | Phase | Name | Status | Plans | Last Activity |
 |-------|------|--------|-------|---------------|
-| 1 | Foundation | Not Started | 0 | — |
+| 1 | Foundation | UI-SPEC Pending | 0 | 2026-06-04 |
 | 2 | Dashboard Features | Not Started | 0 | — |
 | 3 | Social Data Pipeline (v2) | Future | TBD | — |
 | 4 | Newsletter Workflow (v2) | Future | TBD | — |

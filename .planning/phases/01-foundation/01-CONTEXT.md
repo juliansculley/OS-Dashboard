@@ -53,7 +53,10 @@ Requirements in scope: FOUND-01, FOUND-02, FOUND-03, FOUND-04, FOUND-05, SEC-01,
 **Downstream agents MUST read these before planning or implementing.**
 
 ### Architecture & Code Patterns
-- `archive/claudeos-obsidian-plugin-spec.md` — Full coding agent handoff spec. Contains all architectural decisions, code skeletons (main.ts, DashboardView.tsx, App.tsx, Sidebar.tsx, AppContext.tsx, esbuild.config.mjs, tsconfig.json, package.json, styles.css), API patterns, gotchas list, and build order. PRIMARY REFERENCE — read before planning.
+- `archive/claudeos-obsidian-plugin-spec.md` — Prior research artifact (ideas, not locked decisions). Read with selective trust:
+  - **Reliable:** esbuild config externals + `jsx: "automatic"`, tsconfig.json, ItemView + React mount pattern (`DashboardView.tsx`), AppContext hook, CSS scoping under `.claudeos-dashboard {}`, `--cos-*` custom property tokens, gotchas list (§19), Obsidian API quick-reference (§17).
+  - **Validate before using:** `app.commands.executeCommandById` (undocumented private API — confirm it's still community standard), `minAppVersion: 1.4.0` (likely outdated — check current Obsidian sample plugin), npm package versions (react 18, esbuild 0.17.3, typescript 4.7.4 — pull current from official sample), `workspace.getLeaf('tab')` signature.
+  - **Discard:** MCP bridge architecture (§9–10, `mcpBridgeUrl` settings) — Phase 2 reads flat files, not a local HTTP server. HTML mockup strategy (§15) — not needed.
 
 ### Requirements & Success Criteria
 - `.planning/REQUIREMENTS.md` — Phase 1 requirements (FOUND-01 through FOUND-05, SEC-01, SEC-02) with acceptance language
