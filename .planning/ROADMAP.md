@@ -29,6 +29,7 @@
 **Depends on:** Nothing
 **Requirements:** FOUND-01, FOUND-02, FOUND-03, FOUND-04, FOUND-05, SEC-01, SEC-02
 **UI hint:** yes
+**Plans:** 2 plans
 
 ### Success Criteria
 1. Running `npm run dev` starts a file watcher; saving any source file reloads the plugin in Obsidian within 2 seconds without manual reinstall.
@@ -37,8 +38,8 @@
 4. `main.js`, `manifest.json`, and `styles.css` are present at the repo root and the plugin installs successfully via Obsidian community plugin / BRAT from the GitHub repo.
 
 ### Plans
-1. **Plugin scaffold and toolchain** — TypeScript project, esbuild config, manifest.json, Obsidian Plugin API wiring, hot-reload dev loop, GitHub release build targeting repo root
-2. **Navigation shell and security baseline** — Tab bar component with placeholder pages, DOMPurify integration, pre-commit secret-scanning check
+- [ ] 01-P1-PLAN.md — Plugin scaffold and toolchain (package.json, tsconfig, esbuild, manifest, main.ts, styles.css, full source tree, npm run build)
+- [ ] 01-P2-PLAN.md — Dev loop, security baseline, and Obsidian verification (symlink, gitleaks+husky, sanitizeHTMLToDom, human load test)
 
 ---
 
@@ -97,7 +98,7 @@ These phases are documented requirements, not yet planned. Start with `/gsd-disc
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/2 | Not started | - |
+| 1. Foundation | 0/2 | Planned | - |
 | 2. Dashboard Features | 0/3 | Not started | - |
 | 3. Social Data Pipeline | TBD | Future | - |
 | 4. Newsletter Workflow | TBD | Future | - |
