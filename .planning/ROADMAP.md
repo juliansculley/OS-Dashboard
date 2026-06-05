@@ -40,7 +40,7 @@
 ### Plans
 
 **Wave 1**
-- [ ] 01-P1-PLAN.md — Plugin scaffold and toolchain (package.json, tsconfig, esbuild, manifest, main.ts, styles.css, full source tree, npm run build)
+- [x] 01-P1-PLAN.md — Plugin scaffold and toolchain (package.json, tsconfig, esbuild, manifest, main.ts, styles.css, full source tree, npm run build) — completed 2026-06-05
 
 **Wave 2** *(blocked on Wave 1 completion)*
 - [ ] 01-P2-PLAN.md — Dev loop, security baseline, and Obsidian verification (symlink, gitleaks+husky, sanitizeHTMLToDom, human load test)
@@ -106,7 +106,7 @@ These phases are documented requirements, not yet planned. Start with `/gsd-disc
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/2 | Planned | - |
+| 1. Foundation | 1/2 | In Progress | P1: 2026-06-05 |
 | 2. Dashboard Features | 0/3 | Not started | - |
 | 3. Social Data Pipeline | TBD | Future | - |
 | 4. Newsletter Workflow | TBD | Future | - |
