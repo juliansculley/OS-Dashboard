@@ -10,7 +10,7 @@
 | Phase | Name | Status | Plans | Last Activity |
 |-------|------|--------|-------|---------------|
 | 1 | Foundation | Ready to execute | 2 | 2026-06-04 |
-| 2 | Dashboard Features | Not Started | 0 | — |
+| 2 | Dashboard Features | Ready to execute | 3 | 2026-06-05 |
 | 3 | Social Data Pipeline (v2) | Future | TBD | — |
 | 4 | Newsletter Workflow (v2) | Future | TBD | — |
 | 5 | Skill Output + Polish (v2) | Future | TBD | — |

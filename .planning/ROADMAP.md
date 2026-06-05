@@ -74,6 +74,11 @@
 - [ ] 02-02-PLAN.md — Home page: StatusTile, TileGrid, HomePage wired to tile data + SkillsSection (HOME-01, HOME-02, HOME-03)
 - [ ] 02-03-PLAN.md — Social Stats page: SocialMetricCard, SocialPage wired to settings paths (SOCIAL-01, SOCIAL-02, SOCIAL-03, SOCIAL-04)
 
+**Cross-cutting constraints:**
+- All data file reads return null for empty path or unreadable/malformed file — callers render no-data state, no crash
+- Skill exec guarded by hardcoded `ALLOWED_SKILLS` const — TypeScript type + runtime `includes()` check before every `exec()` call
+- Wave 2 plans both import from Wave 1 artifacts (`src/types.ts`, `src/utils/readJsonFile.ts`) — Wave 1 must complete first
+
 ---
 
 ## Future Phases (v2)
