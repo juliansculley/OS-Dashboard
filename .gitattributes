@@ -1,0 +1,6 @@
+# Normalize line endings
+* text=auto
+
+# Shell scripts must use LF — CRLF breaks git-bash hook execution
+.husky/* text eol=lf
+*.sh text eol=lf

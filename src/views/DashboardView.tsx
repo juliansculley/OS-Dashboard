@@ -1,4 +1,4 @@
-import { ItemView, WorkspaceLeaf } from 'obsidian';
+import { ItemView, WorkspaceLeaf, sanitizeHTMLToDom } from 'obsidian';
 import { Root, createRoot } from 'react-dom/client';
 import { StrictMode } from 'react';
 import { AppContext } from '../context/AppContext';
@@ -44,4 +44,16 @@ export class DashboardView extends ItemView {
   async onClose(): Promise<void> {
     this.root?.unmount(); // Required — prevents React memory leaks on plugin reload
   }
+}
+
+/**
+ * Renders sanitized HTML into a container element.
+ * SEC-01: All dynamic HTML must go through this function — never use innerHTML directly.
+ * sanitizeHTMLToDom() strips script tags, event handlers, and other XSS vectors.
+ * Returns a DocumentFragment that must be appended to the DOM (not assigned to innerHTML).
+ */
+export function renderSafeHTML(containerEl: HTMLElement, rawHtml: string): void {
+  containerEl.empty();
+  const fragment = sanitizeHTMLToDom(rawHtml);
+  containerEl.appendChild(fragment);
 }
