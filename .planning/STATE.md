@@ -2,7 +2,7 @@
 
 ## Current Status
 
-**Active Phase:** 1 — Foundation (In Progress — P1 complete, P2 next)
+**Active Phase:** 1 — Foundation (In Progress — P2 Task 1 complete, awaiting checkpoint verification)
 **Last Updated:** 2026-06-05
 
 ## Phase Status
@@ -28,6 +28,7 @@ See: .planning/PROJECT.md (updated 2026-06-04)
 - `main.js` committed to repo root for BRAT distribution (D-11)
 - All CSS scoped under `.claudeos-dashboard` wrapper per D-10
 - `npm install` requires `--strict-ssl=false` on this machine (corporate SSL cert issue)
+- Windows junction (mklink /J) used instead of symbolic link for vault plugin dir — Developer Mode not enabled; junctions work without it and achieve the same result for Obsidian's plugin loader
 
 ## Performance Metrics
 
@@ -43,6 +44,6 @@ See: .planning/PROJECT.md (updated 2026-06-04)
 
 ## Last Session
 
-**Timestamp:** 2026-06-05T20:40:32Z
-**Stopped at:** Completed 01-foundation/01-P1-PLAN.md
-**Resume file:** .planning/phases/01-foundation/01-P2-PLAN.md
+**Timestamp:** 2026-06-05T20:48:00Z
+**Stopped at:** 01-P2 Task 1 complete — at checkpoint:human-verify (Task 2)
+**Resume file:** .planning/phases/01-foundation/01-P2-PLAN.md (Task 2 — resume after human verification)
