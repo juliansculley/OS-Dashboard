@@ -39,14 +39,14 @@ Declared values (all multiples of 4):
 | Token | Value | Usage |
 |-------|-------|-------|
 | xs | 4px | Icon-to-label gap in nav items (`gap: 4px` between nav items in sidebar) |
-| sm | 8px | Nav item padding vertical, logo bottom padding, sidebar item gap |
+| sm | 8px | Nav item padding vertical and horizontal (`padding: 8px`), logo bottom padding, sidebar item gap |
 | md | 16px | Sidebar horizontal padding (`padding: 16px 8px`), stat card internal padding, section header margin-bottom |
 | lg | 24px | Main content top/bottom padding, page title margin-bottom |
 | xl | 32px | Main content left/right padding, section margin-bottom |
 | 2xl | 48px | Not used in Phase 1 |
 | 3xl | 64px | Not used in Phase 1 |
 
-Exceptions: Nav item click target padding is `8px 12px` (12px horizontal — not on the scale). This is carried from the archive spec as-is; 12px is acceptable for a compact sidebar context. No 44px touch targets needed (desktop-only plugin, D-06).
+Exceptions: none. No 44px touch targets needed (desktop-only plugin, D-06).
 
 ---
 
@@ -57,13 +57,12 @@ All font sizes inherit the Obsidian interface font. Satoshi is loaded as a progr
 | Role | Size | Weight | Line Height | Usage |
 |------|------|--------|-------------|-------|
 | Body | 14px | 400 (regular) | 1.5 | Nav item labels, general text |
-| Label | 12px | 600 (semibold) | 1.3 | Stat card labels, section sub-headers (uppercase + letter-spacing: 0.06–0.08em) |
-| Heading | 13px | 600 (semibold) | 1.3 | Section headers (uppercase + letter-spacing: 0.08em) |
-| Display | 22px | 700 (bold) | 1.2 | Page titles only (`claudeos-page-title`) |
+| Label / Heading | 12px | 600 (semibold) | 1.3 | Stat card labels, section sub-headers, section headers (uppercase + letter-spacing: 0.06–0.08em) |
+| Display | 22px | 600 (semibold) | 1.2 | Page titles only (`claudeos-page-title`) |
 
-**Logo text:** 14px, weight 700, uppercase, letter-spacing: 0.05em, color: `var(--cos-accent)`.
+**Logo text:** 14px, weight 600, uppercase, letter-spacing: 0.05em, color: `var(--cos-accent)`.
 
-**Weight rule:** Only two weights in use for body/label/heading — 400 (regular) and 600 (semibold). Display uses 700; this is confined to a single element (page title) and does not expand the type system.
+**Weight rule:** Two weights only — 400 (regular) and 600 (semibold). No other weights are used anywhere in Phase 1.
 
 ---
 
