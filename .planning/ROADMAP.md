@@ -57,6 +57,7 @@
 **Depends on:** Phase 1
 **Requirements:** HOME-01, HOME-02, HOME-03, SOCIAL-01, SOCIAL-02, SOCIAL-03, SOCIAL-04, SKILL-01, SKILL-02, SKILL-03, SEC-03
 **UI hint:** yes
+**Plans:** 3 plans
 
 ### Success Criteria
 1. Home page opens as default tab and renders at least two status tiles reading data from vault notes or flat files; one skill trigger button executes `claude -p <skill>` and shows a loading spinner followed by a success or error indicator.
@@ -65,9 +66,13 @@
 4. Configurable data file paths survive plugin reload (stored in Obsidian plugin data, not hardcoded).
 
 ### Plans
-1. **Skill trigger component** — Generic button with allowlist validation, `child_process` execution, loading/success/error states (SEC-03, SKILL-01, SKILL-02, SKILL-03)
-2. **Home page** — Status tile layout, flat-file data reader, skill button integration (HOME-01, HOME-02, HOME-03)
-3. **Social Stats page** — LinkedIn and X metric display, configurable file paths, missing-data state (SOCIAL-01, SOCIAL-02, SOCIAL-03, SOCIAL-04)
+
+**Wave 1**
+- [ ] 02-01-PLAN.md — Types, settings infrastructure, SkillButton + SkillsSection, readJsonFile utility (SKILL-01, SKILL-02, SKILL-03, SEC-03)
+
+**Wave 2** *(both plans run in parallel — no file conflicts)*
+- [ ] 02-02-PLAN.md — Home page: StatusTile, TileGrid, HomePage wired to tile data + SkillsSection (HOME-01, HOME-02, HOME-03)
+- [ ] 02-03-PLAN.md — Social Stats page: SocialMetricCard, SocialPage wired to settings paths (SOCIAL-01, SOCIAL-02, SOCIAL-03, SOCIAL-04)
 
 ---
 
@@ -107,7 +112,7 @@ These phases are documented requirements, not yet planned. Start with `/gsd-disc
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 0/2 | Planned | - |
-| 2. Dashboard Features | 0/3 | Not started | - |
+| 2. Dashboard Features | 0/3 | Planned | - |
 | 3. Social Data Pipeline | TBD | Future | - |
 | 4. Newsletter Workflow | TBD | Future | - |
 | 5. Skill Output + Polish | TBD | Future | - |
