@@ -24,7 +24,7 @@ must_haves:
     - "Clicking 'Social' nav item shows the Social placeholder page without re-rendering the sidebar"
     - "Active nav item shows accent color (#7c6af7) background tint and text"
     - "gitleaks pre-commit hook blocks a commit containing a fake API key string"
-    - "Attempting to inject `<script>alert(1)</script>` through sanitizeHTMLToDom() produces no script execution"
+    - "DashboardView.tsx imports sanitizeHTMLToDom and uses renderSafeHTML as the only path for dynamic HTML rendering — verifiable by source inspection (no innerHTML assignments present)"
   artifacts:
     - path: ".husky/pre-commit"
       provides: "gitleaks secret scanning on every commit"
@@ -242,8 +242,10 @@ npm run build
       # Symlink exists and points to repo
       (Get-Item "C:\Users\scull\OneDrive\ClaudeOS\.obsidian\plugins\claudeos-dashboard").LinkType
       
-      # sanitizeHTMLToDom imported in DashboardView
+      # sanitizeHTMLToDom imported and renderSafeHTML exported in DashboardView — no innerHTML assignments
       Select-String -Path src\views\DashboardView.tsx -Pattern "sanitizeHTMLToDom"
+      Select-String -Path src\views\DashboardView.tsx -Pattern "renderSafeHTML"
+      if (Select-String -Path src\views\DashboardView.tsx -Pattern 'innerHTML' -Quiet) { throw 'innerHTML found in DashboardView — use renderSafeHTML instead' }
       
       # Build still passes after DashboardView edit
       npm run build; $LASTEXITCODE
@@ -255,6 +257,7 @@ npm run build
     - `.husky/pre-commit` contains the PATH export line for WinGet Links
     - `Get-Item .obsidian\plugins\claudeos-dashboard` (in vault) has LinkType = SymbolicLink
     - `src/views/DashboardView.tsx` contains `sanitizeHTMLToDom` import and `renderSafeHTML` export
+    - `src/views/DashboardView.tsx` contains no `innerHTML` assignments
     - `npm run build` still exits 0 after DashboardView.tsx edit
   </acceptance_criteria>
   <done>gitleaks installed, husky hook live, symlink created, sanitizeHTMLToDom pattern present in source.</done>
@@ -305,9 +308,13 @@ npm run build
     - Expected: esbuild rebuild logged in terminal within 2 seconds of save. Obsidian shows updated text after reload command.
 
     **5. SEC-01 — Sanitization layer verifiable in source**
-    - This is a code verification, not visual: confirm `renderSafeHTML` function exists in src/views/DashboardView.tsx
-    - PowerShell: `Select-String -Path src\views\DashboardView.tsx -Pattern "sanitizeHTMLToDom"`
-    - Expected: One or more matches found.
+    - Confirm `renderSafeHTML` function exists in src/views/DashboardView.tsx and no `innerHTML` is present:
+      ```powershell
+      Select-String -Path src\views\DashboardView.tsx -Pattern "sanitizeHTMLToDom"
+      Select-String -Path src\views\DashboardView.tsx -Pattern "renderSafeHTML"
+      if (Select-String -Path src\views\DashboardView.tsx -Pattern 'innerHTML' -Quiet) { throw 'innerHTML found' }
+      ```
+    - Expected: First two return matches; third completes without throwing.
 
     **6. SEC-02 — No secrets in source (gitleaks hook)**
     - Test the pre-commit hook by staging a fake secret:
@@ -355,7 +362,7 @@ After both tasks in this plan complete (including checkpoint approval):
 2. Ribbon icon and command palette both open the dashboard (FOUND-03)
 3. Left sidebar navigation switches pages without full re-render (FOUND-04)
 4. `npm run dev` watcher recompiles on source save (FOUND-02)
-5. `Select-String -Path src\views\DashboardView.tsx -Pattern "sanitizeHTMLToDom"` returns match (SEC-01)
+5. Source inspection: `Select-String -Path src\views\DashboardView.tsx -Pattern "sanitizeHTMLToDom"` returns match AND no `innerHTML` assignments present (SEC-01)
 6. Staging a fake API key string and running `git commit` is blocked by gitleaks (SEC-02)
 7. main.js and manifest.json both present at repo root (FOUND-05)
 </verification>
@@ -364,7 +371,7 @@ After both tasks in this plan complete (including checkpoint approval):
 Phase 1 is complete when:
 - Running `npm run dev` starts a file watcher; saving any source file triggers recompile within 2 seconds (FOUND-02)
 - A ribbon icon and command palette entry both open the dashboard pane; left sidebar switches between placeholder pages without full re-render (FOUND-03, FOUND-04)
-- Sanitization layer (sanitizeHTMLToDom) is present and verifiable in source (SEC-01)
+- Sanitization layer (sanitizeHTMLToDom + renderSafeHTML) is present and verifiable in source with no innerHTML assignments (SEC-01)
 - main.js, manifest.json, styles.css present at repo root; plugin loads from GitHub symlink (FOUND-01, FOUND-05)
 - Pre-commit hook blocks commits containing secrets (SEC-02)
 </success_criteria>

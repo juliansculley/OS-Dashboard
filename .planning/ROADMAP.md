@@ -38,8 +38,16 @@
 4. `main.js`, `manifest.json`, and `styles.css` are present at the repo root and the plugin installs successfully via Obsidian community plugin / BRAT from the GitHub repo.
 
 ### Plans
+
+**Wave 1**
 - [ ] 01-P1-PLAN.md — Plugin scaffold and toolchain (package.json, tsconfig, esbuild, manifest, main.ts, styles.css, full source tree, npm run build)
+
+**Wave 2** *(blocked on Wave 1 completion)*
 - [ ] 01-P2-PLAN.md — Dev loop, security baseline, and Obsidian verification (symlink, gitleaks+husky, sanitizeHTMLToDom, human load test)
+
+**Cross-cutting constraints:**
+- `main.js` and `manifest.json` must be present at repo root (not in .gitignore) — required for FOUND-05 and SEC-02 gitleaks scan
+- All React mounting must use `this.contentEl` (not `containerEl.children[1]`) — enforced by P1 Task 2 verify block
 
 ---
 

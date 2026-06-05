@@ -774,8 +774,8 @@ Expect: tsc type check passes (0 errors), then esbuild writes main.js to repo ro
       # Critical content checks
       Select-String -Path main.ts -Pattern "class ClaudeOSPlugin extends Plugin"
       Select-String -Path src\views\DashboardView.tsx -Pattern "this\.contentEl" -SimpleMatch
-      Select-String -Path src\views\DashboardView.tsx -Pattern "containerEl\.children\[1\]" -SimpleMatch
-      # The last grep should return NO match (containerEl.children[1] must not appear)
+      # Anti-pattern must NOT appear — explicit failure if found
+      if (Select-String -Path src\views\DashboardView.tsx -Pattern 'containerEl\.children\[1\]' -Quiet) { throw 'Anti-pattern found — use this.contentEl instead' }
       Select-String -Path src\context\AppContext.tsx -Pattern "createContext"
       Select-String -Path styles.css -Pattern "\.claudeos-dashboard"
       Select-String -Path styles.css -Pattern "--cos-accent"
@@ -826,7 +826,7 @@ After both tasks complete:
 1. `npm run build` exits 0 — TypeScript reports zero errors and main.js is written to repo root
 2. `Test-Path main.js` returns True
 3. `Test-Path manifest.json` returns True — both required for BRAT installation (FOUND-05)
-4. `Select-String -Path src/views/DashboardView.tsx -Pattern "containerEl.children\[1\]"` returns NO match (confirms correct mount target)
+4. `if (Select-String -Path src/views/DashboardView.tsx -Pattern 'containerEl\.children\[1\]' -Quiet) { throw 'Anti-pattern found' }` completes without throwing (confirms correct mount target)
 5. `npm run dev` starts esbuild in watch mode without errors (Ctrl+C to stop)
 </verification>
 
