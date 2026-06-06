@@ -1,7 +1,7 @@
 # Roadmap: ClaudeOS Dashboard
 
 **Project:** ClaudeOS Dashboard
-**Total phases:** 2 (v1) + 3 future phases (v2)
+**Total phases:** 2 (v1) + 4 future phases (v2)
 **Requirements coverage:** 18/18 v1 requirements mapped ✓
 
 ---
@@ -15,9 +15,10 @@
 
 ### v2 — Future Milestone
 
-- [ ] **Phase 3: Social Data Pipeline** — Design and implement connectors/MCPs to feed social stats data automatically
+- [ ] **Phase 3: Notion Dashboard** — Sync script + Notion pages (Projects, Tasks, Newsletter) surfaced inside the dashboard
 - [ ] **Phase 4: Newsletter Workflow Page** — Occam's Leader drafting pipeline UI inside the dashboard
 - [ ] **Phase 5: Skill Output + UX Polish** — Inline output display, async status, cross-page persistence, UX refinements
+- [ ] **Phase 6: Social Data Pipeline** — Design and implement connectors/MCPs to feed social stats data automatically
 
 ---
 
@@ -79,14 +80,21 @@
 
 ## Future Phases (v2)
 
-These phases are documented requirements, not yet planned. Start with `/gsd-discuss-phase 3` after Phase 2 ships.
+These phases are documented requirements, not yet planned.
 
-### Phase 3: Social Data Pipeline
+### Phase 3: Notion Dashboard
 
-**Goal:** Design and build a data pipeline (MCP connector or automation) that writes social platform metrics to the format the Social Stats page expects — removing the manual step of exporting/dropping files.
+**Goal:** A standalone Node sync script queries Tasks, Projects, and Newsletter data sources via the Notion REST API, writes compact JSON snapshots, and the dashboard renders two new pages (Projects/Tasks and Newsletter) with a Refresh button that re-runs the script and live-reloads the views.
 **Depends on:** Phase 2
-**Requirements (v2):** DATA-01, DATA-02
-**Notes:** This phase requires a design discussion on connector options (LinkedIn/X MCP availability, OAuth implications, polling vs. webhook). Run `/gsd-discuss-phase 3` to start that conversation.
+**Requirements (v2):** NOTION-01, NOTION-02, NOTION-03, NOTION-04, NOTION-05, NOTION-06, NOTION-07, NOTION-08
+**Notes:** Full design documented in `.planning/NOTION-PIPELINE-DESIGN.md`. Notion integration token setup is a manual prerequisite.
+**Plans:** 4 plans (4 waves)
+
+Plans:
+- [ ] 03-01-PLAN.md — Sync script + infrastructure: notion-sync.mjs (token loading, 3 queries, atomic snapshots), .gitignore, integration setup (NOTION-01, NOTION-02, NOTION-03, NOTION-07)
+- [ ] 03-02-PLAN.md — Types, settings, AppContext: snapshot interfaces, extended PageId, 6 new settings, refreshNonce/triggerRefresh (NOTION-03, NOTION-04)
+- [ ] 03-03-PLAN.md — RefreshButton + Projects page: execFile refresh state machine, ListRow, Projects page with overdue/due-soon emphasis (NOTION-04, NOTION-05, NOTION-08)
+- [ ] 03-04-PLAN.md — Newsletter page + scheduling: stage counts + item list, Windows Task Scheduler registration script (NOTION-06, NOTION-07, NOTION-08)
 
 ---
 
@@ -108,12 +116,22 @@ These phases are documented requirements, not yet planned. Start with `/gsd-disc
 
 ---
 
+### Phase 6: Social Data Pipeline
+
+**Goal:** Design and build a data pipeline (MCP connector or automation) that writes social platform metrics to the format the Social Stats page expects — removing the manual step of exporting/dropping files.
+**Depends on:** Phase 2
+**Requirements (v2):** DATA-01, DATA-02
+**Notes:** This phase requires a design discussion on connector options (LinkedIn/X MCP availability, OAuth implications, polling vs. webhook). Architecture will mirror the Notion sync script pattern established in Phase 3.
+
+---
+
 ## Progress Table
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete | P1: 2026-06-05, P2: 2026-06-05 |
-| 2. Dashboard Features | 3/3 | Complete    | 2026-06-06 |
-| 3. Social Data Pipeline | TBD | Future | - |
+| 2. Dashboard Features | 3/3 | Complete | 2026-06-06 |
+| 3. Notion Dashboard | 0/4 | Planned | - |
 | 4. Newsletter Workflow | TBD | Future | - |
 | 5. Skill Output + Polish | TBD | Future | - |
+| 6. Social Data Pipeline | TBD | Future | - |
