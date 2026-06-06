@@ -10,9 +10,13 @@ A single, distraction-free control panel inside Obsidian that shows system statu
 
 ## Requirements
 
-### Validated
+### Validated in Phase 1
 
-(None yet — ship to validate)
+- [x] Plugin installs from GitHub via Obsidian community plugin protocol (manifest.json + main.js at repo root) — FOUND-05
+- [x] Hot-reload development environment for plugin iteration without manual reinstall — FOUND-02
+- [x] Multi-page navigation (sidebar or tab bar) within a single Obsidian pane — FOUND-04
+- [x] Proper HTML sanitization via sanitizeHTMLToDom + renderSafeHTML (no innerHTML assignments) — SEC-01
+- [x] No credentials or secrets in source code; gitleaks pre-commit hook enforced — SEC-02
 
 ### Active
 
@@ -52,11 +56,14 @@ A single, distraction-free control panel inside Obsidian that shows system statu
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Build as Obsidian plugin (not standalone web app) | Stays inside user's existing workflow, vault-local data access, no extra app to manage | — Pending |
-| Skill triggers via `claude` CLI (not direct API calls) | Reuses existing Claude Code skill ecosystem; no API key management in plugin | — Pending |
-| Social data display-only in v1 | Data pipeline design needs separate discussion on connectors/MCPs — don't block UI work | — Pending |
-| Newsletter page deferred to Phase 4+ | Core plugin must work before adding complex workflow pages | — Pending |
-| Hot-reload dev environment | Eliminates manual reinstall friction during iteration | — Pending |
+| Build as Obsidian plugin (not standalone web app) | Stays inside user's existing workflow, vault-local data access, no extra app to manage | Validated Phase 1 |
+| Skill triggers via `claude` CLI (not direct API calls) | Reuses existing Claude Code skill ecosystem; no API key management in plugin | — Pending Phase 2 |
+| Social data display-only in v1 | Data pipeline design needs separate discussion on connectors/MCPs — don't block UI work | — Pending Phase 3 |
+| Newsletter page deferred to Phase 4+ | Core plugin must work before adding complex workflow pages | — Pending Phase 4 |
+| Hot-reload dev environment | Eliminates manual reinstall friction during iteration | Validated Phase 1 |
+| No third-party font CDN imports | Outbound network calls on startup unacceptable for a personal plugin; system font fallback is sufficient | Decided Phase 1 |
+| React mounted via `this.contentEl` in ItemView | `containerEl.children[1]` is undocumented and fragile; `contentEl` is the stable Obsidian API | Validated Phase 1 |
+| Windows junction instead of symlink for vault plugin dir | Developer Mode not required for junctions; transparent to Obsidian's plugin loader | Decided Phase 1 |
 
 ## Evolution
 

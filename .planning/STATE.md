@@ -29,6 +29,7 @@ See: .planning/PROJECT.md (updated 2026-06-04)
 - All CSS scoped under `.claudeos-dashboard` wrapper per D-10
 - `npm install` requires `--strict-ssl=false` on this machine (corporate SSL cert issue)
 - Windows junction (mklink /J) used instead of symbolic link for vault plugin dir — Developer Mode not enabled; junctions work without it and achieve the same result for Obsidian's plugin loader
+- Fontshare CDN `@import` removed from styles.css — outbound network call on every startup unacceptable; `--cos-font-display` token falls back to `var(--font-interface, sans-serif)` which is sufficient (CR-01)
 
 ## Performance Metrics
 
