@@ -1338,7 +1338,7 @@ var require_react_dom_development = __commonJS({
         return dispatcher;
       }
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-      var React3 = require_react(), Internals = {
+      var React4 = require_react(), Internals = {
         d: {
           f: noop,
           r: function() {
@@ -1356,7 +1356,7 @@ var require_react_dom_development = __commonJS({
         },
         p: 0,
         findDOMNode: null
-      }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+      }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React4.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
       "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error(
         "React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"
       );
@@ -2891,7 +2891,7 @@ var require_react_dom_client_development = __commonJS({
         "number" === type && getActiveElement(node.ownerDocument) === node || node.defaultValue === "" + value || (node.defaultValue = "" + value);
       }
       function validateOptionProps(element, props) {
-        null == props.value && ("object" === typeof props.children && null !== props.children ? React3.Children.forEach(props.children, function(child) {
+        null == props.value && ("object" === typeof props.children && null !== props.children ? React4.Children.forEach(props.children, function(child) {
           null == child || "string" === typeof child || "number" === typeof child || "bigint" === typeof child || didWarnInvalidChild || (didWarnInvalidChild = true, console.error(
             "Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>."
           ));
@@ -18523,14 +18523,14 @@ var require_react_dom_client_development = __commonJS({
         ));
       }
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-      var Scheduler = require_scheduler(), React3 = require_react(), ReactDOM = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy");
+      var Scheduler = require_scheduler(), React4 = require_react(), ReactDOM = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy");
       Symbol.for("react.scope");
       var REACT_ACTIVITY_TYPE = Symbol.for("react.activity");
       Symbol.for("react.legacy_hidden");
       Symbol.for("react.tracing_marker");
       var REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel");
       Symbol.for("react.view_transition");
-      var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
+      var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React4.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
         pending: false,
         data: null,
         method: null,
@@ -21318,7 +21318,7 @@ var require_react_dom_client_development = __commonJS({
         }
       };
       (function() {
-        var isomorphicReactPackageVersion = React3.version;
+        var isomorphicReactPackageVersion = React4.version;
         if ("19.2.7" !== isomorphicReactPackageVersion)
           throw Error(
             'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.2.7\nLearn more: https://react.dev/warnings/version-mismatch")
@@ -21672,18 +21672,18 @@ var require_react_jsx_runtime_development = __commonJS({
       function isValidElement(object) {
         return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
       }
-      var React3 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
+      var React4 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React4.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
         return null;
       };
-      React3 = {
+      React4 = {
         react_stack_bottom_frame: function(callStackForError) {
           return callStackForError();
         }
       };
       var specialPropKeyWarningShown;
       var didWarnAboutElementRef = {};
-      var unknownOwnerDebugStack = React3.react_stack_bottom_frame.bind(
-        React3,
+      var unknownOwnerDebugStack = React4.react_stack_bottom_frame.bind(
+        React4,
         UnknownOwner
       )();
       var unknownOwnerDebugTask = createTask(getTaskName(UnknownOwner));
@@ -21738,7 +21738,7 @@ var import_obsidian6 = require("obsidian");
 // src/views/DashboardView.tsx
 var import_obsidian4 = require("obsidian");
 var import_client = __toESM(require_client());
-var import_react6 = __toESM(require_react());
+var import_react7 = __toESM(require_react());
 
 // src/context/AppContext.tsx
 var import_react = __toESM(require_react());
@@ -21750,7 +21750,7 @@ function useAppContext() {
 }
 
 // src/components/App.tsx
-var import_react5 = __toESM(require_react());
+var import_react6 = __toESM(require_react());
 
 // src/components/ui/Sidebar.tsx
 var import_react2 = __toESM(require_react());
@@ -21952,31 +21952,133 @@ function HomePage() {
 }
 
 // src/components/pages/SocialPage.tsx
+var import_react5 = __toESM(require_react());
+
+// src/components/ui/SocialMetricCard.tsx
 var import_jsx_runtime7 = __toESM(require_jsx_runtime());
+function formatUpdated(iso) {
+  return iso.substring(0, 10);
+}
+function SocialMetricCard({ platform, data }) {
+  const isLinkedIn = platform === "linkedin";
+  const heading = isLinkedIn ? "LinkedIn" : "X (Twitter)";
+  if (data === null) {
+    const emptyHeading = isLinkedIn ? "No LinkedIn data" : "No X data";
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-social-card claudeos-social-card--empty", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-social-card__heading", children: heading }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-empty-state", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-empty-state__heading", children: emptyHeading }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-empty-state__body", children: "Set a file path in Settings to load metrics." })
+      ] })
+    ] });
+  }
+  if (data === "error") {
+    const errorHeading = isLinkedIn ? "Couldn't read LinkedIn data" : "Couldn't read X data";
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-social-card claudeos-social-card--empty", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-social-card__heading", children: heading }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-empty-state", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-empty-state__heading", children: errorHeading }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-empty-state__body", children: "Check that the file path in Settings is correct." })
+      ] })
+    ] });
+  }
+  if (isLinkedIn) {
+    const li = data;
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-social-card", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-social-card__heading", children: heading }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-social-metrics-row", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Followers" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: li.followers.toLocaleString() })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Connections" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: li.connections.toLocaleString() })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Posts" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: li.posts.toLocaleString() })
+        ] })
+      ] }),
+      li.updated_at && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric__updated", children: [
+        "Updated: ",
+        formatUpdated(li.updated_at)
+      ] })
+    ] });
+  }
+  const x = data;
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-social-card", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-social-card__heading", children: heading }),
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-social-metrics-row", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Followers" }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: x.followers.toLocaleString() })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Following" }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: x.following.toLocaleString() })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Tweets" }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: x.tweets.toLocaleString() })
+      ] })
+    ] }),
+    x.updated_at && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric__updated", children: [
+      "Updated: ",
+      formatUpdated(x.updated_at)
+    ] })
+  ] });
+}
+
+// src/components/pages/SocialPage.tsx
+var import_jsx_runtime8 = __toESM(require_jsx_runtime());
 function SocialPage() {
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-page", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { className: "claudeos-page-title", children: "Social" }),
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { style: { color: "var(--cos-muted)" }, children: "Social stats coming in Phase 2." })
+  const { app, plugin } = useAppContext();
+  const [linkedInData, setLinkedInData] = (0, import_react5.useState)(null);
+  const [xData, setXData] = (0, import_react5.useState)(null);
+  (0, import_react5.useEffect)(() => {
+    const path = plugin.settings.linkedinDataPath;
+    if (!path || path.trim() === "") {
+      setLinkedInData(null);
+      return;
+    }
+    readJsonFile(app, path).then((data) => {
+      setLinkedInData(data !== null ? data : "error");
+    });
+  }, [plugin.settings.linkedinDataPath]);
+  (0, import_react5.useEffect)(() => {
+    const path = plugin.settings.xDataPath;
+    if (!path || path.trim() === "") {
+      setXData(null);
+      return;
+    }
+    readJsonFile(app, path).then((data) => {
+      setXData(data !== null ? data : "error");
+    });
+  }, [plugin.settings.xDataPath]);
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-page claudeos-page--social", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SocialMetricCard, { platform: "linkedin", data: linkedInData }),
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SocialMetricCard, { platform: "x", data: xData })
   ] });
 }
 
 // src/components/App.tsx
-var import_jsx_runtime8 = __toESM(require_jsx_runtime());
+var import_jsx_runtime9 = __toESM(require_jsx_runtime());
 var PAGES = {
   home: HomePage,
   social: SocialPage
 };
 function App2() {
-  const [activePage, setActivePage] = (0, import_react5.useState)("home");
+  const [activePage, setActivePage] = (0, import_react6.useState)("home");
   const PageComponent = PAGES[activePage];
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-dashboard", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Sidebar, { activePage, onNavigate: setActivePage }),
-    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("main", { className: "claudeos-main", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(PageComponent, {}) })
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "claudeos-dashboard", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Sidebar, { activePage, onNavigate: setActivePage }),
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("main", { className: "claudeos-main", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(PageComponent, {}) })
   ] });
 }
 
 // src/views/DashboardView.tsx
-var import_jsx_runtime9 = __toESM(require_jsx_runtime());
+var import_jsx_runtime10 = __toESM(require_jsx_runtime());
 var VIEW_TYPE_DASHBOARD = "claudeos-dashboard-view";
 var DashboardView = class extends import_obsidian4.ItemView {
   constructor(leaf, plugin) {
@@ -21996,7 +22098,7 @@ var DashboardView = class extends import_obsidian4.ItemView {
   async onOpen() {
     this.root = (0, import_client.createRoot)(this.contentEl);
     this.root.render(
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_react6.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(AppContext.Provider, { value: { app: this.app, plugin: this.plugin }, children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(App2, {}) }) })
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(import_react7.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(AppContext.Provider, { value: { app: this.app, plugin: this.plugin }, children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(App2, {}) }) })
     );
   }
   async onClose() {
