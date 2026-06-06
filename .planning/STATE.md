@@ -2,22 +2,22 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to plan
-stopped_at: Phase 5 context gathered
-last_updated: "2026-06-06T21:50:21.615Z"
+status: Executing Phase 03
+stopped_at: 03-01 Task 3 checkpoint — awaiting Notion integration setup
+last_updated: "2026-06-06T22:30:00.000Z"
 progress:
-  total_phases: 5
+  total_phases: 6
   completed_phases: 2
-  total_plans: 5
-  completed_plans: 5
-  percent: 40
+  total_plans: 9
+  completed_plans: 6
+  percent: 33
 ---
 
 # Project State: ClaudeOS Dashboard
 
 ## Current Status
 
-**Active Phase:** 2 — Dashboard Features (Complete — all 3 plans done; Phase 2 shipped)
+**Active Phase:** 3 — Notion Dashboard (In Progress — 03-01 Tasks 1-2 complete; Task 3 awaiting Notion integration setup)
 **Last Updated:** 2026-06-06
 
 ## Phase Status
@@ -26,7 +26,7 @@ progress:
 |-------|------|--------|-------|---------------|
 | 1 | Foundation | Complete | 2 (2 complete) | 2026-06-05 |
 | 2 | Dashboard Features | Complete | 3 (3 complete) | 2026-06-06 |
-| 3 | Social Data Pipeline (v2) | Future | TBD | — |
+| 3 | Notion Dashboard | In Progress | 4 (0 complete; 03-01 T1-T2 done, T3 pending human) | 2026-06-06 |
 | 4 | Newsletter Workflow (v2) | Future | TBD | — |
 | 5 | Skill Output + Polish (v2) | Future | TBD | — |
 
@@ -35,7 +35,7 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-04)
 
 **Core value:** A single control panel inside Obsidian that shows system status and surfaces AI skill triggers — no context-switching to terminals or separate apps.
-**Current focus:** Phase 02 — dashboard-features
+**Current focus:** Phase 03 — notion-dashboard
 
 ## Decisions
 
@@ -51,6 +51,11 @@ See: .planning/PROJECT.md (updated 2026-06-04)
 - formatTimestamp is a local function, no date library dependency — avoids external package for simple YYYY-MM-DD HH:mm formatting (02-P2)
 - SocialData<T> = T | null | 'error' discriminated union — null means path-empty (no read attempted), 'error' means file unreadable; drives two distinct empty-state copy variants (02-P3)
 - formatUpdated uses substring(0,10) not date parsing — satisfies T-02-09 XSS mitigation while avoiding date library dependency (02-P3)
+- Tasks filter uses status.does_not_equal operator (not select) — Tasks DB Status is a status-type property (03-01)
+- Newsletter reads props.Title (not props.Name) — Title is the correct property name for Newsletter Content Hub DB (03-01)
+- TaskItem omits project field entirely — relation resolution requires extra API calls, deferred (D-06, 03-01)
+- ProjectItem reads Progress.formula.number, omits active_tasks/overdue_tasks — Meta formula format undocumented (03-01)
+- Counts computed over full active set before TASK_CAP=10 applied — active_count/overdue_count/due_soon_count are true totals (03-01)
 
 ## Performance Metrics
 
@@ -61,6 +66,7 @@ See: .planning/PROJECT.md (updated 2026-06-04)
 | 02-dashboard-features | P1 | 25min | 3 | 8 |
 | 02-dashboard-features | P2 | ~2min | 2 | 4 |
 | 02-dashboard-features | P3 | ~3min | 2 | 3 |
+| 03-notion-dashboard | P1 | ~8min | 2 auto + 1 checkpoint | 2 |
 
 ## Notes
 
@@ -70,6 +76,6 @@ See: .planning/PROJECT.md (updated 2026-06-04)
 
 ## Last Session
 
-**Timestamp:** 2026-06-06T06:11:00Z
-**Stopped at:** Phase 5 context gathered
-**Resume file:** .planning/phases/05-skill-output-ux-polish/05-CONTEXT.md
+**Timestamp:** 2026-06-06T22:30:00Z
+**Stopped at:** 03-01 Task 3 checkpoint (blocking-human) — Notion integration setup required before live sync verification
+**Resume file:** .planning/phases/03-notion-dashboard/03-01-PLAN.md (Task 3 — resume after user types "approved")
