@@ -26,7 +26,8 @@ result: pass
 
 ### 4. Skill Button State Machine
 expected: Click a skill button (e.g., Wiki Optimizer). Button enters loading state (spinner). On success: shows "Done" (green accent) for 3 seconds then returns to idle. On failure: shows "Failed" (red accent) for 5 seconds then returns to idle.
-result: pass
+result: partial
+note: Visual state machine (spinner → Done/Failed → idle) was confirmed. However, actual skill output was NOT verified — no file was produced by the skill execution. Root cause: the test criterion never required output verification, and the current implementation fires `claude -p <skill>` with no input context. Skills like braindump and humanizer require user-provided text before they can produce output. This is a test coverage gap and a design gap. See Gaps section.
 
 ### 5. Social Stats â€” Data and Empty States
 expected: Navigate to Social Stats tab. Both cards show empty state initially (no paths configured). Configure linkedinDataPath with a valid LinkedIn JSON file with updated_at present, leave xDataPath blank. LinkedIn card shows formatted metrics with comma separators and "Updated: YYYY-MM-DD". X card still shows "No X data".
@@ -47,10 +48,18 @@ result: pass
 ## Summary
 
 total: 8
-passed: 8
-issues: 0
+passed: 7
+partial: 1
+issues: 1
 pending: 0
 skipped: 0
 blocked: 0
 
 ## Gaps
+
+### T4 — Skill output not verified
+T4 passed on visual state machine behavior only. The test never asserted that the skill produced output (e.g., a file written to disk). When Wiki Optimizer was clicked and showed "Done," no output file appeared. Two contributing causes:
+1. **No input context** — skills like braindump and humanizer require user-provided text; firing `claude -p <skill>` with no stdin or args produces no meaningful output.
+2. **Test criterion gap** — the T4 success condition only described UI transitions, not skill side-effects.
+
+**Required follow-up:** Skills that require input text need an input modal/dialog in the UI before execution. Tracked in ROADMAP.md under Phase 5 backlog.
