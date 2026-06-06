@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { exec } from 'child_process';
+import { execFile } from 'child_process';
 import { setIcon } from 'obsidian';
 
 // SEC-03: Allowlist is a hardcoded TypeScript const — never derived from user input.
@@ -42,7 +42,8 @@ export function SkillButton({ skill, label }: SkillButtonProps) {
 
     setState('loading');
     // SKILL-01: Execute claude -p <skill>. Skill name comes from hardcoded array, never user input.
-    exec(`claude -p ${skill}`, (error) => {
+    // SEC-03: execFile avoids shell invocation — argument is passed as array element, never interpolated.
+    execFile('claude', ['-p', skill], (error) => {
       // SKILL-03: Transition to success/error based on exit code, then auto-reset.
       if (error === null) {
         setState('success');
