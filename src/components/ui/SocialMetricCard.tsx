@@ -8,7 +8,14 @@ interface SocialMetricCardProps {
   data: SocialData<LinkedInData> | SocialData<XData>;
 }
 
+function safeLocale(v: unknown): string {
+  const n = Number(v);
+  return isNaN(n) ? '—' : n.toLocaleString();
+}
+
 function formatUpdated(iso: string): string {
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return '';
   return iso.substring(0, 10);
 }
 
@@ -53,22 +60,18 @@ export function SocialMetricCard({ platform, data }: SocialMetricCardProps) {
         <div className="claudeos-social-metrics-row">
           <div className="claudeos-metric">
             <div className="claudeos-metric__label">Followers</div>
-            <div className="claudeos-metric__value">{li.followers.toLocaleString()}</div>
+            <div className="claudeos-metric__value">{safeLocale(li.followers)}</div>
           </div>
           <div className="claudeos-metric">
             <div className="claudeos-metric__label">Connections</div>
-            <div className="claudeos-metric__value">{li.connections.toLocaleString()}</div>
+            <div className="claudeos-metric__value">{safeLocale(li.connections)}</div>
           </div>
           <div className="claudeos-metric">
             <div className="claudeos-metric__label">Posts</div>
-            <div className="claudeos-metric__value">{li.posts.toLocaleString()}</div>
+            <div className="claudeos-metric__value">{safeLocale(li.posts)}</div>
           </div>
         </div>
-        {li.updated_at && (
-          <div className="claudeos-metric__updated">
-            Updated: {formatUpdated(li.updated_at)}
-          </div>
-        )}
+        {li.updated_at && (() => { const f = formatUpdated(li.updated_at); return f ? <div className="claudeos-metric__updated">Updated: {f}</div> : null; })()}
       </div>
     );
   }
@@ -81,22 +84,18 @@ export function SocialMetricCard({ platform, data }: SocialMetricCardProps) {
       <div className="claudeos-social-metrics-row">
         <div className="claudeos-metric">
           <div className="claudeos-metric__label">Followers</div>
-          <div className="claudeos-metric__value">{x.followers.toLocaleString()}</div>
+          <div className="claudeos-metric__value">{safeLocale(x.followers)}</div>
         </div>
         <div className="claudeos-metric">
           <div className="claudeos-metric__label">Following</div>
-          <div className="claudeos-metric__value">{x.following.toLocaleString()}</div>
+          <div className="claudeos-metric__value">{safeLocale(x.following)}</div>
         </div>
         <div className="claudeos-metric">
           <div className="claudeos-metric__label">Tweets</div>
-          <div className="claudeos-metric__value">{x.tweets.toLocaleString()}</div>
+          <div className="claudeos-metric__value">{safeLocale(x.tweets)}</div>
         </div>
       </div>
-      {x.updated_at && (
-        <div className="claudeos-metric__updated">
-          Updated: {formatUpdated(x.updated_at)}
-        </div>
-      )}
+      {x.updated_at && (() => { const f = formatUpdated(x.updated_at); return f ? <div className="claudeos-metric__updated">Updated: {f}</div> : null; })()}
     </div>
   );
 }
