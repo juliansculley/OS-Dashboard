@@ -28,15 +28,15 @@
 
 ### Skill Triggers
 
-- [ ] **SKILL-01**: Generic button component executes a configurable `claude -p <skill>` shell command
-- [ ] **SKILL-02**: Shell command inputs are validated before execution to prevent command injection
-- [ ] **SKILL-03**: Button shows visual loading state while command runs; shows success/error indicator on completion
+- [x] **SKILL-01**: Generic button component executes a configurable `claude -p <skill>` shell command — completed 02-P1
+- [x] **SKILL-02**: Shell command inputs are validated before execution to prevent command injection — completed 02-P1
+- [x] **SKILL-03**: Button shows visual loading state while command runs; shows success/error indicator on completion — completed 02-P1
 
 ### Security
 
 - [x] **SEC-01**: All HTML rendered inside Obsidian webview is sanitized (DOMPurify or equivalent) to prevent XSS — completed 01-P2
 - [x] **SEC-02**: No credentials, API keys, or secrets are stored in plugin source code or compiled output — completed 01-P2
-- [ ] **SEC-03**: Shell command strings are constructed from an allowlist of approved skill names — no raw user input passed to shell
+- [x] **SEC-03**: Shell command strings are constructed from an allowlist of approved skill names — no raw user input passed to shell — completed 02-P1
 
 ## v2 Requirements
 
@@ -82,12 +82,12 @@
 | SOCIAL-02 | Phase 2 | Pending |
 | SOCIAL-03 | Phase 2 | Pending |
 | SOCIAL-04 | Phase 2 | Pending |
-| SKILL-01 | Phase 2 | Pending |
-| SKILL-02 | Phase 2 | Pending |
-| SKILL-03 | Phase 2 | Pending |
+| SKILL-01 | Phase 2 | Complete (02-P1) |
+| SKILL-02 | Phase 2 | Complete (02-P1) |
+| SKILL-03 | Phase 2 | Complete (02-P1) |
 | SEC-01 | Phase 1 | Pending |
 | SEC-02 | Phase 1 | Pending |
-| SEC-03 | Phase 2 | Pending |
+| SEC-03 | Phase 2 | Complete (02-P1) |
 
 **Coverage:**
 - v1 requirements: 18 total
