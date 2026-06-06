@@ -1,8 +1,13 @@
 import { Plugin } from 'obsidian';
 import { DashboardView, VIEW_TYPE_DASHBOARD } from './src/views/DashboardView';
+import { ClaudeOSSettings, DEFAULT_SETTINGS } from './src/types';
 
 export default class ClaudeOSPlugin extends Plugin {
+  settings: ClaudeOSSettings = DEFAULT_SETTINGS;
+
   async onload(): Promise<void> {
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+
     this.registerView(
       VIEW_TYPE_DASHBOARD,
       (leaf) => new DashboardView(leaf, this)
@@ -34,5 +39,9 @@ export default class ClaudeOSPlugin extends Plugin {
       await leaf.setViewState({ type: VIEW_TYPE_DASHBOARD, active: true });
     }
     workspace.revealLeaf(leaf);
+  }
+
+  async saveSettings() {
+    await this.saveData(this.settings);
   }
 }
