@@ -1,12 +1,14 @@
 import { Plugin } from 'obsidian';
 import { DashboardView, VIEW_TYPE_DASHBOARD } from './src/views/DashboardView';
 import { ClaudeOSSettings, DEFAULT_SETTINGS } from './src/types';
+import { SettingsTab } from './src/settings/SettingsTab';
 
 export default class ClaudeOSPlugin extends Plugin {
   settings: ClaudeOSSettings = DEFAULT_SETTINGS;
 
   async onload(): Promise<void> {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+    this.addSettingTab(new SettingsTab(this.app, this));
 
     this.registerView(
       VIEW_TYPE_DASHBOARD,
