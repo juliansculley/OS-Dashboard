@@ -7,11 +7,11 @@
 
 ### Foundation
 
-- [ ] **FOUND-01**: Plugin scaffold compiles and loads in Obsidian (manifest.json, main.ts, styles.css, esbuild toolchain)
-- [ ] **FOUND-02**: Hot-reload dev environment — file watcher auto-reloads plugin on save without manual reinstall
-- [ ] **FOUND-03**: Dashboard opens via ribbon icon and command palette entry
-- [ ] **FOUND-04**: Multi-page navigation (tab bar or sidebar) switches between dashboard pages without full re-render
-- [ ] **FOUND-05**: Plugin is installable from GitHub repo root (main.js + manifest.json present at root on every release)
+- [x] **FOUND-01**: Plugin scaffold compiles and loads in Obsidian (manifest.json, main.ts, styles.css, esbuild toolchain) — completed 01-P1
+- [x] **FOUND-02**: Hot-reload dev environment — file watcher auto-reloads plugin on save without manual reinstall — completed 01-P1
+- [x] **FOUND-03**: Dashboard opens via ribbon icon and command palette entry — completed 01-P2
+- [x] **FOUND-04**: Multi-page navigation (tab bar or sidebar) switches between dashboard pages without full re-render — completed 01-P2
+- [x] **FOUND-05**: Plugin is installable from GitHub repo root (main.js + manifest.json present at root on every release) — completed 01-P1
 
 ### Home Page
 
@@ -34,8 +34,8 @@
 
 ### Security
 
-- [ ] **SEC-01**: All HTML rendered inside Obsidian webview is sanitized (DOMPurify or equivalent) to prevent XSS
-- [ ] **SEC-02**: No credentials, API keys, or secrets are stored in plugin source code or compiled output
+- [x] **SEC-01**: All HTML rendered inside Obsidian webview is sanitized (DOMPurify or equivalent) to prevent XSS — completed 01-P2
+- [x] **SEC-02**: No credentials, API keys, or secrets are stored in plugin source code or compiled output — completed 01-P2
 - [ ] **SEC-03**: Shell command strings are constructed from an allowlist of approved skill names — no raw user input passed to shell
 
 ## v2 Requirements
@@ -70,11 +70,11 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
-| FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
-| FOUND-04 | Phase 1 | Pending |
-| FOUND-05 | Phase 1 | Pending |
+| FOUND-01 | Phase 1 | Complete (01-P1) |
+| FOUND-02 | Phase 1 | Complete (01-P1) |
+| FOUND-03 | Phase 1 | Complete (01-P2) |
+| FOUND-04 | Phase 1 | Complete (01-P2) |
+| FOUND-05 | Phase 1 | Complete (01-P1) |
 | HOME-01 | Phase 2 | Pending |
 | HOME-02 | Phase 2 | Pending |
 | HOME-03 | Phase 2 | Pending |
@@ -96,4 +96,4 @@
 
 ---
 *Requirements defined: 2026-06-04*
-*Last updated: 2026-06-04 after roadmap creation*
+*Last updated: 2026-06-05 after Phase 1 completion (01-P1 + 01-P2)*

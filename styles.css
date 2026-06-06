@@ -1,0 +1,117 @@
+/* ClaudeOS Dashboard — styles.css
+   All selectors scoped under .claudeos-dashboard to prevent global style bleed (D-10). */
+
+.claudeos-dashboard {
+  /* ── Brand tokens ── */
+  --cos-accent:        #7c6af7;
+  --cos-accent-hover:  #6857e0;
+
+  /* ── Layout tokens ── */
+  --cos-sidebar-width: 200px;
+  --cos-radius:        8px;
+
+  /* ── Font tokens ── */
+  --cos-font-display:  'Satoshi', var(--font-interface, sans-serif);
+  --cos-font-mono:     var(--font-monospace);
+
+  /* ── Surface tokens — inherit from Obsidian theme ── */
+  --cos-bg:         var(--background-primary);
+  --cos-surface:    var(--background-secondary);
+  --cos-surface-2:  var(--background-secondary-alt, var(--background-secondary));
+  --cos-border:     var(--background-modifier-border);
+
+  /* ── Text tokens — inherit from Obsidian theme ── */
+  --cos-text:       var(--text-normal);
+  --cos-muted:      var(--text-muted);
+  --cos-faint:      var(--text-faint);
+
+  /* ── Root layout ── */
+  display: flex;
+  height: 100%;
+  font-family: var(--cos-font-display);
+  background: var(--cos-bg);
+  color: var(--cos-text);
+}
+
+/* Sidebar */
+.claudeos-dashboard .claudeos-sidebar {
+  width: var(--cos-sidebar-width);
+  background: var(--cos-surface);
+  border-right: 1px solid var(--cos-border);
+  display: flex;
+  flex-direction: column;
+  padding: 16px 8px;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Logo / wordmark */
+.claudeos-dashboard .claudeos-logo {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cos-accent);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--cos-border);
+}
+
+/* Nav items */
+.claudeos-dashboard .claudeos-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  border-radius: var(--cos-radius);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--cos-muted);
+  width: 100%;
+  text-align: left;
+  transition: background 150ms, color 150ms;
+}
+
+.claudeos-dashboard .claudeos-nav-item:hover {
+  background: var(--cos-surface-2);
+  color: var(--cos-text);
+}
+
+.claudeos-dashboard .claudeos-nav-item.active {
+  background: color-mix(in oklch, var(--cos-accent) 15%, transparent);
+  color: var(--cos-accent);
+  font-weight: 600;
+}
+
+.claudeos-dashboard .claudeos-nav-icon {
+  display: flex;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Main content area */
+.claudeos-dashboard .claudeos-main {
+  flex: 1;
+  overflow: auto;
+  padding: 24px 32px;
+}
+
+/* Page layout */
+.claudeos-dashboard .claudeos-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.claudeos-dashboard .claudeos-page-title {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 24px 0;
+  color: var(--cos-text);
+}

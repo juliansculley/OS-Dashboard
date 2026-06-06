@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+# ClaudeOS Dashboard — pre-commit secret scanner
+# Requires: gitleaks installed via `winget install Gitleaks.Gitleaks`
+
+# Add WinGet install locations to PATH — git-bash PATH may not include user PATH entries
+export PATH="$PATH:/c/Users/scull/AppData/Local/Microsoft/WinGet/Links"
+export PATH="$PATH:/c/Users/scull/AppData/Local/Microsoft/WinGet/Packages/Gitleaks.Gitleaks_Microsoft.Winget.Source_8wekyb3d8bbwe"
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "gitleaks not found. Install: winget install Gitleaks.Gitleaks" >&2
+  exit 1
+fi
+
+gitleaks protect --staged --redact
