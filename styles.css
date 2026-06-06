@@ -129,7 +129,7 @@
 }
 
 /* Tile grid */
-.claudeos-tile-grid {
+.claudeos-dashboard .claudeos-tile-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--cos-space-md, 16px);
@@ -182,11 +182,11 @@
 }
 
 /* Skills section */
-.claudeos-skills-section {
+.claudeos-dashboard .claudeos-skills-section {
   margin-top: var(--cos-space-lg, 24px);
 }
 
-.claudeos-skills-heading {
+.claudeos-dashboard .claudeos-skills-heading {
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -195,14 +195,14 @@
   margin-bottom: var(--cos-space-sm, 8px);
 }
 
-.claudeos-skills-row {
+.claudeos-dashboard .claudeos-skills-row {
   display: flex;
   flex-wrap: wrap;
   gap: var(--cos-space-sm, 8px);
 }
 
 /* Skill button */
-.claudeos-skill-btn {
+.claudeos-dashboard .claudeos-skill-btn {
   min-width: var(--cos-skill-btn-min-width);
   padding: var(--cos-space-sm, 8px) var(--cos-space-md, 16px);
   border-radius: var(--cos-radius, 8px);
@@ -216,27 +216,27 @@
   transition: background 150ms;
 }
 
-.claudeos-skill-btn--idle {
+.claudeos-dashboard .claudeos-skill-btn--idle {
   background: var(--cos-accent, #7c6af7);
   color: #ffffff;
 }
-.claudeos-skill-btn--idle:hover:not(:disabled) {
+.claudeos-dashboard .claudeos-skill-btn--idle:hover:not(:disabled) {
   background: var(--cos-accent-hover, #6857e0);
 }
 
-.claudeos-skill-btn--loading {
+.claudeos-dashboard .claudeos-skill-btn--loading {
   background: color-mix(in srgb, var(--cos-accent, #7c6af7) 80%, transparent);
   color: #ffffff;
   cursor: not-allowed;
 }
 
-.claudeos-skill-btn--success {
+.claudeos-dashboard .claudeos-skill-btn--success {
   background: color-mix(in srgb, var(--cos-success) 15%, transparent);
   border-color: var(--cos-success);
   color: var(--cos-success);
 }
 
-.claudeos-skill-btn--error {
+.claudeos-dashboard .claudeos-skill-btn--error {
   background: color-mix(in srgb, var(--cos-error) 15%, transparent);
   border-color: var(--cos-error);
   color: var(--cos-error);
@@ -247,7 +247,7 @@
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
-.claudeos-skill-btn--loading .cos-spinner {
+.claudeos-dashboard .claudeos-skill-btn--loading .cos-spinner {
   display: inline-flex;
   animation: cos-spin 0.8s linear infinite;
 }
