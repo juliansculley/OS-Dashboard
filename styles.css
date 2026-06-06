@@ -31,6 +31,18 @@
   font-family: var(--cos-font-display);
   background: var(--cos-bg);
   color: var(--cos-text);
+
+  /* ── Phase 2 additions ── */
+
+  /* Success and error semantic colors */
+  --cos-success: var(--color-green, #38a169);
+  --cos-error:   var(--color-red, #e53e3e);
+
+  /* Tile card dimensions */
+  --cos-tile-min-width: 140px;
+
+  /* Skill button dimensions */
+  --cos-skill-btn-min-width: 100px;
 }
 
 /* Sidebar */
@@ -114,4 +126,189 @@
   line-height: 1.2;
   margin: 0 0 24px 0;
   color: var(--cos-text);
+}
+
+/* Tile grid */
+.claudeos-tile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--cos-space-md, 16px);
+  width: 100%;
+}
+
+/* Status tile */
+.claudeos-tile {
+  min-width: var(--cos-tile-min-width);
+  padding: var(--cos-space-sm, 8px) var(--cos-space-md, 16px);
+  border-radius: var(--cos-radius, 8px);
+  background: var(--cos-surface);
+  border: 1px solid var(--cos-border);
+  transition: background 150ms;
+}
+.claudeos-tile:hover { background: var(--cos-surface-2, var(--cos-surface)); }
+
+.claudeos-tile__label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cos-muted);
+}
+
+.claudeos-tile__value {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--cos-text, var(--text-normal));
+  margin-top: var(--cos-space-xs, 4px);
+}
+
+/* Numeric tile value (Active projects) gets display size */
+.claudeos-tile__value--numeric {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.claudeos-tile--no-data .claudeos-tile__value {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--cos-faint, var(--text-faint));
+}
+
+.claudeos-tile__no-data-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--cos-muted);
+  margin-top: var(--cos-space-xs, 4px);
+}
+
+/* Skills section */
+.claudeos-skills-section {
+  margin-top: var(--cos-space-lg, 24px);
+}
+
+.claudeos-skills-heading {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cos-muted);
+  margin-bottom: var(--cos-space-sm, 8px);
+}
+
+.claudeos-skills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cos-space-sm, 8px);
+}
+
+/* Skill button */
+.claudeos-skill-btn {
+  min-width: var(--cos-skill-btn-min-width);
+  padding: var(--cos-space-sm, 8px) var(--cos-space-md, 16px);
+  border-radius: var(--cos-radius, 8px);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cos-space-xs, 4px);
+  transition: background 150ms;
+}
+
+.claudeos-skill-btn--idle {
+  background: var(--cos-accent, #7c6af7);
+  color: #ffffff;
+}
+.claudeos-skill-btn--idle:hover:not(:disabled) {
+  background: var(--cos-accent-hover, #6857e0);
+}
+
+.claudeos-skill-btn--loading {
+  background: color-mix(in srgb, var(--cos-accent, #7c6af7) 80%, transparent);
+  color: #ffffff;
+  cursor: not-allowed;
+}
+
+.claudeos-skill-btn--success {
+  background: color-mix(in srgb, var(--cos-success) 15%, transparent);
+  border-color: var(--cos-success);
+  color: var(--cos-success);
+}
+
+.claudeos-skill-btn--error {
+  background: color-mix(in srgb, var(--cos-error) 15%, transparent);
+  border-color: var(--cos-error);
+  color: var(--cos-error);
+}
+
+/* Loading spinner — applied to span wrapper containing setIcon SVG output */
+@keyframes cos-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.claudeos-skill-btn--loading .cos-spinner {
+  display: inline-flex;
+  animation: cos-spin 0.8s linear infinite;
+}
+
+/* Social metric card */
+.claudeos-social-card {
+  padding: var(--cos-space-md, 16px);
+  border-radius: var(--cos-radius, 8px);
+  background: var(--cos-surface);
+  border: 1px solid var(--cos-border);
+  margin-bottom: var(--cos-space-xl, 32px);
+}
+
+.claudeos-social-card__heading {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cos-text, var(--text-normal));
+  margin-bottom: var(--cos-space-md, 16px);
+}
+
+.claudeos-social-metrics-row {
+  display: flex;
+  gap: var(--cos-space-md, 16px);
+}
+
+.claudeos-metric__label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cos-muted);
+}
+
+.claudeos-metric__value {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--cos-text, var(--text-normal));
+}
+
+.claudeos-metric__updated {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--cos-muted);
+  margin-top: var(--cos-space-sm, 8px);
+}
+
+/* Social card empty state */
+.claudeos-social-card--empty .claudeos-empty-state {
+  text-align: center;
+  padding: var(--cos-space-lg, 24px) var(--cos-space-md, 16px);
+}
+
+.claudeos-empty-state__heading {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cos-text, var(--text-normal));
+}
+
+.claudeos-empty-state__body {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--cos-muted);
+  margin-top: var(--cos-space-xs, 4px);
 }

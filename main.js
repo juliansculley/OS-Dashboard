@@ -21733,7 +21733,7 @@ __export(main_exports, {
   default: () => ClaudeOSPlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian3 = require("obsidian");
+var import_obsidian4 = require("obsidian");
 
 // src/views/DashboardView.tsx
 var import_obsidian2 = require("obsidian");
@@ -21851,9 +21851,61 @@ var DashboardView = class extends import_obsidian2.ItemView {
   }
 };
 
+// src/types.ts
+var DEFAULT_SETTINGS = {
+  lastSyncPath: "",
+  activeProjectsPath: "",
+  linkedinDataPath: "",
+  xDataPath: ""
+};
+
+// src/settings/SettingsTab.ts
+var import_obsidian3 = require("obsidian");
+var SettingsTab = class extends import_obsidian3.PluginSettingTab {
+  constructor(app, plugin) {
+    super(app, plugin);
+    this.plugin = plugin;
+  }
+  display() {
+    const { containerEl } = this;
+    containerEl.empty();
+    new import_obsidian3.Setting(containerEl).setName("Data File Paths").setHeading();
+    new import_obsidian3.Setting(containerEl).setName("Last Vault Sync File").setDesc('Path to a JSON file with a "timestamp" field (ISO 8601). Written by your vault sync automation.').addText(
+      (text) => text.setValue(this.plugin.settings.lastSyncPath).onChange(async (value) => {
+        this.plugin.settings.lastSyncPath = value;
+        await this.plugin.saveSettings();
+      })
+    );
+    new import_obsidian3.Setting(containerEl).setName("Active Projects File").setDesc('Path to a JSON file with a "count" field (integer). Written by your project tracking automation.').addText(
+      (text) => text.setValue(this.plugin.settings.activeProjectsPath).onChange(async (value) => {
+        this.plugin.settings.activeProjectsPath = value;
+        await this.plugin.saveSettings();
+      })
+    );
+    new import_obsidian3.Setting(containerEl).setName("LinkedIn Data File").setDesc("Path to a JSON file with LinkedIn metrics (followers, connections, posts).").addText(
+      (text) => text.setValue(this.plugin.settings.linkedinDataPath).onChange(async (value) => {
+        this.plugin.settings.linkedinDataPath = value;
+        await this.plugin.saveSettings();
+      })
+    );
+    new import_obsidian3.Setting(containerEl).setName("X (Twitter) Data File").setDesc("Path to a JSON file with X metrics (followers, following, tweets).").addText(
+      (text) => text.setValue(this.plugin.settings.xDataPath).onChange(async (value) => {
+        this.plugin.settings.xDataPath = value;
+        await this.plugin.saveSettings();
+      })
+    );
+  }
+};
+
 // main.ts
-var ClaudeOSPlugin = class extends import_obsidian3.Plugin {
+var ClaudeOSPlugin = class extends import_obsidian4.Plugin {
+  constructor() {
+    super(...arguments);
+    this.settings = DEFAULT_SETTINGS;
+  }
   async onload() {
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+    this.addSettingTab(new SettingsTab(this.app, this));
     this.registerView(
       VIEW_TYPE_DASHBOARD,
       (leaf) => new DashboardView(leaf, this)
@@ -21880,6 +21932,9 @@ var ClaudeOSPlugin = class extends import_obsidian3.Plugin {
       await leaf.setViewState({ type: VIEW_TYPE_DASHBOARD, active: true });
     }
     workspace.revealLeaf(leaf);
+  }
+  async saveSettings() {
+    await this.saveData(this.settings);
   }
 };
 /*! Bundled license information:
