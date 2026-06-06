@@ -15,16 +15,16 @@
 
 ### Home Page
 
-- [ ] **HOME-01**: Home page renders as the default landing tab when dashboard opens
-- [ ] **HOME-02**: Home page displays a configurable set of status tiles (initially hardcoded, data from vault notes or flat files)
-- [ ] **HOME-03**: Home page includes at least one Claude skill trigger button that executes `claude -p <skill>` via child_process
+- [x] **HOME-01**: Home page renders as the default landing tab when dashboard opens
+- [x] **HOME-02**: Home page displays a configurable set of status tiles (initially hardcoded, data from vault notes or flat files)
+- [x] **HOME-03**: Home page includes at least one Claude skill trigger button that executes `claude -p <skill>` via child_process
 
 ### Social Stats
 
-- [ ] **SOCIAL-01**: Social stats page displays LinkedIn metrics read from a designated data file (Obsidian note or JSON flat file)
-- [ ] **SOCIAL-02**: Social stats page displays X (Twitter) metrics read from a designated data file
-- [ ] **SOCIAL-03**: Data file paths are configurable in plugin settings (not hardcoded)
-- [ ] **SOCIAL-04**: Page shows "no data" state gracefully when data files are missing or empty
+- [x] **SOCIAL-01**: Social stats page displays LinkedIn metrics read from a designated data file (Obsidian note or JSON flat file)
+- [x] **SOCIAL-02**: Social stats page displays X (Twitter) metrics read from a designated data file
+- [x] **SOCIAL-03**: Data file paths are configurable in plugin settings (not hardcoded)
+- [x] **SOCIAL-04**: Page shows "no data" state gracefully when data files are missing or empty
 
 ### Skill Triggers
 
@@ -75,13 +75,13 @@
 | FOUND-03 | Phase 1 | Complete (01-P2) |
 | FOUND-04 | Phase 1 | Complete (01-P2) |
 | FOUND-05 | Phase 1 | Complete (01-P1) |
-| HOME-01 | Phase 2 | Pending |
-| HOME-02 | Phase 2 | Pending |
-| HOME-03 | Phase 2 | Pending |
-| SOCIAL-01 | Phase 2 | Pending |
-| SOCIAL-02 | Phase 2 | Pending |
-| SOCIAL-03 | Phase 2 | Pending |
-| SOCIAL-04 | Phase 2 | Pending |
+| HOME-01 | Phase 2 | Complete |
+| HOME-02 | Phase 2 | Complete |
+| HOME-03 | Phase 2 | Complete |
+| SOCIAL-01 | Phase 2 | Complete |
+| SOCIAL-02 | Phase 2 | Complete |
+| SOCIAL-03 | Phase 2 | Complete |
+| SOCIAL-04 | Phase 2 | Complete |
 | SKILL-01 | Phase 2 | Complete (02-P1) |
 | SKILL-02 | Phase 2 | Complete (02-P1) |
 | SKILL-03 | Phase 2 | Complete (02-P1) |
@@ -90,6 +90,7 @@
 | SEC-03 | Phase 2 | Complete (02-P1) |
 
 **Coverage:**
+
 - v1 requirements: 18 total
 - Mapped to phases: 18
 - Unmapped: 0 ✓

@@ -32,6 +32,7 @@
 **Plans:** 2 plans
 
 ### Success Criteria
+
 1. Running `npm run dev` starts a file watcher; saving any source file reloads the plugin in Obsidian within 2 seconds without manual reinstall.
 2. A ribbon icon and command palette entry both open the dashboard pane; a tab bar switches between placeholder pages without full re-render.
 3. All HTML rendered through the plugin passes through a sanitization layer (DOMPurify or equivalent) — verifiable by attempting to inject a `<script>` tag through rendered content.
@@ -40,12 +41,15 @@
 ### Plans
 
 **Wave 1**
+
 - [x] 01-P1-PLAN.md — Plugin scaffold and toolchain (package.json, tsconfig, esbuild, manifest, main.ts, styles.css, full source tree, npm run build) — completed 2026-06-05
 
 **Wave 2** *(blocked on Wave 1 completion)*
+
 - [x] 01-P2-PLAN.md — Dev loop, security baseline, and Obsidian verification (symlink, gitleaks+husky, sanitizeHTMLToDom, human load test) — completed 2026-06-05
 
 **Cross-cutting constraints:**
+
 - `main.js` and `manifest.json` must be present at repo root (not in .gitignore) — required for FOUND-05 and SEC-02 gitleaks scan
 - All React mounting must use `this.contentEl` (not `containerEl.children[1]`) — enforced by P1 Task 2 verify block
 
@@ -59,12 +63,14 @@
 **UI hint:** yes
 
 ### Success Criteria
+
 1. Home page opens as default tab and renders at least two status tiles reading data from vault notes or flat files; one skill trigger button executes `claude -p <skill>` and shows a loading spinner followed by a success or error indicator.
 2. Social Stats page reads LinkedIn and X metrics from configurable file paths (set in plugin settings), renders them in the page, and displays a clear "no data" state when files are absent.
 3. Skill trigger buttons only execute commands from an approved allowlist — attempting to pass an unlisted skill name produces no shell execution (verifiable in tests).
 4. Configurable data file paths survive plugin reload (stored in Obsidian plugin data, not hardcoded).
 
 ### Plans
+
 1. [x] **02-P1** — Foundation layer: type contracts, SettingsTab, SkillButton allowlist, readJsonFile utility, Phase 2 CSS (SEC-03, SKILL-01, SKILL-02, SKILL-03) — completed 2026-06-06
 2. [x] **02-P2** — Home page: status tile layout, flat-file data reader, skill button integration (HOME-01, HOME-02, HOME-03) — completed 2026-06-06
 3. [x] **02-P3** — Social Stats page: LinkedIn and X metric display, configurable file paths, missing-data state (SOCIAL-01, SOCIAL-02, SOCIAL-03, SOCIAL-04) — completed 2026-06-06
@@ -107,7 +113,7 @@ These phases are documented requirements, not yet planned. Start with `/gsd-disc
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete | P1: 2026-06-05, P2: 2026-06-05 |
-| 2. Dashboard Features | 3/3 | Complete | P1: 2026-06-06, P2: 2026-06-06, P3: 2026-06-06 |
+| 2. Dashboard Features | 3/3 | Complete    | 2026-06-06 |
 | 3. Social Data Pipeline | TBD | Future | - |
 | 4. Newsletter Workflow | TBD | Future | - |
 | 5. Skill Output + Polish | TBD | Future | - |
