@@ -1,8 +1,6 @@
 /* ClaudeOS Dashboard — styles.css
    All selectors scoped under .claudeos-dashboard to prevent global style bleed (D-10). */
 
-@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,600&display=swap');
-
 .claudeos-dashboard {
   /* ── Brand tokens ── */
   --cos-accent:        #7c6af7;
