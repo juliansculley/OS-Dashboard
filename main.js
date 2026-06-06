@@ -1338,7 +1338,7 @@ var require_react_dom_development = __commonJS({
         return dispatcher;
       }
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-      var React = require_react(), Internals = {
+      var React3 = require_react(), Internals = {
         d: {
           f: noop,
           r: function() {
@@ -1356,7 +1356,7 @@ var require_react_dom_development = __commonJS({
         },
         p: 0,
         findDOMNode: null
-      }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+      }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
       "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error(
         "React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"
       );
@@ -2891,7 +2891,7 @@ var require_react_dom_client_development = __commonJS({
         "number" === type && getActiveElement(node.ownerDocument) === node || node.defaultValue === "" + value || (node.defaultValue = "" + value);
       }
       function validateOptionProps(element, props) {
-        null == props.value && ("object" === typeof props.children && null !== props.children ? React.Children.forEach(props.children, function(child) {
+        null == props.value && ("object" === typeof props.children && null !== props.children ? React3.Children.forEach(props.children, function(child) {
           null == child || "string" === typeof child || "number" === typeof child || "bigint" === typeof child || didWarnInvalidChild || (didWarnInvalidChild = true, console.error(
             "Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>."
           ));
@@ -18523,14 +18523,14 @@ var require_react_dom_client_development = __commonJS({
         ));
       }
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-      var Scheduler = require_scheduler(), React = require_react(), ReactDOM = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy");
+      var Scheduler = require_scheduler(), React3 = require_react(), ReactDOM = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy");
       Symbol.for("react.scope");
       var REACT_ACTIVITY_TYPE = Symbol.for("react.activity");
       Symbol.for("react.legacy_hidden");
       Symbol.for("react.tracing_marker");
       var REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel");
       Symbol.for("react.view_transition");
-      var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
+      var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
         pending: false,
         data: null,
         method: null,
@@ -21318,7 +21318,7 @@ var require_react_dom_client_development = __commonJS({
         }
       };
       (function() {
-        var isomorphicReactPackageVersion = React.version;
+        var isomorphicReactPackageVersion = React3.version;
         if ("19.2.7" !== isomorphicReactPackageVersion)
           throw Error(
             'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.2.7\nLearn more: https://react.dev/warnings/version-mismatch")
@@ -21672,18 +21672,18 @@ var require_react_jsx_runtime_development = __commonJS({
       function isValidElement(object) {
         return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
       }
-      var React = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
+      var React3 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
         return null;
       };
-      React = {
+      React3 = {
         react_stack_bottom_frame: function(callStackForError) {
           return callStackForError();
         }
       };
       var specialPropKeyWarningShown;
       var didWarnAboutElementRef = {};
-      var unknownOwnerDebugStack = React.react_stack_bottom_frame.bind(
-        React,
+      var unknownOwnerDebugStack = React3.react_stack_bottom_frame.bind(
+        React3,
         UnknownOwner
       )();
       var unknownOwnerDebugTask = createTask(getTaskName(UnknownOwner));
@@ -21733,19 +21733,24 @@ __export(main_exports, {
   default: () => ClaudeOSPlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian4 = require("obsidian");
+var import_obsidian6 = require("obsidian");
 
 // src/views/DashboardView.tsx
-var import_obsidian2 = require("obsidian");
+var import_obsidian4 = require("obsidian");
 var import_client = __toESM(require_client());
-var import_react4 = __toESM(require_react());
+var import_react6 = __toESM(require_react());
 
 // src/context/AppContext.tsx
 var import_react = __toESM(require_react());
 var AppContext = (0, import_react.createContext)(null);
+function useAppContext() {
+  const ctx = (0, import_react.useContext)(AppContext);
+  if (!ctx) throw new Error("useAppContext must be used inside AppContext.Provider");
+  return ctx;
+}
 
 // src/components/App.tsx
-var import_react3 = __toESM(require_react());
+var import_react5 = __toESM(require_react());
 
 // src/components/ui/Sidebar.tsx
 var import_react2 = __toESM(require_react());
@@ -21790,42 +21795,190 @@ function Sidebar({ activePage, onNavigate }) {
 }
 
 // src/components/pages/HomePage.tsx
+var import_react4 = __toESM(require_react());
+
+// src/utils/readJsonFile.ts
+var import_obsidian2 = require("obsidian");
+var import_promises = require("fs/promises");
+var nodePath = __toESM(require("path"));
+async function readJsonFile(app, filePath) {
+  if (!filePath || filePath.trim() === "") return null;
+  try {
+    let raw;
+    if (nodePath.isAbsolute(filePath)) {
+      raw = await (0, import_promises.readFile)(filePath, "utf-8");
+    } else {
+      raw = await app.vault.adapter.read((0, import_obsidian2.normalizePath)(filePath));
+    }
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
+// src/components/ui/TileGrid.tsx
 var import_jsx_runtime2 = __toESM(require_jsx_runtime());
+function TileGrid({ children }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "claudeos-tile-grid", children });
+}
+
+// src/components/ui/StatusTile.tsx
+var import_jsx_runtime3 = __toESM(require_jsx_runtime());
+function StatusTile({ label, value, numeric = false }) {
+  const isNoData = value === null;
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: `claudeos-tile${isNoData ? " claudeos-tile--no-data" : ""}`, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "claudeos-tile__label", children: label }),
+    isNoData ? /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(import_jsx_runtime3.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "claudeos-tile__value", children: "\u2014" }),
+      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "claudeos-tile__no-data-label", children: "No data" })
+    ] }) : /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: `claudeos-tile__value${numeric ? " claudeos-tile__value--numeric" : ""}`, children: value })
+  ] });
+}
+
+// src/components/ui/SkillButton.tsx
+var import_react3 = __toESM(require_react());
+var import_child_process = require("child_process");
+var import_obsidian3 = require("obsidian");
+var import_jsx_runtime4 = __toESM(require_jsx_runtime());
+var ALLOWED_SKILLS = ["wiki-optimizer", "braindump", "humanizer"];
+function IconSlot({ iconName }) {
+  const ref = (0, import_react3.useRef)(null);
+  (0, import_react3.useEffect)(() => {
+    if (ref.current) {
+      (0, import_obsidian3.setIcon)(ref.current, iconName);
+    }
+  }, [iconName]);
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { ref, className: "cos-icon-slot" });
+}
+function SkillButton({ skill, label }) {
+  const [state, setState] = (0, import_react3.useState)("idle");
+  const spinnerRef = (0, import_react3.useRef)(null);
+  (0, import_react3.useEffect)(() => {
+    if (state === "loading" && spinnerRef.current) {
+      (0, import_obsidian3.setIcon)(spinnerRef.current, "loader-2");
+    }
+  }, [state]);
+  function handleClick() {
+    if (state !== "idle") return;
+    if (!ALLOWED_SKILLS.includes(skill)) return;
+    setState("loading");
+    (0, import_child_process.exec)(`claude -p ${skill}`, (error) => {
+      if (error === null) {
+        setState("success");
+        setTimeout(() => setState("idle"), 3e3);
+      } else {
+        setState("error");
+        setTimeout(() => setState("idle"), 5e3);
+      }
+    });
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+    "button",
+    {
+      className: `claudeos-skill-btn claudeos-skill-btn--${state}`,
+      onClick: handleClick,
+      disabled: state === "loading",
+      children: [
+        state === "loading" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { ref: spinnerRef, className: "cos-spinner" }),
+        state === "idle" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: label }),
+        state === "success" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(IconSlot, { iconName: "check" }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: "Done" })
+        ] }),
+        state === "error" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(IconSlot, { iconName: "x" }),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: "Failed" })
+        ] })
+      ]
+    }
+  );
+}
+
+// src/components/ui/SkillsSection.tsx
+var import_jsx_runtime5 = __toESM(require_jsx_runtime());
+function SkillsSection() {
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("section", { className: "claudeos-skills-section", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "claudeos-skills-heading", children: "Skills" }),
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "claudeos-skills-row", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SkillButton, { skill: "wiki-optimizer", label: "Wiki Optimizer" }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SkillButton, { skill: "braindump", label: "Braindump" }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SkillButton, { skill: "humanizer", label: "Humanizer" })
+    ] })
+  ] });
+}
+
+// src/components/pages/HomePage.tsx
+var import_jsx_runtime6 = __toESM(require_jsx_runtime());
+function formatTimestamp(iso) {
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return "";
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  const hours = String(d.getHours()).padStart(2, "0");
+  const mins = String(d.getMinutes()).padStart(2, "0");
+  return `${year}-${month}-${day} ${hours}:${mins}`;
+}
 function HomePage() {
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "claudeos-page", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("h2", { className: "claudeos-page-title", children: "Home" }),
-    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("p", { style: { color: "var(--cos-muted)" }, children: "Dashboard content coming in Phase 2." })
+  const { app, plugin } = useAppContext();
+  const [syncValue, setSyncValue] = (0, import_react4.useState)(null);
+  const [projectsValue, setProjectsValue] = (0, import_react4.useState)(null);
+  (0, import_react4.useEffect)(() => {
+    readJsonFile(app, plugin.settings.lastSyncPath).then((data) => {
+      if (data && typeof data.timestamp === "string" && data.timestamp.trim() !== "") {
+        const formatted = formatTimestamp(data.timestamp);
+        setSyncValue(formatted !== "" ? formatted : null);
+      } else {
+        setSyncValue(null);
+      }
+    });
+  }, [plugin.settings.lastSyncPath]);
+  (0, import_react4.useEffect)(() => {
+    readJsonFile(app, plugin.settings.activeProjectsPath).then((data) => {
+      if (data && typeof data.count === "number" && !isNaN(data.count)) {
+        setProjectsValue(String(data.count));
+      } else {
+        setProjectsValue(null);
+      }
+    });
+  }, [plugin.settings.activeProjectsPath]);
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "claudeos-page claudeos-page--home", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(TileGrid, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(StatusTile, { label: "Last vault sync", value: syncValue }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(StatusTile, { label: "Active projects", value: projectsValue, numeric: true })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SkillsSection, {})
   ] });
 }
 
 // src/components/pages/SocialPage.tsx
-var import_jsx_runtime3 = __toESM(require_jsx_runtime());
+var import_jsx_runtime7 = __toESM(require_jsx_runtime());
 function SocialPage() {
-  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "claudeos-page", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("h2", { className: "claudeos-page-title", children: "Social" }),
-    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { style: { color: "var(--cos-muted)" }, children: "Social stats coming in Phase 2." })
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-page", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { className: "claudeos-page-title", children: "Social" }),
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { style: { color: "var(--cos-muted)" }, children: "Social stats coming in Phase 2." })
   ] });
 }
 
 // src/components/App.tsx
-var import_jsx_runtime4 = __toESM(require_jsx_runtime());
+var import_jsx_runtime8 = __toESM(require_jsx_runtime());
 var PAGES = {
   home: HomePage,
   social: SocialPage
 };
-function App() {
-  const [activePage, setActivePage] = (0, import_react3.useState)("home");
+function App2() {
+  const [activePage, setActivePage] = (0, import_react5.useState)("home");
   const PageComponent = PAGES[activePage];
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "claudeos-dashboard", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Sidebar, { activePage, onNavigate: setActivePage }),
-    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("main", { className: "claudeos-main", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(PageComponent, {}) })
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-dashboard", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Sidebar, { activePage, onNavigate: setActivePage }),
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("main", { className: "claudeos-main", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(PageComponent, {}) })
   ] });
 }
 
 // src/views/DashboardView.tsx
-var import_jsx_runtime5 = __toESM(require_jsx_runtime());
+var import_jsx_runtime9 = __toESM(require_jsx_runtime());
 var VIEW_TYPE_DASHBOARD = "claudeos-dashboard-view";
-var DashboardView = class extends import_obsidian2.ItemView {
+var DashboardView = class extends import_obsidian4.ItemView {
   constructor(leaf, plugin) {
     super(leaf);
     this.root = null;
@@ -21843,7 +21996,7 @@ var DashboardView = class extends import_obsidian2.ItemView {
   async onOpen() {
     this.root = (0, import_client.createRoot)(this.contentEl);
     this.root.render(
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_react4.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(AppContext.Provider, { value: { app: this.app, plugin: this.plugin }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(App, {}) }) })
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_react6.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(AppContext.Provider, { value: { app: this.app, plugin: this.plugin }, children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(App2, {}) }) })
     );
   }
   async onClose() {
@@ -21860,8 +22013,8 @@ var DEFAULT_SETTINGS = {
 };
 
 // src/settings/SettingsTab.ts
-var import_obsidian3 = require("obsidian");
-var SettingsTab = class extends import_obsidian3.PluginSettingTab {
+var import_obsidian5 = require("obsidian");
+var SettingsTab = class extends import_obsidian5.PluginSettingTab {
   constructor(app, plugin) {
     super(app, plugin);
     this.plugin = plugin;
@@ -21869,26 +22022,26 @@ var SettingsTab = class extends import_obsidian3.PluginSettingTab {
   display() {
     const { containerEl } = this;
     containerEl.empty();
-    new import_obsidian3.Setting(containerEl).setName("Data File Paths").setHeading();
-    new import_obsidian3.Setting(containerEl).setName("Last Vault Sync File").setDesc('Path to a JSON file with a "timestamp" field (ISO 8601). Written by your vault sync automation.').addText(
+    new import_obsidian5.Setting(containerEl).setName("Data File Paths").setHeading();
+    new import_obsidian5.Setting(containerEl).setName("Last Vault Sync File").setDesc('Path to a JSON file with a "timestamp" field (ISO 8601). Written by your vault sync automation.').addText(
       (text) => text.setValue(this.plugin.settings.lastSyncPath).onChange(async (value) => {
         this.plugin.settings.lastSyncPath = value;
         await this.plugin.saveSettings();
       })
     );
-    new import_obsidian3.Setting(containerEl).setName("Active Projects File").setDesc('Path to a JSON file with a "count" field (integer). Written by your project tracking automation.').addText(
+    new import_obsidian5.Setting(containerEl).setName("Active Projects File").setDesc('Path to a JSON file with a "count" field (integer). Written by your project tracking automation.').addText(
       (text) => text.setValue(this.plugin.settings.activeProjectsPath).onChange(async (value) => {
         this.plugin.settings.activeProjectsPath = value;
         await this.plugin.saveSettings();
       })
     );
-    new import_obsidian3.Setting(containerEl).setName("LinkedIn Data File").setDesc("Path to a JSON file with LinkedIn metrics (followers, connections, posts).").addText(
+    new import_obsidian5.Setting(containerEl).setName("LinkedIn Data File").setDesc("Path to a JSON file with LinkedIn metrics (followers, connections, posts).").addText(
       (text) => text.setValue(this.plugin.settings.linkedinDataPath).onChange(async (value) => {
         this.plugin.settings.linkedinDataPath = value;
         await this.plugin.saveSettings();
       })
     );
-    new import_obsidian3.Setting(containerEl).setName("X (Twitter) Data File").setDesc("Path to a JSON file with X metrics (followers, following, tweets).").addText(
+    new import_obsidian5.Setting(containerEl).setName("X (Twitter) Data File").setDesc("Path to a JSON file with X metrics (followers, following, tweets).").addText(
       (text) => text.setValue(this.plugin.settings.xDataPath).onChange(async (value) => {
         this.plugin.settings.xDataPath = value;
         await this.plugin.saveSettings();
@@ -21898,7 +22051,7 @@ var SettingsTab = class extends import_obsidian3.PluginSettingTab {
 };
 
 // main.ts
-var ClaudeOSPlugin = class extends import_obsidian4.Plugin {
+var ClaudeOSPlugin = class extends import_obsidian6.Plugin {
   constructor() {
     super(...arguments);
     this.settings = DEFAULT_SETTINGS;
