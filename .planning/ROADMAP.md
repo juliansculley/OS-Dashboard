@@ -11,7 +11,7 @@
 ### v1 — Current Milestone
 
 - [x] **Phase 1: Foundation** — Working plugin scaffold with dev environment, GitHub publishing, and security baseline (completed 2026-06-05)
-- [ ] **Phase 2: Dashboard Features** — All v1 pages (Home, Social Stats) and skill triggers functional inside Obsidian (P1 complete 2026-06-06)
+- [x] **Phase 2: Dashboard Features** — All v1 pages (Home, Social Stats) and skill triggers functional inside Obsidian (completed 2026-06-06)
 
 ### v2 — Future Milestone
 
@@ -67,7 +67,7 @@
 ### Plans
 1. [x] **02-P1** — Foundation layer: type contracts, SettingsTab, SkillButton allowlist, readJsonFile utility, Phase 2 CSS (SEC-03, SKILL-01, SKILL-02, SKILL-03) — completed 2026-06-06
 2. [x] **02-P2** — Home page: status tile layout, flat-file data reader, skill button integration (HOME-01, HOME-02, HOME-03) — completed 2026-06-06
-3. [ ] **02-P3** — Social Stats page: LinkedIn and X metric display, configurable file paths, missing-data state (SOCIAL-01, SOCIAL-02, SOCIAL-03, SOCIAL-04)
+3. [x] **02-P3** — Social Stats page: LinkedIn and X metric display, configurable file paths, missing-data state (SOCIAL-01, SOCIAL-02, SOCIAL-03, SOCIAL-04) — completed 2026-06-06
 
 ---
 
@@ -107,7 +107,7 @@ These phases are documented requirements, not yet planned. Start with `/gsd-disc
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete | P1: 2026-06-05, P2: 2026-06-05 |
-| 2. Dashboard Features | 2/3 | In progress | P1: 2026-06-06, P2: 2026-06-06 |
+| 2. Dashboard Features | 3/3 | Complete | P1: 2026-06-06, P2: 2026-06-06, P3: 2026-06-06 |
 | 3. Social Data Pipeline | TBD | Future | - |
 | 4. Newsletter Workflow | TBD | Future | - |
 | 5. Skill Output + Polish | TBD | Future | - |
