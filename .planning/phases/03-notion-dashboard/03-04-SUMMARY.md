@@ -45,8 +45,8 @@ key-decisions:
 requirements-completed: [NOTION-06, NOTION-07, NOTION-08]
 
 # Metrics
-duration: 4min (Tasks 1-3 auto; Task 4 checkpoint:human-verify pending)
-completed: 2026-06-07
+duration: ~4min (Tasks 1-3 auto; Task 4 human-verify approved 2026-06-06)
+completed: 2026-06-06
 ---
 
 # Phase 3 Plan 04: Newsletter Page + Task Scheduler Summary
@@ -55,10 +55,10 @@ completed: 2026-06-07
 
 ## Performance
 
-- **Duration:** ~4 min (Tasks 1-3 complete; Task 4 is a human-verify checkpoint)
+- **Duration:** ~4 min (Tasks 1-3 auto; Task 4 human-verify approved)
 - **Started:** 2026-06-07T05:11:37Z
-- **Completed (auto tasks):** 2026-06-07T05:15:17Z
-- **Tasks:** 3 of 4 complete (Task 4: checkpoint:human-verify pending)
+- **Completed:** 2026-06-06 (human checkpoint approved by user)
+- **Tasks:** 4 of 4 complete
 - **Files modified:** 5 (2 created, 3 modified)
 
 ## Accomplishments
@@ -76,7 +76,7 @@ completed: 2026-06-07
 | 1 | Build NewsletterPage | f3a8c6f | src/components/pages/NewsletterPage.tsx |
 | 2 | Register in App + Sidebar + CSS | 91b37a4 | App.tsx, Sidebar.tsx, styles.css |
 | 3 | Create schedule-notion-sync.ps1 | e9d39fe | scripts/schedule-notion-sync.ps1 |
-| 4 | Human verify checkpoint | — | Pending user verification |
+| 4 | Human verify checkpoint | approved | User confirmed: Projects, Newsletter, Refresh all functional |
 
 ## Decisions Made
 
@@ -98,21 +98,18 @@ None — `NewsletterPage` reads live snapshot data from `newsletterSnapshotPath`
 
 None — no new network endpoints introduced. `NewsletterPage` renders snapshot strings as JSX text children (T-04-01 mitigated). `schedule-notion-sync.ps1` quotes the script path to prevent argument injection, embeds no secrets (T-04-02 mitigated). The scheduled task runs the same committed `notion-sync.mjs` the user already runs manually (T-04-03 accepted).
 
-## Checkpoint Status
+## Checkpoint Result
 
-**Task 4 (`checkpoint:human-verify`) is pending.**
+**Task 4 (`checkpoint:human-verify`) — APPROVED by user (2026-06-06)**
 
-Verification steps for the user:
-1. Reload plugin in Obsidian (or let hot-reload pick up the new `main.js`). Open the ClaudeOS Dashboard.
-2. Confirm sidebar shows Projects and Newsletter entries. Click each.
-3. With valid snapshots present: Projects shows active projects + overdue/due-soon tasks; Newsletter shows non-zero pipeline stages and item list. Click a row — confirm it opens the correct Notion page.
-4. Click Refresh on either page — confirm loading → success, "Last synced HH:mm" updates without Obsidian reload.
-5. Clear one snapshot path in Settings — confirm the page shows the no-data state. Restore the path.
-6. From an elevated PowerShell:
-   ```
-   powershell -ExecutionPolicy Bypass -File scripts\schedule-notion-sync.ps1 -ScriptPath (Resolve-Path scripts\notion-sync.mjs)
-   ```
-   Confirm "ClaudeOS Notion Sync" task exists in Task Scheduler with a daily 06:00 trigger.
+Verified:
+- Projects page renders active projects with status and % complete; rows link to correct Notion pages
+- Newsletter page shows pipeline stage counts; rows link to correct Notion pages
+- Refresh button runs successfully (shows "Synced")
+
+Accepted as-is (not tested but not blocking):
+- No-data state test — user accepted as verified
+- Task Scheduler registration (`schedule-notion-sync.ps1`) — user accepted as verified
 
 ## Lucide Icon Chosen
 
@@ -140,7 +137,8 @@ Verification steps for the user:
 - [x] No token value embedded in ps1 script
 - [x] Commits f3a8c6f, 91b37a4, e9d39fe in git log
 - [x] `tsc --noEmit` exits 0; esbuild production exits 0; ps1 source assertions gate exits 0
+- [x] Task 4 human checkpoint approved by user (2026-06-06) — Projects, Newsletter, Refresh all verified functional
 
 ---
 *Phase: 03-notion-dashboard*
-*Completed (auto tasks): 2026-06-07*
+*Completed: 2026-06-06*
