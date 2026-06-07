@@ -170,7 +170,7 @@ function transformTasks(results) {
   // Filter: applied server-side (Status does_not_equal Done) — all results are active
   const allItems = results.map((result) => {
     const props = result.properties;
-    // TaskItem: OMIT project field entirely (D-06 — relation requires extra fetch)
+    // TaskItem: OMIT relation fields (D-06 — Project/Areas/Parent Task require extra fetches)
     const item = {
       name:   props.Name.title[0]?.plain_text ?? '',
       status: props.Status.status?.name,
@@ -186,6 +186,38 @@ function transformTasks(results) {
       item.due = due;
     }
 
+    // Description (rich_text)
+    const descText = (props.Description?.rich_text ?? []).map(b => b.plain_text).join('');
+    if (descText) item.description = descText;
+
+    // Smart List (select — "Someday" etc.)
+    const smartList = props['Smart List']?.select?.name;
+    if (smartList) item.smart_list = smartList;
+
+    // Recurrence
+    const recurInterval = props['Recur Interval']?.number;
+    if (typeof recurInterval === 'number' && isFinite(recurInterval) && recurInterval > 0) {
+      item.recur_interval = recurInterval;
+      const recurUnit = props['Recur Unit']?.select?.name;
+      if (recurUnit) item.recur_unit = recurUnit;
+      const days = (props.Days?.multi_select ?? []).map(d => d.name);
+      if (days.length > 0) item.recur_days = days;
+    }
+
+    // Next Due (formula — computed next recurrence date)
+    const nextDue = props['Next Due']?.formula?.date?.start;
+    if (nextDue) item.next_due = nextDue;
+
+    // Meta Labels (formula — recurring/sub-task indicators string)
+    const metaLabels = props['Meta Labels']?.formula?.string;
+    if (metaLabels) item.meta_labels = metaLabels;
+
+    // User-defined URL field (distinct from Notion page URL)
+    const link = props.URL?.url;
+    if (link) item.link = link;
+
+    item.created_at = result.created_time;
+    item.edited_at = result.last_edited_time;
     item.url = notionUrl(result);
     return item;
   });
@@ -214,13 +246,22 @@ function transformProjects(results) {
       status: props.Status.status?.name,
     };
 
-    // Progress: formula property returning a number (% of completed tasks)
-    // OMIT active_tasks and overdue_tasks — Meta formula string format is undocumented
+    // Progress: formula — % of completed tasks (number)
     const progressNum = props.Progress?.formula?.number;
     if (typeof progressNum === 'number' && isFinite(progressNum)) {
       item.progress = Math.round(progressNum);
     }
 
+    // Meta: formula — raw string e.g. "3 active / 1 overdue" (format may vary)
+    const metaStr = props.Meta?.formula?.string;
+    if (metaStr) item.meta = metaStr;
+
+    // Latest Activity: formula — most recent edit across project, tasks, and notes
+    const latestActivity = props['Latest Activity']?.formula?.date?.start;
+    if (latestActivity) item.latest_activity = latestActivity;
+
+    item.created_at = result.created_time;
+    item.edited_at = result.last_edited_time;
     item.url = notionUrl(result);
     return item;
   });
@@ -259,6 +300,33 @@ function transformNewsletter(results) {
         item.platform = platform;
       }
 
+      // Idea Merit (select)
+      const ideaMerit = props['Idea Merit']?.select?.name;
+      if (ideaMerit) item.idea_merit = ideaMerit;
+
+      // Tags (multi_select)
+      const tags = (props.Tags?.multi_select ?? []).map(t => t.name);
+      if (tags.length > 0) item.tags = tags;
+
+      // Idea Description (text)
+      const ideaDesc = (props['Idea Description']?.rich_text ?? []).map(b => b.plain_text).join('');
+      if (ideaDesc) item.idea_description = ideaDesc;
+
+      // Publication date
+      const pubDate = props['Pub Date']?.date?.start;
+      if (pubDate) item.pub_date = pubDate;
+
+      // Published checkbox
+      if (props.Published?.checkbox) item.published = true;
+
+      // Draft Doc Link / Post URL
+      const draftLink = props['Draft Doc Link']?.url;
+      if (draftLink) item.draft_doc_link = draftLink;
+      const postUrl = props['Post URL']?.url;
+      if (postUrl) item.post_url = postUrl;
+
+      item.created_at = result.created_time;
+      item.edited_at = result.last_edited_time;
       item.url = notionUrl(result);
       return item;
     });
