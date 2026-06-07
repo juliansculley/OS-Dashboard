@@ -79,6 +79,12 @@ export function SkillButton({ skill, label }: SkillButtonProps) {
     child.stdout.on('data', (chunk: Buffer) => { stdout += chunk.toString('utf8'); });
     child.stderr.on('data', (chunk: Buffer) => { stderr += chunk.toString('utf8'); });
 
+    child.on('error', (err: NodeJS.ErrnoException) => {
+      console.error(`[ClaudeOS] spawn error for skill "${skill}":`, err.message, err.code);
+      setSkillState(skill, { status: 'error', outputPath: null });
+      setTimeout(() => setSkillState(skill, { status: 'idle', outputPath: null }), 5000);
+    });
+
     child.on('close', (code: number | null) => {
       if (code === 0) {
         const raw = parseOutputPath(stdout);
@@ -86,6 +92,7 @@ export function SkillButton({ skill, label }: SkillButtonProps) {
         setSkillState(skill, { status: 'success', outputPath });
         setTimeout(() => setSkillState(skill, { status: 'idle', outputPath: null }), 3000);
       } else {
+        console.error(`[ClaudeOS] skill "${skill}" exited ${code}. stderr: ${stderr.slice(0, 500)}`);
         setSkillState(skill, { status: 'error', outputPath: null });
         setTimeout(() => setSkillState(skill, { status: 'idle', outputPath: null }), 5000);
       }
