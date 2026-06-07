@@ -489,3 +489,54 @@
   margin: 0;
   padding: var(--cos-space-sm, 8px) 0;
 }
+
+/* ── Phase 3 Plan 4: Newsletter page layout ──────────────────────────────────── */
+
+.claudeos-dashboard .claudeos-page--newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cos-space-lg, 24px);
+}
+
+.claudeos-dashboard .claudeos-newsletter-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cos-space-sm, 8px);
+}
+
+/* Stage count row: stage name grows left, count right-aligned as a muted pill */
+.claudeos-dashboard .claudeos-stage-count-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cos-space-xs, 4px);
+}
+
+.claudeos-dashboard .claudeos-stage-count {
+  display: flex;
+  align-items: center;
+  gap: var(--cos-space-sm, 8px);
+  padding: var(--cos-space-xs, 4px) var(--cos-space-sm, 8px);
+  border-radius: var(--cos-radius, 8px);
+  background: var(--cos-surface);
+  border: 1px solid var(--cos-border);
+}
+
+.claudeos-dashboard .claudeos-stage-count__name {
+  flex: 1;
+  font-size: 14px;
+  color: var(--cos-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.claudeos-dashboard .claudeos-stage-count__count {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--cos-muted) 15%, transparent);
+  color: var(--cos-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}

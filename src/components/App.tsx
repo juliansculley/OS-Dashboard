@@ -3,14 +3,15 @@ import { Sidebar } from './ui/Sidebar';
 import { HomePage } from './pages/HomePage';
 import { SocialPage } from './pages/SocialPage';
 import { ProjectsPage } from './pages/ProjectsPage';
+import { NewsletterPage } from './pages/NewsletterPage';
 import type { PageId } from '../types';
 
-// PAGES will be extended in Plan 03-04 with 'newsletter'.
-// Typed as Partial so that Plan 04 compiles before newsletter is registered.
+// All PageId entries registered — PageId = 'home' | 'social' | 'projects' | 'newsletter'.
 const PAGES: Partial<Record<PageId, React.ComponentType>> = {
   home: HomePage,
   social: SocialPage,
   projects: ProjectsPage,
+  newsletter: NewsletterPage,
 };
 
 export function App(): React.JSX.Element {

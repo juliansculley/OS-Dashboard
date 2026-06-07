@@ -3,9 +3,10 @@ import { setIcon } from 'obsidian';
 import type { PageId, NavItem } from '../../types';
 
 const NAV_ITEMS: NavItem[] = [
-  { id: 'home',     label: 'Home',     iconId: 'layout-dashboard' },
-  { id: 'social',   label: 'Social',   iconId: 'bar-chart-2' },
-  { id: 'projects', label: 'Projects', iconId: 'folder-kanban' },
+  { id: 'home',       label: 'Home',       iconId: 'layout-dashboard' },
+  { id: 'social',     label: 'Social',     iconId: 'bar-chart-2' },
+  { id: 'projects',   label: 'Projects',   iconId: 'folder-kanban' },
+  { id: 'newsletter', label: 'Newsletter', iconId: 'newspaper' },
 ];
 
 interface SidebarProps {
