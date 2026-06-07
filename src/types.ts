@@ -61,6 +61,16 @@ export const DEFAULT_SETTINGS: ClaudeOSSettings = {
   dueSoonDays: 3,
 };
 
+// Phase 5: Skill execution state types (per D-10, OUT-02)
+export type SkillRunStatus = 'idle' | 'loading' | 'success' | 'error';
+
+export interface SkillRunState {
+  status: SkillRunStatus;
+  outputPath: string | null; // null when no output parsed or skill not complete
+}
+
+export type SkillStateMap = Record<string, SkillRunState>;
+
 // Phase 3: Notion snapshot interfaces (field names match notion-sync.mjs output exactly — 03-01-SUMMARY.md)
 
 /** Common metadata header on every snapshot file */
