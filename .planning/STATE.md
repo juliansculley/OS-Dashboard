@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Executing Phase 03
-stopped_at: 03-01 complete — ready for 03-02 (types, settings, AppContext)
-last_updated: "2026-06-06T23:00:00.000Z"
+stopped_at: 03-02 complete — types, settings, AppContext foundation ready for Plans 03-03/03-04
+last_updated: "2026-06-07T04:58:00.000Z"
 progress:
   total_phases: 6
   completed_phases: 2
   total_plans: 9
-  completed_plans: 7
+  completed_plans: 8
   percent: 44
 ---
 
@@ -17,8 +17,8 @@ progress:
 
 ## Current Status
 
-**Active Phase:** 3 — Notion Dashboard (In Progress — 03-01 complete; ready for 03-02)
-**Last Updated:** 2026-06-06
+**Active Phase:** 3 — Notion Dashboard (In Progress — 03-02 complete; ready for 03-03)
+**Last Updated:** 2026-06-07
 
 ## Phase Status
 
@@ -26,7 +26,7 @@ progress:
 |-------|------|--------|-------|---------------|
 | 1 | Foundation | Complete | 2 (2 complete) | 2026-06-05 |
 | 2 | Dashboard Features | Complete | 3 (3 complete) | 2026-06-06 |
-| 3 | Notion Dashboard | In Progress | 4 (1 complete; 03-02 next) | 2026-06-06 |
+| 3 | Notion Dashboard | In Progress | 4 (2 complete; 03-03 next) | 2026-06-07 |
 | 4 | Newsletter Workflow (v2) | Future | TBD | — |
 | 5 | Skill Output + Polish (v2) | Future | TBD | — |
 
@@ -56,6 +56,9 @@ See: .planning/PROJECT.md (updated 2026-06-04)
 - TaskItem omits project field entirely — relation resolution requires extra API calls, deferred (D-06, 03-01)
 - ProjectItem reads Progress.formula.number, omits active_tasks/overdue_tasks — Meta formula format undocumented (03-01)
 - Counts computed over full active set before TASK_CAP=10 applied — active_count/overdue_count/due_soon_count are true totals (03-01)
+- App.tsx PAGES typed as Partial<Record<PageId, ComponentType>> with ?? HomePage fallback — allows PageId union to grow before all pages are registered (03-02)
+- DashboardRoot React function component holds refreshNonce state; class method (onOpen) renders it — cleanly separates React state lifecycle from Obsidian class boundary (03-02)
+- node_modules junction created in worktree via PowerShell New-Item -ItemType Junction — worktrees do not inherit node_modules from main checkout (03-02)
 
 ## Performance Metrics
 
@@ -67,6 +70,7 @@ See: .planning/PROJECT.md (updated 2026-06-04)
 | 02-dashboard-features | P2 | ~2min | 2 | 4 |
 | 02-dashboard-features | P3 | ~3min | 2 | 3 |
 | 03-notion-dashboard | P1 | ~45min | 2 auto + 1 human checkpoint | 2 |
+| 03-notion-dashboard | P2 | 6min | 3 | 5 |
 
 ## Notes
 
@@ -76,6 +80,6 @@ See: .planning/PROJECT.md (updated 2026-06-04)
 
 ## Last Session
 
-**Timestamp:** 2026-06-06T23:00:00Z
-**Stopped at:** 03-01 complete — Notion integration live-verified (130 tasks, 22 projects, 7 newsletter items)
-**Resume file:** .planning/phases/03-notion-dashboard/03-02-PLAN.md (types, settings, AppContext)
+**Timestamp:** 2026-06-07T04:58:00Z
+**Stopped at:** 03-02 complete — types, settings, AppContext foundation ready for Plans 03-03/03-04
+**Resume file:** .planning/phases/03-notion-dashboard/03-03-PLAN.md (Projects + Newsletter pages, RefreshButton)

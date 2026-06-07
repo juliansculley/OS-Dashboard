@@ -101,8 +101,8 @@
 | SEC-03 | Phase 2 | Complete (02-P1) |
 | NOTION-01 | Phase 3 | Planned |
 | NOTION-02 | Phase 3 | Planned |
-| NOTION-03 | Phase 3 | Planned |
-| NOTION-04 | Phase 3 | Planned |
+| NOTION-03 | Phase 3 | Complete (03-01, 03-02) |
+| NOTION-04 | Phase 3 | Partial (03-02 plumbing; RefreshButton UI in 03-03) |
 | NOTION-05 | Phase 3 | Planned |
 | NOTION-06 | Phase 3 | Planned |
 | NOTION-07 | Phase 3 | Planned |
