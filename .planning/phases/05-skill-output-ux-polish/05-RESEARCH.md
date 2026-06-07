@@ -19,7 +19,7 @@
 #### Skill Input UX
 - **D-04:** Input-required skills use an **expandable panel below the button**. Clicking the button toggles it open; clicking again collapses it (toggle pattern). Input is cleared on collapse. No modal.
 - **D-05:** The expanded panel contains: a textarea for braindump; a textarea + optional path field for humanizer. A "Run" button inside the panel replaces the direct click trigger. The skill button label changes state to indicate "expanded" vs "idle."
-- **D-06:** Input text (or path) is passed to `execFile` via the `input` option (stdin). The CLI command stays the same: `claude -p <skill>` — no new flags needed.
+- **D-06:** Input text (or path) is passed to `claude -p <skill>` via spawn stdin (`child.stdin.write` / `child.stdin.end`) — NOT `execFile`'s `input` option, which does not exist on the async variant. See 05-RESEARCH.md §Critical Correction: D-06. The CLI command stays the same: `claude -p <skill>` — no new flags needed.
 
 #### Output Display (OUT-01)
 - **D-07:** After a skill completes successfully, the inline panel shows a **clickable vault link** — the filename or path the skill printed to stdout. Clicking it opens the file in a new Obsidian tab using `app.workspace.openLinkText()`.
@@ -505,7 +505,7 @@ interface SkillInputPanelProps {
 
 **Why it happens:** The `claudeos-dashboard` uses `height: 100%` and flex layout. Adding the status bar reduces available height for `<main>`.
 
-**How to avoid:** The content wrapper must use `flex: 1; min-height: 0; overflow: hidden` and `<main>` must `flex: 1; overflow-y: auto`. This ensures the status bar height is absorbed from the main area without growing the total container.
+**How to avoid:** The content wrapper must use `flex: 1; min-height: 0; overflow: hidden` and `<main>` must `flex: 1; overflow-y: auto`. This ensures the status bar height is absorbed from the main area without growing the total container. The SkillStatusBar component MUST always return the wrapper div (never `return null`) so visibility is controlled by CSS class toggle, not conditional unmount.
 
 ### Pitfall 5: `openLinkText` with absolute paths on Windows
 
@@ -629,40 +629,41 @@ await app.workspace.openLinkText(outputPath, '');
 ### SkillStatusBar component structure
 
 ```typescript
-export function SkillStatusBar(): React.JSX.Element | null {
-  const { skillStates } = useAppContext();
+export function SkillStatusBar(): React.JSX.Element {
+  const { skillStates, app } = useAppContext();
 
-  const activeSkills = Object.entries(skillStates).filter(
+  const activeEntries = Object.entries(skillStates).filter(
     ([, state]) => state.status !== 'idle'
   );
+  const isActive = activeEntries.length > 0;
 
-  if (activeSkills.length === 0) return null; // zero-height via not rendering
-
-  const [skillName, state] = activeSkills[0]; // show first active skill
-
+  // ALWAYS return the wrapper div — visibility via the --active CSS class,
+  // NOT conditional unmount (Pitfall 4). Do not `return null`.
   return (
-    <div className="claudeos-status-bar">
-      {state.status === 'loading' && (
-        <span>{skillName} running...</span>
-      )}
-      {state.status === 'success' && state.outputPath && (
-        <span>
-          {skillName} — Done{' '}
-          <a onClick={() => handleOpenLink(state.outputPath!)}>
-            Open output
-          </a>
-        </span>
-      )}
-      {state.status === 'success' && !state.outputPath && (
-        <span>{skillName} — Done</span>
-      )}
-      {state.status === 'error' && (
-        <span>{skillName} — Failed</span>
-      )}
+    <div className={'claudeos-status-bar' + (isActive ? ' claudeos-status-bar--active' : '')}>
+      {isActive && (() => {
+        const [skillName, state] = activeEntries[0]; // show first active skill
+        if (state.status === 'loading') return <span>{skillName} running...</span>;
+        if (state.status === 'success' && state.outputPath) {
+          return (
+            <span>
+              {skillName} — Done{' '}
+              <a onClick={() => app.workspace.openLinkText(state.outputPath!, '', 'tab')}>
+                Open output
+              </a>
+            </span>
+          );
+        }
+        if (state.status === 'success') return <span>{skillName} — Done</span>;
+        if (state.status === 'error') return <span>{skillName} — Failed</span>;
+        return null;
+      })()}
     </div>
   );
 }
 ```
+
+> NOTE (revision): The earlier draft of this example used `if (activeEntries.length === 0) return null;` (conditional unmount). That pattern is superseded — it conflicts with Pitfall 4. The authoritative skeleton is in 05-PATTERNS.md; the component MUST always return the wrapper div.
 
 ---
 
@@ -717,22 +718,25 @@ Where `PaneType = 'tab' | 'split' | 'window'` [VERIFIED: obsidian.d.ts line 4728
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Humanizer file output location**
+1. **Humanizer file output location** — RESOLVED: `braindumps/humanized-YYYY-MM-DD-HHmmss.md` (researcher default, used in 05-01).
    - What we know: humanizer currently outputs rewritten text inline in chat; no file write in SKILL.md
    - What's unclear: Where should the humanizer output file be written? Braindump uses `braindumps/` folder. A parallel `humanized/` folder is logical, but this is a user preference.
    - Recommendation: Add a task to modify humanizer SKILL.md to write output to `C:\Users\scull\OneDrive\ClaudeOS\braindumps\humanized-YYYY-MM-DD-HHmmss.md` (vault-relative: `braindumps/humanized-...`) and print `Output: <vault-relative-path>` at the end. Confirm with user before implementing if needed.
+   - **Resolution:** Adopted the researcher default `braindumps/humanized-YYYY-MM-DD-HHmmss.md` (vault-relative). This is the path implemented in 05-01 Task 2 (carried with a confirm-at-execution note so the user can override at run time).
 
-2. **Vault root to vault-relative path conversion**
+2. **Vault root to vault-relative path conversion** — RESOLVED: skills print vault-relative paths; dashboard passes them straight to openLinkText.
    - What we know: braindump outputs absolute paths; `openLinkText` works best with vault-relative paths
    - What's unclear: Should the dashboard strip the vault root prefix from absolute paths, or should skills be responsible for outputting vault-relative paths?
    - Recommendation: Skills print vault-relative paths (simpler, skills know their own paths). Dashboard should gracefully handle both by attempting vault-relative first and falling back to `app.vault.getAbstractFileByPath()`.
+   - **Resolution:** Skills are responsible for emitting vault-relative paths (no drive letter) — enforced by 05-01 acceptance criteria (each SKILL.md must NOT contain `Output: C:`). The dashboard passes the parsed path straight to `openLinkText(path, '', 'tab')` — confirmed in 05-01 acceptance criteria and the 05-03 Task 2 output-link block. No vault-root-stripping logic is needed dashboard-side.
 
-3. **Status bar behavior when multiple skills run simultaneously**
+3. **Status bar behavior when multiple skills run simultaneously** — RESOLVED: show the first active entry.
    - What we know: D-12 shows `[SkillName] running...` — singular. SkillButton guards against re-click while loading (`if (state !== 'idle') return`), but two different skills could be running at once.
    - What's unclear: What does the status bar show when both braindump and wiki-optimizer are running at the same time?
    - Recommendation: Show the first active skill found in the map (consistent behavior). If count > 1, could show count: "2 skills running..." — but this is a cosmetic decision for the planner.
+   - **Resolution:** Show the first active entry in the map (`activeEntries[0]`) — confirmed in the 05-02 SkillStatusBar action. No count display in this phase.
 
 ---
 
