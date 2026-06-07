@@ -312,3 +312,231 @@
   color: var(--cos-muted);
   margin-top: var(--cos-space-xs, 4px);
 }
+
+/* ── Phase 3: Refresh bar + button ────────────────────────────────────────────
+   All selectors scoped under .claudeos-dashboard (locked decision, D-10). */
+
+.claudeos-dashboard .claudeos-refresh-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--cos-space-md, 16px);
+}
+
+.claudeos-dashboard .claudeos-refresh-btn {
+  min-width: var(--cos-skill-btn-min-width, 100px);
+  padding: var(--cos-space-sm, 8px) var(--cos-space-md, 16px);
+  border-radius: var(--cos-radius, 8px);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cos-space-xs, 4px);
+  transition: background 150ms;
+}
+
+.claudeos-dashboard .claudeos-refresh-btn--idle {
+  background: var(--cos-accent, #7c6af7);
+  color: #ffffff;
+}
+.claudeos-dashboard .claudeos-refresh-btn--idle:hover:not(:disabled) {
+  background: var(--cos-accent-hover, #6857e0);
+}
+
+.claudeos-dashboard .claudeos-refresh-btn--loading {
+  background: color-mix(in srgb, var(--cos-accent, #7c6af7) 80%, transparent);
+  color: #ffffff;
+  cursor: not-allowed;
+}
+
+.claudeos-dashboard .claudeos-refresh-btn--success {
+  background: color-mix(in srgb, var(--cos-success) 15%, transparent);
+  border-color: var(--cos-success);
+  color: var(--cos-success);
+}
+
+.claudeos-dashboard .claudeos-refresh-btn--error {
+  background: color-mix(in srgb, var(--cos-error) 15%, transparent);
+  border-color: var(--cos-error);
+  color: var(--cos-error);
+}
+
+/* Spinner for refresh button loading state */
+.claudeos-dashboard .claudeos-refresh-btn--loading .cos-spinner {
+  display: inline-flex;
+  animation: cos-spin 0.8s linear infinite;
+}
+
+.claudeos-dashboard .claudeos-refresh-last-synced {
+  font-size: 12px;
+  color: var(--cos-muted);
+}
+
+/* ── Phase 3: List row ─────────────────────────────────────────────────────── */
+
+.claudeos-dashboard .claudeos-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cos-space-xs, 4px);
+}
+
+.claudeos-dashboard .claudeos-list-row {
+  display: flex;
+  align-items: center;
+  gap: var(--cos-space-sm, 8px);
+  padding: var(--cos-space-sm, 8px) var(--cos-space-md, 16px);
+  border-radius: var(--cos-radius, 8px);
+  border: 1px solid var(--cos-border);
+  background: var(--cos-surface);
+  text-decoration: none;
+  color: var(--cos-text);
+  transition: background 150ms;
+  cursor: pointer;
+}
+
+.claudeos-dashboard .claudeos-list-row:hover {
+  background: var(--cos-surface-2);
+}
+
+/* Overdue: left accent border in error/warning color */
+.claudeos-dashboard .claudeos-list-row--overdue {
+  border-left: 3px solid var(--cos-error, var(--text-error, #e53e3e));
+}
+
+/* Due-soon: softer accent */
+.claudeos-dashboard .claudeos-list-row--due-soon {
+  border-left: 3px solid var(--cos-accent, #7c6af7);
+}
+
+.claudeos-dashboard .claudeos-list-row__name {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.claudeos-dashboard .claudeos-list-row__badges {
+  display: flex;
+  gap: var(--cos-space-xs, 4px);
+  flex-shrink: 0;
+}
+
+.claudeos-dashboard .claudeos-list-row__badge {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 6px;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--cos-muted) 15%, transparent);
+  color: var(--cos-muted);
+  white-space: nowrap;
+}
+
+/* ── Phase 3: Stale label ─────────────────────────────────────────────────── */
+
+.claudeos-dashboard .claudeos-stale-label {
+  font-size: 12px;
+  color: var(--cos-muted);
+  font-style: italic;
+}
+
+/* ── Phase 3: Projects page layout ──────────────────────────────────────────── */
+
+.claudeos-dashboard .claudeos-page--projects {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cos-space-lg, 24px);
+}
+
+.claudeos-dashboard .claudeos-projects-section,
+.claudeos-dashboard .claudeos-tasks-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cos-space-sm, 8px);
+}
+
+.claudeos-dashboard .claudeos-tasks-overdue,
+.claudeos-dashboard .claudeos-tasks-active {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cos-space-xs, 4px);
+  margin-top: var(--cos-space-sm, 8px);
+}
+
+.claudeos-dashboard .claudeos-section-heading {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cos-text);
+  margin: 0 0 var(--cos-space-sm, 8px) 0;
+}
+
+.claudeos-dashboard .claudeos-subsection-heading {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cos-muted);
+  margin: 0 0 var(--cos-space-xs, 4px) 0;
+}
+
+.claudeos-dashboard .claudeos-list-empty {
+  font-size: 14px;
+  color: var(--cos-muted);
+  margin: 0;
+  padding: var(--cos-space-sm, 8px) 0;
+}
+
+/* ── Phase 3 Plan 4: Newsletter page layout ──────────────────────────────────── */
+
+.claudeos-dashboard .claudeos-page--newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cos-space-lg, 24px);
+}
+
+.claudeos-dashboard .claudeos-newsletter-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cos-space-sm, 8px);
+}
+
+/* Stage count row: stage name grows left, count right-aligned as a muted pill */
+.claudeos-dashboard .claudeos-stage-count-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cos-space-xs, 4px);
+}
+
+.claudeos-dashboard .claudeos-stage-count {
+  display: flex;
+  align-items: center;
+  gap: var(--cos-space-sm, 8px);
+  padding: var(--cos-space-xs, 4px) var(--cos-space-sm, 8px);
+  border-radius: var(--cos-radius, 8px);
+  background: var(--cos-surface);
+  border: 1px solid var(--cos-border);
+}
+
+.claudeos-dashboard .claudeos-stage-count__name {
+  flex: 1;
+  font-size: 14px;
+  color: var(--cos-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.claudeos-dashboard .claudeos-stage-count__count {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--cos-muted) 15%, transparent);
+  color: var(--cos-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}

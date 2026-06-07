@@ -12,6 +12,7 @@
     "auto_advance": false,
     "discuss_mode": "discuss",
     "security_enforcement": true,
-    "security_asvs_level": 1
+    "security_asvs_level": 1,
+    "_auto_chain_active": false
   }
 }
