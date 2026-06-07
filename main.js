@@ -34,9 +34,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// node_modules/scheduler/cjs/scheduler.development.js
+// ../../../node_modules/scheduler/cjs/scheduler.development.js
 var require_scheduler_development = __commonJS({
-  "node_modules/scheduler/cjs/scheduler.development.js"(exports) {
+  "../../../node_modules/scheduler/cjs/scheduler.development.js"(exports) {
     "use strict";
     (function() {
       function performWorkUntilDeadline() {
@@ -293,9 +293,9 @@ var require_scheduler_development = __commonJS({
   }
 });
 
-// node_modules/scheduler/index.js
+// ../../../node_modules/scheduler/index.js
 var require_scheduler = __commonJS({
-  "node_modules/scheduler/index.js"(exports, module2) {
+  "../../../node_modules/scheduler/index.js"(exports, module2) {
     "use strict";
     if (false) {
       module2.exports = null;
@@ -305,9 +305,9 @@ var require_scheduler = __commonJS({
   }
 });
 
-// node_modules/react/cjs/react.development.js
+// ../../../node_modules/react/cjs/react.development.js
 var require_react_development = __commonJS({
-  "node_modules/react/cjs/react.development.js"(exports, module2) {
+  "../../../node_modules/react/cjs/react.development.js"(exports, module2) {
     "use strict";
     (function() {
       function defineDeprecationWarning(methodName, info) {
@@ -1277,9 +1277,9 @@ var require_react_development = __commonJS({
   }
 });
 
-// node_modules/react/index.js
+// ../../../node_modules/react/index.js
 var require_react = __commonJS({
-  "node_modules/react/index.js"(exports, module2) {
+  "../../../node_modules/react/index.js"(exports, module2) {
     "use strict";
     if (false) {
       module2.exports = null;
@@ -1289,9 +1289,9 @@ var require_react = __commonJS({
   }
 });
 
-// node_modules/react-dom/cjs/react-dom.development.js
+// ../../../node_modules/react-dom/cjs/react-dom.development.js
 var require_react_dom_development = __commonJS({
-  "node_modules/react-dom/cjs/react-dom.development.js"(exports) {
+  "../../../node_modules/react-dom/cjs/react-dom.development.js"(exports) {
     "use strict";
     (function() {
       function noop() {
@@ -1338,7 +1338,7 @@ var require_react_dom_development = __commonJS({
         return dispatcher;
       }
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-      var React4 = require_react(), Internals = {
+      var React5 = require_react(), Internals = {
         d: {
           f: noop,
           r: function() {
@@ -1356,7 +1356,7 @@ var require_react_dom_development = __commonJS({
         },
         p: 0,
         findDOMNode: null
-      }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React4.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+      }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React5.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
       "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error(
         "React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"
       );
@@ -1533,9 +1533,9 @@ var require_react_dom_development = __commonJS({
   }
 });
 
-// node_modules/react-dom/index.js
+// ../../../node_modules/react-dom/index.js
 var require_react_dom = __commonJS({
-  "node_modules/react-dom/index.js"(exports, module2) {
+  "../../../node_modules/react-dom/index.js"(exports, module2) {
     "use strict";
     if (false) {
       checkDCE();
@@ -1546,9 +1546,9 @@ var require_react_dom = __commonJS({
   }
 });
 
-// node_modules/react-dom/cjs/react-dom-client.development.js
+// ../../../node_modules/react-dom/cjs/react-dom-client.development.js
 var require_react_dom_client_development = __commonJS({
-  "node_modules/react-dom/cjs/react-dom-client.development.js"(exports) {
+  "../../../node_modules/react-dom/cjs/react-dom-client.development.js"(exports) {
     "use strict";
     (function() {
       function findHook(fiber, id) {
@@ -2891,7 +2891,7 @@ var require_react_dom_client_development = __commonJS({
         "number" === type && getActiveElement(node.ownerDocument) === node || node.defaultValue === "" + value || (node.defaultValue = "" + value);
       }
       function validateOptionProps(element, props) {
-        null == props.value && ("object" === typeof props.children && null !== props.children ? React4.Children.forEach(props.children, function(child) {
+        null == props.value && ("object" === typeof props.children && null !== props.children ? React5.Children.forEach(props.children, function(child) {
           null == child || "string" === typeof child || "number" === typeof child || "bigint" === typeof child || didWarnInvalidChild || (didWarnInvalidChild = true, console.error(
             "Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>."
           ));
@@ -18523,14 +18523,14 @@ var require_react_dom_client_development = __commonJS({
         ));
       }
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-      var Scheduler = require_scheduler(), React4 = require_react(), ReactDOM = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy");
+      var Scheduler = require_scheduler(), React5 = require_react(), ReactDOM = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy");
       Symbol.for("react.scope");
       var REACT_ACTIVITY_TYPE = Symbol.for("react.activity");
       Symbol.for("react.legacy_hidden");
       Symbol.for("react.tracing_marker");
       var REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel");
       Symbol.for("react.view_transition");
-      var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React4.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
+      var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React5.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
         pending: false,
         data: null,
         method: null,
@@ -21318,7 +21318,7 @@ var require_react_dom_client_development = __commonJS({
         }
       };
       (function() {
-        var isomorphicReactPackageVersion = React4.version;
+        var isomorphicReactPackageVersion = React5.version;
         if ("19.2.7" !== isomorphicReactPackageVersion)
           throw Error(
             'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.2.7\nLearn more: https://react.dev/warnings/version-mismatch")
@@ -21445,9 +21445,9 @@ var require_react_dom_client_development = __commonJS({
   }
 });
 
-// node_modules/react-dom/client.js
+// ../../../node_modules/react-dom/client.js
 var require_client = __commonJS({
-  "node_modules/react-dom/client.js"(exports, module2) {
+  "../../../node_modules/react-dom/client.js"(exports, module2) {
     "use strict";
     if (false) {
       checkDCE();
@@ -21458,9 +21458,9 @@ var require_client = __commonJS({
   }
 });
 
-// node_modules/react/cjs/react-jsx-runtime.development.js
+// ../../../node_modules/react/cjs/react-jsx-runtime.development.js
 var require_react_jsx_runtime_development = __commonJS({
-  "node_modules/react/cjs/react-jsx-runtime.development.js"(exports) {
+  "../../../node_modules/react/cjs/react-jsx-runtime.development.js"(exports) {
     "use strict";
     (function() {
       function getComponentNameFromType(type) {
@@ -21672,18 +21672,18 @@ var require_react_jsx_runtime_development = __commonJS({
       function isValidElement(object) {
         return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
       }
-      var React4 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React4.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
+      var React5 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React5.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
         return null;
       };
-      React4 = {
+      React5 = {
         react_stack_bottom_frame: function(callStackForError) {
           return callStackForError();
         }
       };
       var specialPropKeyWarningShown;
       var didWarnAboutElementRef = {};
-      var unknownOwnerDebugStack = React4.react_stack_bottom_frame.bind(
-        React4,
+      var unknownOwnerDebugStack = React5.react_stack_bottom_frame.bind(
+        React5,
         UnknownOwner
       )();
       var unknownOwnerDebugTask = createTask(getTaskName(UnknownOwner));
@@ -21715,9 +21715,9 @@ var require_react_jsx_runtime_development = __commonJS({
   }
 });
 
-// node_modules/react/jsx-runtime.js
+// ../../../node_modules/react/jsx-runtime.js
 var require_jsx_runtime = __commonJS({
-  "node_modules/react/jsx-runtime.js"(exports, module2) {
+  "../../../node_modules/react/jsx-runtime.js"(exports, module2) {
     "use strict";
     if (false) {
       module2.exports = null;
@@ -21862,7 +21862,7 @@ function SkillButton({ skill, label }) {
     if (state !== "idle") return;
     if (!ALLOWED_SKILLS.includes(skill)) return;
     setState("loading");
-    (0, import_child_process.exec)(`claude -p ${skill}`, (error) => {
+    (0, import_child_process.execFile)("claude", ["-p", skill], (error) => {
       if (error === null) {
         setState("success");
         setTimeout(() => setState("idle"), 3e3);
@@ -21956,7 +21956,13 @@ var import_react5 = __toESM(require_react());
 
 // src/components/ui/SocialMetricCard.tsx
 var import_jsx_runtime7 = __toESM(require_jsx_runtime());
+function safeLocale(v) {
+  const n = Number(v);
+  return isNaN(n) ? "\u2014" : n.toLocaleString();
+}
 function formatUpdated(iso) {
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return "";
   return iso.substring(0, 10);
 }
 function SocialMetricCard({ platform, data }) {
@@ -21989,21 +21995,24 @@ function SocialMetricCard({ platform, data }) {
       /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-social-metrics-row", children: [
         /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
           /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Followers" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: li.followers.toLocaleString() })
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(li.followers) })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
           /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Connections" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: li.connections.toLocaleString() })
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(li.connections) })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
           /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Posts" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: li.posts.toLocaleString() })
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(li.posts) })
         ] })
       ] }),
-      li.updated_at && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric__updated", children: [
-        "Updated: ",
-        formatUpdated(li.updated_at)
-      ] })
+      li.updated_at && (() => {
+        const f = formatUpdated(li.updated_at);
+        return f ? /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric__updated", children: [
+          "Updated: ",
+          f
+        ] }) : null;
+      })()
     ] });
   }
   const x = data;
@@ -22012,21 +22021,24 @@ function SocialMetricCard({ platform, data }) {
     /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-social-metrics-row", children: [
       /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
         /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Followers" }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: x.followers.toLocaleString() })
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(x.followers) })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
         /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Following" }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: x.following.toLocaleString() })
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(x.following) })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
         /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Tweets" }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: x.tweets.toLocaleString() })
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(x.tweets) })
       ] })
     ] }),
-    x.updated_at && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric__updated", children: [
-      "Updated: ",
-      formatUpdated(x.updated_at)
-    ] })
+    x.updated_at && (() => {
+      const f = formatUpdated(x.updated_at);
+      return f ? /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric__updated", children: [
+        "Updated: ",
+        f
+      ] }) : null;
+    })()
   ] });
 }
 
@@ -22070,7 +22082,7 @@ var PAGES = {
 };
 function App2() {
   const [activePage, setActivePage] = (0, import_react6.useState)("home");
-  const PageComponent = PAGES[activePage];
+  const PageComponent = PAGES[activePage] ?? HomePage;
   return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "claudeos-dashboard", children: [
     /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Sidebar, { activePage, onNavigate: setActivePage }),
     /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("main", { className: "claudeos-main", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(PageComponent, {}) })
@@ -22111,7 +22123,14 @@ var DEFAULT_SETTINGS = {
   lastSyncPath: "",
   activeProjectsPath: "",
   linkedinDataPath: "",
-  xDataPath: ""
+  xDataPath: "",
+  // Phase 3: Notion sync defaults
+  tasksSnapshotPath: ".dashboard-data/tasks.json",
+  projectsSnapshotPath: ".dashboard-data/projects.json",
+  newsletterSnapshotPath: ".dashboard-data/newsletter.json",
+  syncScriptPath: "",
+  nodePath: "node",
+  dueSoonDays: 3
 };
 
 // src/settings/SettingsTab.ts
