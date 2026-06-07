@@ -71,7 +71,7 @@ export function SkillButton({ skill, label }: SkillButtonProps) {
     setSkillState(skill, { status: 'loading', outputPath: null });
     setExpanded(false); // collapse panel on Run
 
-    const child = spawn('claude', ['-p', skill]);
+    const child = spawn('claude', ['-p', skill], { windowsHide: true });
     // Closure-scoped accumulators (Pitfall 2 — declared inside handler, never shared across runs)
     let stdout = '';
     let stderr = '';
@@ -108,7 +108,7 @@ export function SkillButton({ skill, label }: SkillButtonProps) {
 
     // Keep execFile for self-contained skills; upgraded to capture stdout (D-08).
     // Skill name is the validated allowlist value; shell: false (default) — args never interpreted by shell (T-05-08).
-    execFile('claude', ['-p', skill], (error, stdout) => {
+    execFile('claude', ['-p', skill], { windowsHide: true }, (error, stdout) => {
       if (error === null) {
         const raw = parseOutputPath(stdout);
         const outputPath = applyTraversalGuard(raw); // T-05-07 guard
