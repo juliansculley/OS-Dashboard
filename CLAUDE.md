@@ -24,3 +24,26 @@ Follow my voice principles in `00_Resources/voice-principles.md`.
 
 When documenting system configurations or automations, be direct about what changed and why. Avoid technical jargon unless necessary; explain the impact in user-facing terms. For automation workflows, always include what triggers the action and what it produces.
 
+
+## Build & Deploy
+
+**Always use `npm run deploy` (not `npm run build`) when work needs to appear in Obsidian.**
+
+`npm run deploy` = TypeScript check + esbuild production build + copy `main.js` and `styles.css` to the Obsidian plugin directory. Works from both the main checkout and any worktree.
+
+**Before presenting any UAT checklist:**
+1. Run `npm run deploy` from the active worktree (or main checkout).
+2. Tell the user to reload Obsidian (Ctrl+R or close/reopen).
+3. Then present the UAT items.
+
+If the build or copy fails, surface the error before proceeding to UAT — there is no point testing against stale code.
+
+## Settings Paths
+
+`data.json` (plugin settings, gitignored) lives in the Obsidian plugin directory and persists across branches. The paths that matter:
+
+- **`syncScriptPath`**: must always point to `C:\Users\scull\OneDrive\ClaudeOS\OS-Dashboard\scripts\notion-sync.mjs` (main checkout). Do not change this.
+- **`nodePath`**: machine-specific, set once, never changes.
+- **Snapshot paths** (`tasksSnapshotPath`, etc.): vault-relative, stable, never change.
+
+**If a future phase modifies `notion-sync.mjs`**: the Refresh button cannot be tested until after the branch merges to master (the path stays pointing at main). Test the script directly from the command line instead: `& "C:\Users\scull\AppData\Local\nvm\v24.12.0\node.exe" scripts\notion-sync.mjs`

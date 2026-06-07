@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node esbuild.config.mjs",
     "build": "tsc --noEmit && node esbuild.config.mjs production",
+    "deploy": "tsc --noEmit && node esbuild.config.mjs production && node scripts/deploy-plugin.mjs",
     "prepare": "husky"
   },
   "dependencies": {
