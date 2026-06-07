@@ -1,7 +1,7 @@
 # Phase 03 — UAT Checklist
 
 **Phase:** 03-notion-dashboard  
-**Status:** Awaiting human verification  
+**Status:** Complete — UAT signed off 2026-06-06  
 **Automated score:** 18/18 must-haves passed  
 **Items requiring Obsidian:** 5
 
@@ -67,6 +67,16 @@
 
 ---
 
+## Results (2026-06-06)
+
+| Item | Result | Notes |
+|------|--------|-------|
+| UAT-01 | Deferred | Sync appears to run ("Synced" shown) but timestamp does not update — known worktree/path split issue; resolves after branch merge |
+| UAT-02 | Pass | Overdue/due-soon CSS emphasis and section visibility correct |
+| UAT-03 | Pass | Stage filtering, sort, and exclusions correct |
+| UAT-04 | Skip | — |
+| UAT-05 | Pass | Notion deep links open correct pages in browser |
+
 ## Sign-off
 
-Run `/gsd-verify-work 3` to walk through these tests and mark the phase complete.
+Phase 3 complete. UAT accepted with UAT-01 deferred (known issue, resolves on merge).
