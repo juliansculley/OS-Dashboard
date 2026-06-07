@@ -114,13 +114,13 @@ Plans:
 **Depends on:** Phase 2
 **Requirements (v2):** OUT-01, OUT-02
 **Notes:** v2 output requirements deferred from Phase 2 — implement after core workflow is validated. Design resolved during /gsd-discuss-phase: inline expandable input panel (not a modal), stdin via spawn (D-06 correction — execFile has no async `input` option), output link parsed from a skill-printed `Output:` line.
-**Plans:** 2/4 plans executed
+**Plans:** 3/4 plans executed
 
 Plans:
 
 - [x] 05-01-PLAN.md — Skill-side `Output:` stdout contract for braindump, humanizer (adds Cowork-mode file write), wiki-optimizer (OUT-01 prerequisite for output-link parsing)
 - [x] 05-02-PLAN.md — Cross-page persistence foundation: skill-state types, AppContext lift, App.tsx nested provider + content-wrapper, SkillStatusBar + CSS (OUT-02)
-- [ ] 05-03-PLAN.md — SkillButton refactor (spawn+stdin / stdout-capturing execFile, output-link parsing + `..` traversal guard, context-backed state, SEC-03 preserved) + SkillInputPanel + CSS (OUT-01, OUT-02)
+- [x] 05-03-PLAN.md — SkillButton refactor (spawn+stdin / stdout-capturing execFile, output-link parsing + `..` traversal guard, context-backed state, SEC-03 preserved) + SkillInputPanel + CSS (OUT-01, OUT-02)
 - [ ] 05-04-PLAN.md — Re-run Phase 2 T4 end-to-end with file-output verification; mark the T4 gap resolved (OUT-01)
 
 #### Open To-Dos (discovered during Phase 2 UAT) — addressed by the plans above
@@ -147,5 +147,5 @@ Plans:
 | 2. Dashboard Features | 3/3 | In Progress — T4 gap (resolved in Phase 5 / 05-04) | 2026-06-06 (partial) |
 | 3. Notion Dashboard | 4/4 | Complete | 2026-06-06 |
 | 4. Newsletter Workflow | TBD | Future | - |
-| 5. Skill Output + Polish | 2/4 | In Progress|  |
+| 5. Skill Output + Polish | 3/4 | In Progress|  |
 | 6. Social Data Pipeline | TBD | Future | - |
