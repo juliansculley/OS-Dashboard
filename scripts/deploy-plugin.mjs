@@ -12,7 +12,7 @@ import { copyFile } from 'fs/promises';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-const PLUGIN_DIR = 'C:\Users\scull\OneDrive\ClaudeOS\.obsidian\plugins\claudeos-dashboard';
+const PLUGIN_DIR = 'C:/Users/scull/OneDrive/ClaudeOS/.obsidian/plugins/claudeos-dashboard';
 
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const repoRoot = join(scriptDir, '..');
