@@ -57,10 +57,10 @@ completed: 2026-06-06
 
 ## Performance
 
-- **Duration:** ~8 min
+- **Duration:** ~45 min total (automated tasks ~8 min; human integration setup variable)
 - **Started:** 2026-06-06T22:22:46Z
-- **Completed:** 2026-06-06T22:25:30Z
-- **Tasks:** 2 of 3 complete (Task 3 is blocking-human checkpoint — awaiting Notion integration setup)
+- **Completed:** 2026-06-06
+- **Tasks:** 3 of 3 complete
 - **Files modified:** 2
 
 ## Accomplishments
@@ -68,6 +68,7 @@ completed: 2026-06-06
 - Created `scripts/notion-sync.mjs` — 336-line pure Node ESM script with no npm dependencies
 - Node 18+ guard, external token loading, three paginated Notion queries, correct transforms with all critical-finding deviations, atomic writes
 - `.dashboard-data/` added to `.gitignore` — snapshot runtime outputs excluded from version control; `main.js` remains tracked for BRAT distribution
+- Live sync verified: `notion-sync OK: tasks=130 active (8 overdue, 1 due-soon, 10 written), projects=22, newsletter=7 items` — all three snapshot files written with correct shapes and generated_at timestamps
 
 ## Task Commits
 
@@ -75,7 +76,7 @@ Each task was committed atomically:
 
 1. **Task 1: Create scripts/notion-sync.mjs** - `5ae408b` (feat)
 2. **Task 2: Add .dashboard-data/ to .gitignore** - `a3954ba` (chore)
-3. **Task 3: Notion integration setup + live sync run** - PENDING HUMAN ACTION (blocking-human checkpoint)
+3. **Task 3: Notion integration setup + live sync run** - `730cfc5` (feat — transforms expanded + live verification approved)
 
 ## Files Created/Modified
 
@@ -137,22 +138,24 @@ None — plan executed exactly as written. All critical-finding deviations (D-06
 
 Source assertion gate required a temp `.cjs` helper file to avoid bash-escaping issues with the inline `node -e` command on Windows. The helper ran cleanly, confirmed assertions pass, and was deleted before the commit. No code changes required.
 
-## User Setup Required
+## User Setup Completed
 
-Task 3 (blocking-human checkpoint) requires the following before a live sync run can be verified:
+Task 3 (blocking-human checkpoint) completed successfully:
 
-1. Create an internal integration at https://www.notion.so/profile/integrations named "ClaudeOS Dashboard Sync"
-2. Copy the Internal Integration Secret (starts with `ntn_` or `secret_`)
-3. Share the integration with all THREE databases via each database's ••• → Connections menu: Tasks DB, Projects DB, Newsletter Content Hub. (A 404 on any query means this step was missed for that DB.)
-4. Provide the token via `NOTION_TOKEN` user environment variable OR create `%USERPROFILE%\.claudeos\notion.env` with one line: `NOTION_TOKEN=<secret>`
-5. Run: `& "C:\Users\scull\AppData\Local\nvm\v20.20.2\node.exe" scripts\notion-sync.mjs`
-6. Confirm exit 0 and three files exist under `.dashboard-data\` with the shapes documented above
+1. Created internal integration "ClaudeOS Dashboard Sync" at notion.so/profile/integrations
+2. Shared integration with all three databases: Tasks DB, Projects DB, Newsletter Content Hub
+3. Set `NOTION_TOKEN` as a user environment variable
+4. Ran: `& "C:\Users\scull\AppData\Local\nvm\v20.20.2\node.exe" scripts\notion-sync.mjs`
+5. Output: `notion-sync OK: tasks=130 active (8 overdue, 1 due-soon, 10 written), projects=22, newsletter=7 items`
+6. Confirmed all three snapshot files exist under `.dashboard-data\` with correct shapes and `generated_at` timestamps
 
 ## Next Phase Readiness
 
-- `scripts/notion-sync.mjs` is committed and ready for human verification
-- Snapshot shapes are locked — Plan 2 can define matching TypeScript interfaces immediately
-- Once Task 3 is approved, Plan 2 (types + plugin integration) can proceed
+- `scripts/notion-sync.mjs` committed and live-verified — integration is fully operational
+- Snapshot shapes confirmed from real data (see "Snapshot JSON Shapes" section above)
+- `.dashboard-data/tasks.json`, `.dashboard-data/projects.json`, `.dashboard-data/newsletter.json` exist on disk with real Notion data
+- Plan 2 (03-02: types, settings, AppContext) can proceed immediately using confirmed field names
+- Node executable path confirmed: `C:\Users\scull\AppData\Local\nvm\v20.20.2\node.exe` — Plan 4 scheduler registration can use this path directly
 
 ## Known Stubs
 
@@ -167,7 +170,9 @@ None — `notion-sync.mjs` runs outside the plugin, reads no vault files, writes
 - [x] `scripts/notion-sync.mjs` exists
 - [x] Source assertion gate passes (`source assertions OK`)
 - [x] `.gitignore` contains `.dashboard-data/` and does NOT contain `main.js`
-- [x] Commits `5ae408b` and `a3954ba` exist in git log
+- [x] Commits `5ae408b`, `a3954ba`, and `730cfc5` exist in git log
 - [x] SUMMARY.md written to `.planning/phases/03-notion-dashboard/03-01-SUMMARY.md`
+- [x] `.dashboard-data/tasks.json`, `.dashboard-data/projects.json`, `.dashboard-data/newsletter.json` confirmed present post-sync
+- [x] STATE.md updated to reflect plan 03-01 complete
 
 ## Self-Check: PASSED
