@@ -1338,7 +1338,7 @@ var require_react_dom_development = __commonJS({
         return dispatcher;
       }
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-      var React9 = require_react(), Internals = {
+      var React10 = require_react(), Internals = {
         d: {
           f: noop,
           r: function() {
@@ -1356,7 +1356,7 @@ var require_react_dom_development = __commonJS({
         },
         p: 0,
         findDOMNode: null
-      }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React9.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+      }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React10.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
       "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error(
         "React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"
       );
@@ -2891,7 +2891,7 @@ var require_react_dom_client_development = __commonJS({
         "number" === type && getActiveElement(node.ownerDocument) === node || node.defaultValue === "" + value || (node.defaultValue = "" + value);
       }
       function validateOptionProps(element, props) {
-        null == props.value && ("object" === typeof props.children && null !== props.children ? React9.Children.forEach(props.children, function(child) {
+        null == props.value && ("object" === typeof props.children && null !== props.children ? React10.Children.forEach(props.children, function(child) {
           null == child || "string" === typeof child || "number" === typeof child || "bigint" === typeof child || didWarnInvalidChild || (didWarnInvalidChild = true, console.error(
             "Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>."
           ));
@@ -18523,14 +18523,14 @@ var require_react_dom_client_development = __commonJS({
         ));
       }
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-      var Scheduler = require_scheduler(), React9 = require_react(), ReactDOM = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy");
+      var Scheduler = require_scheduler(), React10 = require_react(), ReactDOM = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy");
       Symbol.for("react.scope");
       var REACT_ACTIVITY_TYPE = Symbol.for("react.activity");
       Symbol.for("react.legacy_hidden");
       Symbol.for("react.tracing_marker");
       var REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel");
       Symbol.for("react.view_transition");
-      var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React9.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
+      var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React10.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
         pending: false,
         data: null,
         method: null,
@@ -21318,7 +21318,7 @@ var require_react_dom_client_development = __commonJS({
         }
       };
       (function() {
-        var isomorphicReactPackageVersion = React9.version;
+        var isomorphicReactPackageVersion = React10.version;
         if ("19.2.7" !== isomorphicReactPackageVersion)
           throw Error(
             'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.2.7\nLearn more: https://react.dev/warnings/version-mismatch")
@@ -21672,18 +21672,18 @@ var require_react_jsx_runtime_development = __commonJS({
       function isValidElement(object) {
         return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
       }
-      var React9 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React9.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
+      var React10 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React10.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
         return null;
       };
-      React9 = {
+      React10 = {
         react_stack_bottom_frame: function(callStackForError) {
           return callStackForError();
         }
       };
       var specialPropKeyWarningShown;
       var didWarnAboutElementRef = {};
-      var unknownOwnerDebugStack = React9.react_stack_bottom_frame.bind(
-        React9,
+      var unknownOwnerDebugStack = React10.react_stack_bottom_frame.bind(
+        React10,
         UnknownOwner
       )();
       var unknownOwnerDebugTask = createTask(getTaskName(UnknownOwner));
@@ -21738,7 +21738,7 @@ var import_obsidian8 = require("obsidian");
 // src/views/DashboardView.tsx
 var import_obsidian6 = require("obsidian");
 var import_client = __toESM(require_client());
-var import_react11 = __toESM(require_react());
+var import_react12 = __toESM(require_react());
 
 // src/context/AppContext.tsx
 var import_react = __toESM(require_react());
@@ -21750,7 +21750,7 @@ function useAppContext() {
 }
 
 // src/components/App.tsx
-var import_react10 = __toESM(require_react());
+var import_react11 = __toESM(require_react());
 
 // src/components/ui/Sidebar.tsx
 var import_react2 = __toESM(require_react());
@@ -21797,7 +21797,7 @@ function Sidebar({ activePage, onNavigate }) {
 }
 
 // src/components/pages/HomePage.tsx
-var import_react4 = __toESM(require_react());
+var import_react5 = __toESM(require_react());
 
 // src/utils/readJsonFile.ts
 var import_obsidian2 = require("obsidian");
@@ -21838,79 +21838,222 @@ function StatusTile({ label, value, numeric = false }) {
 }
 
 // src/components/ui/SkillButton.tsx
-var import_react3 = __toESM(require_react());
+var import_react4 = __toESM(require_react());
 var import_child_process = require("child_process");
 var import_obsidian3 = require("obsidian");
+
+// src/components/ui/SkillInputPanel.tsx
+var import_react3 = __toESM(require_react());
 var import_jsx_runtime4 = __toESM(require_jsx_runtime());
+function SkillInputPanel({ skill, isExpanded, onRun }) {
+  const [text, setText] = (0, import_react3.useState)("");
+  const [filePath, setFilePath] = (0, import_react3.useState)("");
+  function buildInput() {
+    if (skill === "humanizer" && filePath.trim()) {
+      return `File: ${filePath.trim()}`;
+    }
+    return text;
+  }
+  const isEmpty = skill === "humanizer" ? text.trim() === "" && filePath.trim() === "" : text.trim() === "";
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: `claudeos-input-panel${isExpanded ? "" : " claudeos-input-panel--hidden"}`, children: [
+    skill === "braindump" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "claudeos-input-panel__field", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "claudeos-input-panel__label", children: "Input" }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+        "textarea",
+        {
+          className: "claudeos-input-panel__textarea",
+          placeholder: "Paste or type your braindump here...",
+          value: text,
+          onChange: (e) => setText(e.target.value)
+        }
+      )
+    ] }),
+    skill === "humanizer" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "claudeos-input-panel__field", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "claudeos-input-panel__label", children: "Text" }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+          "textarea",
+          {
+            className: "claudeos-input-panel__textarea",
+            placeholder: "Paste text to humanize...",
+            value: text,
+            onChange: (e) => setText(e.target.value)
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "claudeos-input-panel__field", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "claudeos-input-panel__label", children: "Or vault path" }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+          "input",
+          {
+            type: "text",
+            className: "claudeos-input-panel__path",
+            placeholder: "e.g. braindumps/note.md (takes precedence)",
+            value: filePath,
+            onChange: (e) => setFilePath(e.target.value)
+          }
+        )
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+      "button",
+      {
+        className: "claudeos-run-btn",
+        disabled: isEmpty,
+        onClick: () => onRun(buildInput()),
+        children: "Run"
+      }
+    )
+  ] });
+}
+
+// src/components/ui/SkillButton.tsx
+var import_jsx_runtime5 = __toESM(require_jsx_runtime());
 var ALLOWED_SKILLS = ["wiki-optimizer", "braindump", "humanizer"];
 function IconSlot({ iconName }) {
-  const ref = (0, import_react3.useRef)(null);
-  (0, import_react3.useEffect)(() => {
+  const ref = (0, import_react4.useRef)(null);
+  (0, import_react4.useEffect)(() => {
     if (ref.current) {
       (0, import_obsidian3.setIcon)(ref.current, iconName);
     }
   }, [iconName]);
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { ref, className: "cos-icon-slot" });
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { ref, className: "cos-icon-slot" });
+}
+function parseOutputPath(stdout) {
+  const match = stdout.match(/^Output:\s+(.+)$/m);
+  if (!match || match[1] === void 0) return null;
+  return match[1].trim();
+}
+function applyTraversalGuard(raw) {
+  if (raw === null) return null;
+  const segments = raw.split(/[/\\]/);
+  if (segments.includes("..")) return null;
+  return raw;
 }
 function SkillButton({ skill, label }) {
-  const [state, setState] = (0, import_react3.useState)("idle");
-  const spinnerRef = (0, import_react3.useRef)(null);
-  (0, import_react3.useEffect)(() => {
-    if (state === "loading" && spinnerRef.current) {
+  const { app, skillStates, setSkillState } = useAppContext();
+  const skillState = skillStates[skill] ?? { status: "idle", outputPath: null };
+  const [expanded, setExpanded] = (0, import_react4.useState)(false);
+  const spinnerRef = (0, import_react4.useRef)(null);
+  (0, import_react4.useEffect)(() => {
+    if (skillState.status === "loading" && spinnerRef.current) {
       (0, import_obsidian3.setIcon)(spinnerRef.current, "loader-2");
     }
-  }, [state]);
-  function handleClick() {
-    if (state !== "idle") return;
+  }, [skillState.status]);
+  function handleRun(input) {
+    if (skillState.status !== "idle") return;
     if (!ALLOWED_SKILLS.includes(skill)) return;
-    setState("loading");
-    (0, import_child_process.execFile)("claude", ["-p", skill], (error) => {
-      if (error === null) {
-        setState("success");
-        setTimeout(() => setState("idle"), 3e3);
+    setSkillState(skill, { status: "loading", outputPath: null });
+    setExpanded(false);
+    const child = (0, import_child_process.spawn)("claude", ["-p", skill]);
+    let stdout = "";
+    let stderr = "";
+    child.stdout.on("data", (chunk) => {
+      stdout += chunk.toString("utf8");
+    });
+    child.stderr.on("data", (chunk) => {
+      stderr += chunk.toString("utf8");
+    });
+    child.on("close", (code) => {
+      if (code === 0) {
+        const raw = parseOutputPath(stdout);
+        const outputPath = applyTraversalGuard(raw);
+        setSkillState(skill, { status: "success", outputPath });
+        setTimeout(() => setSkillState(skill, { status: "idle", outputPath: null }), 3e3);
       } else {
-        setState("error");
-        setTimeout(() => setState("idle"), 5e3);
+        setSkillState(skill, { status: "error", outputPath: null });
+        setTimeout(() => setSkillState(skill, { status: "idle", outputPath: null }), 5e3);
+      }
+    });
+    if (input) child.stdin.write(input, "utf8");
+    child.stdin.end();
+  }
+  function handleClickSelfContained() {
+    if (skillState.status !== "idle") return;
+    if (!ALLOWED_SKILLS.includes(skill)) return;
+    setSkillState(skill, { status: "loading", outputPath: null });
+    (0, import_child_process.execFile)("claude", ["-p", skill], (error, stdout) => {
+      if (error === null) {
+        const raw = parseOutputPath(stdout);
+        const outputPath = applyTraversalGuard(raw);
+        setSkillState(skill, { status: "success", outputPath });
+        setTimeout(() => setSkillState(skill, { status: "idle", outputPath: null }), 3e3);
+      } else {
+        setSkillState(skill, { status: "error", outputPath: null });
+        setTimeout(() => setSkillState(skill, { status: "idle", outputPath: null }), 5e3);
       }
     });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-    "button",
-    {
-      className: `claudeos-skill-btn claudeos-skill-btn--${state}`,
-      onClick: handleClick,
-      disabled: state === "loading",
-      children: [
-        state === "loading" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { ref: spinnerRef, className: "cos-spinner" }),
-        state === "idle" && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: label }),
-        state === "success" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(IconSlot, { iconName: "check" }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: "Done" })
-        ] }),
-        state === "error" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(IconSlot, { iconName: "x" }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: "Failed" })
-        ] })
-      ]
+  function handleButtonClick() {
+    if (skill === "wiki-optimizer") {
+      handleClickSelfContained();
+    } else {
+      if (skillState.status !== "idle") return;
+      setExpanded((prev) => !prev);
     }
-  );
+  }
+  const isInputRequired = skill === "braindump" || skill === "humanizer";
+  const buttonLabel = isInputRequired && expanded && skillState.status === "idle" ? "Cancel" : label;
+  const btnStatusClass = skillState.status === "idle" && expanded ? "expanded" : skillState.status;
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+      "button",
+      {
+        className: `claudeos-skill-btn claudeos-skill-btn--${btnStatusClass}`,
+        onClick: handleButtonClick,
+        disabled: skillState.status === "loading",
+        children: [
+          skillState.status === "loading" && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { ref: spinnerRef, className: "cos-spinner" }),
+          skillState.status === "idle" && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: buttonLabel }),
+          skillState.status === "success" && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(IconSlot, { iconName: "check" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Done" })
+          ] }),
+          skillState.status === "error" && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(IconSlot, { iconName: "x" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "Failed" })
+          ] })
+        ]
+      }
+    ),
+    skillState.status === "success" && skillState.outputPath && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "claudeos-output-link", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(IconSlot, { iconName: "external-link" }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+        "span",
+        {
+          className: "claudeos-output-link__text",
+          onClick: () => app.workspace.openLinkText(skillState.outputPath, "", "tab"),
+          children: "Open output"
+        }
+      )
+    ] }),
+    isInputRequired && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+      SkillInputPanel,
+      {
+        skill,
+        isExpanded: expanded,
+        onRun: handleRun
+      },
+      expanded ? "open" : "closed"
+    )
+  ] });
 }
 
 // src/components/ui/SkillsSection.tsx
-var import_jsx_runtime5 = __toESM(require_jsx_runtime());
+var import_jsx_runtime6 = __toESM(require_jsx_runtime());
 function SkillsSection() {
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("section", { className: "claudeos-skills-section", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "claudeos-skills-heading", children: "Skills" }),
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "claudeos-skills-row", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SkillButton, { skill: "wiki-optimizer", label: "Wiki Optimizer" }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SkillButton, { skill: "braindump", label: "Braindump" }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SkillButton, { skill: "humanizer", label: "Humanizer" })
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("section", { className: "claudeos-skills-section", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "claudeos-skills-heading", children: "Skills" }),
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "claudeos-skills-row", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SkillButton, { skill: "wiki-optimizer", label: "Wiki Optimizer" }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SkillButton, { skill: "braindump", label: "Braindump" }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SkillButton, { skill: "humanizer", label: "Humanizer" })
     ] })
   ] });
 }
 
 // src/components/pages/HomePage.tsx
-var import_jsx_runtime6 = __toESM(require_jsx_runtime());
+var import_jsx_runtime7 = __toESM(require_jsx_runtime());
 function formatTimestamp(iso) {
   const d = new Date(iso);
   if (isNaN(d.getTime())) return "";
@@ -21923,9 +22066,9 @@ function formatTimestamp(iso) {
 }
 function HomePage() {
   const { app, plugin } = useAppContext();
-  const [syncValue, setSyncValue] = (0, import_react4.useState)(null);
-  const [projectsValue, setProjectsValue] = (0, import_react4.useState)(null);
-  (0, import_react4.useEffect)(() => {
+  const [syncValue, setSyncValue] = (0, import_react5.useState)(null);
+  const [projectsValue, setProjectsValue] = (0, import_react5.useState)(null);
+  (0, import_react5.useEffect)(() => {
     readJsonFile(app, plugin.settings.lastSyncPath).then((data) => {
       if (data && typeof data.timestamp === "string" && data.timestamp.trim() !== "") {
         const formatted = formatTimestamp(data.timestamp);
@@ -21935,7 +22078,7 @@ function HomePage() {
       }
     });
   }, [plugin.settings.lastSyncPath]);
-  (0, import_react4.useEffect)(() => {
+  (0, import_react5.useEffect)(() => {
     readJsonFile(app, plugin.settings.activeProjectsPath).then((data) => {
       if (data && typeof data.count === "number" && !isNaN(data.count)) {
         setProjectsValue(String(data.count));
@@ -21944,20 +22087,20 @@ function HomePage() {
       }
     });
   }, [plugin.settings.activeProjectsPath]);
-  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "claudeos-page claudeos-page--home", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(TileGrid, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(StatusTile, { label: "Last vault sync", value: syncValue }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(StatusTile, { label: "Active projects", value: projectsValue, numeric: true })
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-page claudeos-page--home", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(TileGrid, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(StatusTile, { label: "Last vault sync", value: syncValue }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(StatusTile, { label: "Active projects", value: projectsValue, numeric: true })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SkillsSection, {})
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SkillsSection, {})
   ] });
 }
 
 // src/components/pages/SocialPage.tsx
-var import_react5 = __toESM(require_react());
+var import_react6 = __toESM(require_react());
 
 // src/components/ui/SocialMetricCard.tsx
-var import_jsx_runtime7 = __toESM(require_jsx_runtime());
+var import_jsx_runtime8 = __toESM(require_jsx_runtime());
 function safeLocale(v) {
   const n = Number(v);
   return isNaN(n) ? "\u2014" : n.toLocaleString();
@@ -21972,45 +22115,45 @@ function SocialMetricCard({ platform, data }) {
   const heading = isLinkedIn ? "LinkedIn" : "X (Twitter)";
   if (data === null) {
     const emptyHeading = isLinkedIn ? "No LinkedIn data" : "No X data";
-    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-social-card claudeos-social-card--empty", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-social-card__heading", children: heading }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-empty-state", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-empty-state__heading", children: emptyHeading }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-empty-state__body", children: "Set a file path in Settings to load metrics." })
+    return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-social-card claudeos-social-card--empty", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-social-card__heading", children: heading }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-empty-state", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-empty-state__heading", children: emptyHeading }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-empty-state__body", children: "Set a file path in Settings to load metrics." })
       ] })
     ] });
   }
   if (data === "error") {
     const errorHeading = isLinkedIn ? "Couldn't read LinkedIn data" : "Couldn't read X data";
-    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-social-card claudeos-social-card--empty", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-social-card__heading", children: heading }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-empty-state", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-empty-state__heading", children: errorHeading }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-empty-state__body", children: "Check that the file path in Settings is correct." })
+    return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-social-card claudeos-social-card--empty", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-social-card__heading", children: heading }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-empty-state", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-empty-state__heading", children: errorHeading }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-empty-state__body", children: "Check that the file path in Settings is correct." })
       ] })
     ] });
   }
   if (isLinkedIn) {
     const li = data;
-    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-social-card", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-social-card__heading", children: heading }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-social-metrics-row", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Followers" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(li.followers) })
+    return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-social-card", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-social-card__heading", children: heading }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-social-metrics-row", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-metric", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-metric__label", children: "Followers" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(li.followers) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Connections" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(li.connections) })
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-metric", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-metric__label", children: "Connections" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(li.connections) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Posts" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(li.posts) })
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-metric", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-metric__label", children: "Posts" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(li.posts) })
         ] })
       ] }),
       li.updated_at && (() => {
         const f = formatUpdated(li.updated_at);
-        return f ? /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric__updated", children: [
+        return f ? /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-metric__updated", children: [
           "Updated: ",
           f
         ] }) : null;
@@ -22018,25 +22161,25 @@ function SocialMetricCard({ platform, data }) {
     ] });
   }
   const x = data;
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-social-card", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-social-card__heading", children: heading }),
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-social-metrics-row", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Followers" }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(x.followers) })
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-social-card", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-social-card__heading", children: heading }),
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-social-metrics-row", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-metric", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-metric__label", children: "Followers" }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(x.followers) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Following" }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(x.following) })
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-metric", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-metric__label", children: "Following" }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(x.following) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__label", children: "Tweets" }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(x.tweets) })
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-metric", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-metric__label", children: "Tweets" }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "claudeos-metric__value", children: safeLocale(x.tweets) })
       ] })
     ] }),
     x.updated_at && (() => {
       const f = formatUpdated(x.updated_at);
-      return f ? /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "claudeos-metric__updated", children: [
+      return f ? /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-metric__updated", children: [
         "Updated: ",
         f
       ] }) : null;
@@ -22045,12 +22188,12 @@ function SocialMetricCard({ platform, data }) {
 }
 
 // src/components/pages/SocialPage.tsx
-var import_jsx_runtime8 = __toESM(require_jsx_runtime());
+var import_jsx_runtime9 = __toESM(require_jsx_runtime());
 function SocialPage() {
   const { app, plugin } = useAppContext();
-  const [linkedInData, setLinkedInData] = (0, import_react5.useState)(null);
-  const [xData, setXData] = (0, import_react5.useState)(null);
-  (0, import_react5.useEffect)(() => {
+  const [linkedInData, setLinkedInData] = (0, import_react6.useState)(null);
+  const [xData, setXData] = (0, import_react6.useState)(null);
+  (0, import_react6.useEffect)(() => {
     const path = plugin.settings.linkedinDataPath;
     if (!path || path.trim() === "") {
       setLinkedInData(null);
@@ -22060,7 +22203,7 @@ function SocialPage() {
       setLinkedInData(data !== null ? data : "error");
     });
   }, [plugin.settings.linkedinDataPath]);
-  (0, import_react5.useEffect)(() => {
+  (0, import_react6.useEffect)(() => {
     const path = plugin.settings.xDataPath;
     if (!path || path.trim() === "") {
       setXData(null);
@@ -22070,20 +22213,20 @@ function SocialPage() {
       setXData(data !== null ? data : "error");
     });
   }, [plugin.settings.xDataPath]);
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "claudeos-page claudeos-page--social", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SocialMetricCard, { platform: "linkedin", data: linkedInData }),
-    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SocialMetricCard, { platform: "x", data: xData })
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "claudeos-page claudeos-page--social", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(SocialMetricCard, { platform: "linkedin", data: linkedInData }),
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(SocialMetricCard, { platform: "x", data: xData })
   ] });
 }
 
 // src/components/pages/ProjectsPage.tsx
-var import_react8 = __toESM(require_react());
+var import_react9 = __toESM(require_react());
 
 // src/components/ui/RefreshButton.tsx
-var import_react6 = __toESM(require_react());
+var import_react7 = __toESM(require_react());
 var import_child_process2 = require("child_process");
 var import_obsidian4 = require("obsidian");
-var import_jsx_runtime9 = __toESM(require_jsx_runtime());
+var import_jsx_runtime10 = __toESM(require_jsx_runtime());
 function isStale(generatedAt) {
   const d = new Date(generatedAt);
   if (isNaN(d.getTime())) return false;
@@ -22097,20 +22240,20 @@ function formatHHmm(isoString) {
   return `${h}:${m}`;
 }
 function IconSlot2({ iconName }) {
-  const ref = (0, import_react6.useRef)(null);
-  (0, import_react6.useEffect)(() => {
+  const ref = (0, import_react7.useRef)(null);
+  (0, import_react7.useEffect)(() => {
     if (ref.current) {
       (0, import_obsidian4.setIcon)(ref.current, iconName);
     }
   }, [iconName]);
-  return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { ref, className: "cos-icon-slot" });
+  return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { ref, className: "cos-icon-slot" });
 }
 function RefreshButton() {
   const { app, plugin, triggerRefresh } = useAppContext();
-  const [state, setState] = (0, import_react6.useState)("idle");
-  const [lastSynced, setLastSynced] = (0, import_react6.useState)(null);
-  const spinnerRef = (0, import_react6.useRef)(null);
-  (0, import_react6.useEffect)(() => {
+  const [state, setState] = (0, import_react7.useState)("idle");
+  const [lastSynced, setLastSynced] = (0, import_react7.useState)(null);
+  const spinnerRef = (0, import_react7.useRef)(null);
+  (0, import_react7.useEffect)(() => {
     if (state === "loading" && spinnerRef.current) {
       (0, import_obsidian4.setIcon)(spinnerRef.current, "loader-2");
     }
@@ -22125,7 +22268,7 @@ function RefreshButton() {
       setLastSynced(null);
     }
   }
-  (0, import_react6.useEffect)(() => {
+  (0, import_react7.useEffect)(() => {
     refreshLastSynced();
   }, []);
   function handleClick() {
@@ -22150,31 +22293,31 @@ function RefreshButton() {
       }
     });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "claudeos-refresh-bar", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "claudeos-refresh-bar", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
       "button",
       {
         className: `claudeos-refresh-btn claudeos-refresh-btn--${state}`,
         onClick: handleClick,
         disabled: state === "loading",
         children: [
-          state === "loading" && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { ref: spinnerRef, className: "cos-spinner" }),
-          state === "idle" && /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(import_jsx_runtime9.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(IconSlot2, { iconName: "refresh-cw" }),
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: "Refresh" })
+          state === "loading" && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { ref: spinnerRef, className: "cos-spinner" }),
+          state === "idle" && /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(import_jsx_runtime10.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(IconSlot2, { iconName: "refresh-cw" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { children: "Refresh" })
           ] }),
-          state === "success" && /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(import_jsx_runtime9.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(IconSlot2, { iconName: "check" }),
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: "Synced" })
+          state === "success" && /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(import_jsx_runtime10.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(IconSlot2, { iconName: "check" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { children: "Synced" })
           ] }),
-          state === "error" && /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(import_jsx_runtime9.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(IconSlot2, { iconName: "x" }),
-            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: "Failed" })
+          state === "error" && /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(import_jsx_runtime10.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(IconSlot2, { iconName: "x" }),
+            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { children: "Failed" })
           ] })
         ]
       }
     ),
-    lastSynced !== null && /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("span", { className: "claudeos-refresh-last-synced", children: [
+    lastSynced !== null && /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { className: "claudeos-refresh-last-synced", children: [
       "Last synced ",
       lastSynced
     ] })
@@ -22182,20 +22325,20 @@ function RefreshButton() {
 }
 
 // src/components/ui/ListRow.tsx
-var import_react7 = __toESM(require_react());
+var import_react8 = __toESM(require_react());
 var import_obsidian5 = require("obsidian");
-var import_jsx_runtime10 = __toESM(require_jsx_runtime());
+var import_jsx_runtime11 = __toESM(require_jsx_runtime());
 function IconSlot3({ iconName }) {
-  const ref = (0, import_react7.useRef)(null);
-  (0, import_react7.useEffect)(() => {
+  const ref = (0, import_react8.useRef)(null);
+  (0, import_react8.useEffect)(() => {
     if (ref.current) {
       (0, import_obsidian5.setIcon)(ref.current, iconName);
     }
   }, [iconName]);
-  return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { ref, className: "cos-icon-slot" });
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { ref, className: "cos-icon-slot" });
 }
 function ListRow({ name, url, badges = [], emphasis = "none" }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(
     "a",
     {
       className: `claudeos-list-row claudeos-list-row--${emphasis}`,
@@ -22203,16 +22346,16 @@ function ListRow({ name, url, badges = [], emphasis = "none" }) {
       target: "_blank",
       rel: "noopener noreferrer",
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "claudeos-list-row__name", children: name }),
-        badges.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "claudeos-list-row__badges", children: badges.map((badge, i) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "claudeos-list-row__badge", children: badge }, i)) }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(IconSlot3, { iconName: "external-link" })
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "claudeos-list-row__name", children: name }),
+        badges.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "claudeos-list-row__badges", children: badges.map((badge, i) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "claudeos-list-row__badge", children: badge }, i)) }),
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(IconSlot3, { iconName: "external-link" })
       ]
     }
   );
 }
 
 // src/components/pages/ProjectsPage.tsx
-var import_jsx_runtime11 = __toESM(require_jsx_runtime());
+var import_jsx_runtime12 = __toESM(require_jsx_runtime());
 function todayStr() {
   const d = /* @__PURE__ */ new Date();
   const y = d.getFullYear();
@@ -22229,16 +22372,16 @@ function isSnapshotData(v) {
   return v !== null && v !== "error";
 }
 function EmptyState({ heading, body }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "claudeos-empty-state", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "claudeos-empty-state__heading", children: heading }),
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "claudeos-empty-state__body", children: body })
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "claudeos-empty-state", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "claudeos-empty-state__heading", children: heading }),
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "claudeos-empty-state__body", children: body })
   ] });
 }
 function ProjectsPage() {
   const { app, plugin, refreshNonce } = useAppContext();
-  const [projects, setProjects] = (0, import_react8.useState)(null);
-  const [tasks, setTasks] = (0, import_react8.useState)(null);
-  (0, import_react8.useEffect)(() => {
+  const [projects, setProjects] = (0, import_react9.useState)(null);
+  const [tasks, setTasks] = (0, import_react9.useState)(null);
+  (0, import_react9.useEffect)(() => {
     const path = plugin.settings.projectsSnapshotPath;
     if (!path || path.trim() === "") {
       setProjects(null);
@@ -22248,7 +22391,7 @@ function ProjectsPage() {
       setProjects(data !== null ? data : "error");
     });
   }, [plugin.settings.projectsSnapshotPath, refreshNonce]);
-  (0, import_react8.useEffect)(() => {
+  (0, import_react9.useEffect)(() => {
     const path = plugin.settings.tasksSnapshotPath;
     if (!path || path.trim() === "") {
       setTasks(null);
@@ -22278,60 +22421,60 @@ function ProjectsPage() {
   const taskItems = isSnapshotData(tasks) ? tasks.items : [];
   const emphasizedTasks = taskItems.filter((t) => classifyTask(t) !== "none");
   const remainingTasks = taskItems.filter((t) => classifyTask(t) === "none");
-  return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "claudeos-page claudeos-page--projects", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(RefreshButton, {}),
-    staleGeneratedAt !== null && /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "claudeos-stale-label", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "claudeos-page claudeos-page--projects", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(RefreshButton, {}),
+    staleGeneratedAt !== null && /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "claudeos-stale-label", children: [
       "Stale \u2014 last synced ",
       formatHHmm(staleGeneratedAt)
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("section", { className: "claudeos-projects-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h2", { className: "claudeos-section-heading", children: "Active Projects" }),
-      projects === null && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("section", { className: "claudeos-projects-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { className: "claudeos-section-heading", children: "Active Projects" }),
+      projects === null && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
         EmptyState,
         {
           heading: "No project data",
           body: "Set the projects snapshot path in Settings, then Refresh."
         }
       ),
-      projects === "error" && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+      projects === "error" && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
         EmptyState,
         {
           heading: "Couldn't read projects",
           body: "Check the projects snapshot path."
         }
       ),
-      isSnapshotData(projects) && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "claudeos-list", children: projects.items.map((p, i) => {
+      isSnapshotData(projects) && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "claudeos-list", children: projects.items.map((p, i) => {
         const badges = [p.status];
         if (typeof p.progress === "number" && isFinite(p.progress)) {
           badges.push(`${p.progress}%`);
         }
-        return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(ListRow, { name: p.name, url: p.url, badges }, i);
+        return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(ListRow, { name: p.name, url: p.url, badges }, i);
       }) })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("section", { className: "claudeos-tasks-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h2", { className: "claudeos-section-heading", children: "Tasks" }),
-      tasks === null && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("section", { className: "claudeos-tasks-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { className: "claudeos-section-heading", children: "Tasks" }),
+      tasks === null && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
         EmptyState,
         {
           heading: "No task data",
           body: "Set the tasks snapshot path in Settings, then Refresh."
         }
       ),
-      tasks === "error" && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+      tasks === "error" && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
         EmptyState,
         {
           heading: "Couldn't read tasks",
           body: "Check the tasks snapshot path."
         }
       ),
-      isSnapshotData(tasks) && /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(import_jsx_runtime11.Fragment, { children: [
-        emphasizedTasks.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "claudeos-tasks-overdue", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { className: "claudeos-subsection-heading", children: "Overdue & Due Soon" }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "claudeos-list", children: emphasizedTasks.map((t, i) => {
+      isSnapshotData(tasks) && /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(import_jsx_runtime12.Fragment, { children: [
+        emphasizedTasks.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "claudeos-tasks-overdue", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { className: "claudeos-subsection-heading", children: "Overdue & Due Soon" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "claudeos-list", children: emphasizedTasks.map((t, i) => {
             const emphasis = classifyTask(t);
             const badges = [t.status];
             if (t.due) badges.push(t.due);
-            return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+            return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
               ListRow,
               {
                 name: t.name,
@@ -22343,14 +22486,14 @@ function ProjectsPage() {
             );
           }) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "claudeos-tasks-active", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { className: "claudeos-subsection-heading", children: "Active Tasks" }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "claudeos-list", children: [
-            remainingTasks.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "claudeos-list-empty", children: "No other active tasks." }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "claudeos-tasks-active", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { className: "claudeos-subsection-heading", children: "Active Tasks" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "claudeos-list", children: [
+            remainingTasks.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "claudeos-list-empty", children: "No other active tasks." }),
             remainingTasks.map((t, i) => {
               const badges = [t.status];
               if (t.due) badges.push(t.due);
-              return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(ListRow, { name: t.name, url: t.url, badges }, i);
+              return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(ListRow, { name: t.name, url: t.url, badges }, i);
             })
           ] })
         ] })
@@ -22360,21 +22503,21 @@ function ProjectsPage() {
 }
 
 // src/components/pages/NewsletterPage.tsx
-var import_react9 = __toESM(require_react());
-var import_jsx_runtime12 = __toESM(require_jsx_runtime());
+var import_react10 = __toESM(require_react());
+var import_jsx_runtime13 = __toESM(require_jsx_runtime());
 function isSnapshotData2(v) {
   return v !== null && v !== "error";
 }
 function EmptyState2({ heading, body }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "claudeos-empty-state", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "claudeos-empty-state__heading", children: heading }),
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "claudeos-empty-state__body", children: body })
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "claudeos-empty-state", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "claudeos-empty-state__heading", children: heading }),
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "claudeos-empty-state__body", children: body })
   ] });
 }
 function NewsletterPage() {
   const { app, plugin, refreshNonce } = useAppContext();
-  const [newsletter, setNewsletter] = (0, import_react9.useState)(null);
-  (0, import_react9.useEffect)(() => {
+  const [newsletter, setNewsletter] = (0, import_react10.useState)(null);
+  (0, import_react10.useEffect)(() => {
     const path = plugin.settings.newsletterSnapshotPath;
     if (!path || path.trim() === "") {
       setNewsletter(null);
@@ -22386,46 +22529,46 @@ function NewsletterPage() {
   }, [plugin.settings.newsletterSnapshotPath, refreshNonce]);
   const newsletterStale = isSnapshotData2(newsletter) && isStale(newsletter.generated_at);
   const nonZeroStages = isSnapshotData2(newsletter) ? Object.entries(newsletter.by_stage).filter(([, count]) => count > 0).sort(([a], [b]) => a.localeCompare(b)) : [];
-  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "claudeos-page claudeos-page--newsletter", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(RefreshButton, {}),
-    newsletterStale && isSnapshotData2(newsletter) && /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "claudeos-stale-label", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "claudeos-page claudeos-page--newsletter", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(RefreshButton, {}),
+    newsletterStale && isSnapshotData2(newsletter) && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "claudeos-stale-label", children: [
       "Stale \u2014 last synced ",
       formatHHmm(newsletter.generated_at)
     ] }),
-    newsletter === null && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+    newsletter === null && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
       EmptyState2,
       {
         heading: "No newsletter data",
         body: "Set the newsletter snapshot path in Settings, then Refresh."
       }
     ),
-    newsletter === "error" && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+    newsletter === "error" && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
       EmptyState2,
       {
         heading: "Couldn't read newsletter data",
         body: "Check the newsletter snapshot path."
       }
     ),
-    isSnapshotData2(newsletter) && /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(import_jsx_runtime12.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("section", { className: "claudeos-newsletter-section", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { className: "claudeos-section-heading", children: "Pipeline" }),
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "claudeos-stage-count-list", children: [
-          nonZeroStages.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "claudeos-list-empty", children: "No items in pipeline." }),
-          nonZeroStages.map(([stage, count]) => /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "claudeos-stage-count", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "claudeos-stage-count__name", children: stage }),
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "claudeos-stage-count__count", children: count })
+    isSnapshotData2(newsletter) && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "claudeos-newsletter-section", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "claudeos-section-heading", children: "Pipeline" }),
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "claudeos-stage-count-list", children: [
+          nonZeroStages.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "claudeos-list-empty", children: "No items in pipeline." }),
+          nonZeroStages.map(([stage, count]) => /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "claudeos-stage-count", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "claudeos-stage-count__name", children: stage }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "claudeos-stage-count__count", children: count })
           ] }, stage))
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("section", { className: "claudeos-newsletter-section", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { className: "claudeos-section-heading", children: "Items" }),
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "claudeos-list", children: [
-          newsletter.items.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "claudeos-list-empty", children: "No newsletter items." }),
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { className: "claudeos-newsletter-section", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "claudeos-section-heading", children: "Items" }),
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "claudeos-list", children: [
+          newsletter.items.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "claudeos-list-empty", children: "No newsletter items." }),
           newsletter.items.map((item, i) => {
             const badges = [item.stage];
             if (item.content_type) badges.push(item.content_type);
             if (item.platform) badges.push(item.platform);
-            return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+            return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
               ListRow,
               {
                 name: item.name,
@@ -22442,7 +22585,7 @@ function NewsletterPage() {
 }
 
 // src/components/ui/SkillStatusBar.tsx
-var import_jsx_runtime13 = __toESM(require_jsx_runtime());
+var import_jsx_runtime14 = __toESM(require_jsx_runtime());
 function SkillStatusBar() {
   const { skillStates, app } = useAppContext();
   const activeEntries = Object.entries(skillStates).filter(
@@ -22452,16 +22595,16 @@ function SkillStatusBar() {
   const firstEntry = activeEntries[0];
   const skillName = firstEntry ? firstEntry[0] : "";
   const state = firstEntry ? firstEntry[1] : null;
-  return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: `claudeos-status-bar${isActive ? " claudeos-status-bar--active" : ""}`, children: isActive && state && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "claudeos-status-bar__text", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: `claudeos-status-bar${isActive ? " claudeos-status-bar--active" : ""}`, children: isActive && state && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { className: "claudeos-status-bar__text", children: [
     state.status === "loading" && `${skillName} running...`,
-    state.status === "success" && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
+    state.status === "success" && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, { children: [
       skillName,
       " ",
       "\u2014",
       " Done",
-      state.outputPath && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
+      state.outputPath && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, { children: [
         " ",
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
           "span",
           {
             className: "claudeos-status-bar__link",
@@ -22476,7 +22619,7 @@ function SkillStatusBar() {
 }
 
 // src/components/App.tsx
-var import_jsx_runtime14 = __toESM(require_jsx_runtime());
+var import_jsx_runtime15 = __toESM(require_jsx_runtime());
 var PAGES = {
   home: HomePage,
   social: SocialPage,
@@ -22484,31 +22627,31 @@ var PAGES = {
   newsletter: NewsletterPage
 };
 function App2() {
-  const [activePage, setActivePage] = (0, import_react10.useState)("home");
+  const [activePage, setActivePage] = (0, import_react11.useState)("home");
   const PageComponent = PAGES[activePage] ?? HomePage;
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "claudeos-dashboard", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Sidebar, { activePage, onNavigate: setActivePage }),
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "claudeos-content-wrapper", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(SkillStatusBar, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("main", { className: "claudeos-main", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(PageComponent, {}) })
+  return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "claudeos-dashboard", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Sidebar, { activePage, onNavigate: setActivePage }),
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "claudeos-content-wrapper", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(SkillStatusBar, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("main", { className: "claudeos-main", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(PageComponent, {}) })
     ] })
   ] });
 }
 
 // src/views/DashboardView.tsx
-var import_jsx_runtime15 = __toESM(require_jsx_runtime());
+var import_jsx_runtime16 = __toESM(require_jsx_runtime());
 var VIEW_TYPE_DASHBOARD = "claudeos-dashboard-view";
 function DashboardRoot({ app, plugin }) {
-  const [refreshNonce, setRefreshNonce] = (0, import_react11.useState)(0);
-  const triggerRefresh = (0, import_react11.useCallback)(() => setRefreshNonce((n) => n + 1), []);
-  const [skillStates, setSkillStatesRaw] = (0, import_react11.useState)({});
-  const setSkillState = (0, import_react11.useCallback)(
+  const [refreshNonce, setRefreshNonce] = (0, import_react12.useState)(0);
+  const triggerRefresh = (0, import_react12.useCallback)(() => setRefreshNonce((n) => n + 1), []);
+  const [skillStates, setSkillStatesRaw] = (0, import_react12.useState)({});
+  const setSkillState = (0, import_react12.useCallback)(
     (skillName, state) => {
       setSkillStatesRaw((prev) => ({ ...prev, [skillName]: state }));
     },
     []
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(AppContext.Provider, { value: { app, plugin, refreshNonce, triggerRefresh, skillStates, setSkillState }, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(App2, {}) });
+  return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(AppContext.Provider, { value: { app, plugin, refreshNonce, triggerRefresh, skillStates, setSkillState }, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(App2, {}) });
 }
 var DashboardView = class extends import_obsidian6.ItemView {
   constructor(leaf, plugin) {
@@ -22528,7 +22671,7 @@ var DashboardView = class extends import_obsidian6.ItemView {
   async onOpen() {
     this.root = (0, import_client.createRoot)(this.contentEl);
     this.root.render(
-      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_react11.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(DashboardRoot, { app: this.app, plugin: this.plugin }) })
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_react12.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(DashboardRoot, { app: this.app, plugin: this.plugin }) })
     );
   }
   async onClose() {
