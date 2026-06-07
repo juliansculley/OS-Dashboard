@@ -22092,6 +22092,11 @@ function App2() {
 // src/views/DashboardView.tsx
 var import_jsx_runtime10 = __toESM(require_jsx_runtime());
 var VIEW_TYPE_DASHBOARD = "claudeos-dashboard-view";
+function DashboardRoot({ app, plugin }) {
+  const [refreshNonce, setRefreshNonce] = (0, import_react7.useState)(0);
+  const triggerRefresh = (0, import_react7.useCallback)(() => setRefreshNonce((n) => n + 1), []);
+  return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(AppContext.Provider, { value: { app, plugin, refreshNonce, triggerRefresh }, children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(App2, {}) });
+}
 var DashboardView = class extends import_obsidian4.ItemView {
   constructor(leaf, plugin) {
     super(leaf);
@@ -22110,7 +22115,7 @@ var DashboardView = class extends import_obsidian4.ItemView {
   async onOpen() {
     this.root = (0, import_client.createRoot)(this.contentEl);
     this.root.render(
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(import_react7.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(AppContext.Provider, { value: { app: this.app, plugin: this.plugin }, children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(App2, {}) }) })
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(import_react7.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(DashboardRoot, { app: this.app, plugin: this.plugin }) })
     );
   }
   async onClose() {
