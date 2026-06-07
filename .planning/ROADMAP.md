@@ -137,6 +137,15 @@ Plans:
 
 ---
 
+### Phase 7: Workouts Dashboard
+
+**Goal:** A new Workouts page in the dashboard with muscle-group set volume tracking (bar chart + weekly trend), per-exercise weight/volume progression charts, session history with filters, and a mesocycle/bodyweight context strip. Powered by a new `notion-workouts-sync.mjs` script that queries the six Notion workout databases via REST, resolves relations in-memory, and writes four compact JSON snapshots. All aggregation runs in the script; the plugin is a pure display layer.
+**Depends on:** Phase 3 (pipeline pattern), Phase 2 (component library)
+**Requirements (v2):** WORKOUT-01 (muscle-group volume), WORKOUT-02 (exercise progression), WORKOUT-03 (session history), WORKOUT-04 (mesocycle context), WORKOUT-05 (manual refresh)
+**Notes:** Full design documented in `.planning/workouts-dashboard-design.md`. All design decisions resolved 2026-06-07 — Chart.js charting, separate sync script, manual-only refresh, exercise-muscle enrichment map. Notion integration must be shared with all six workout data sources before Wave 1 testing.
+
+---
+
 ## Progress Table
 
 | Phase | Plans Complete | Status | Completed |
@@ -147,3 +156,4 @@ Plans:
 | 4. Newsletter Workflow | TBD | Future | - |
 | 5. Skill Output + Polish | 0/4 | Planned | - |
 | 6. Social Data Pipeline | TBD | Future | - |
+| 7. Workouts Dashboard | TBD | Planned | - |
