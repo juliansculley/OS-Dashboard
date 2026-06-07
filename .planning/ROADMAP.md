@@ -93,7 +93,7 @@ These phases are documented requirements, not yet planned.
 Plans:
 - [x] 03-01-PLAN.md — Sync script + infrastructure: notion-sync.mjs (token loading, 3 queries, atomic snapshots), .gitignore, integration setup (NOTION-01, NOTION-02, NOTION-03, NOTION-07) — completed 2026-06-06; live-verified: 130 tasks, 22 projects, 7 newsletter items
 - [x] 03-02-PLAN.md — Types, settings, AppContext: snapshot interfaces, extended PageId, 6 new settings, refreshNonce/triggerRefresh (NOTION-03, NOTION-04) — completed 2026-06-07; build green, all interfaces match confirmed snapshot shapes
-- [ ] 03-03-PLAN.md — RefreshButton + Projects page: execFile refresh state machine, ListRow, Projects page with overdue/due-soon emphasis (NOTION-04, NOTION-05, NOTION-08)
+- [x] 03-03-PLAN.md — RefreshButton + Projects page: execFile refresh state machine, ListRow, Projects page with overdue/due-soon emphasis (NOTION-04, NOTION-05, NOTION-08) — completed 2026-06-07
 - [ ] 03-04-PLAN.md — Newsletter page + scheduling: stage counts + item list, Windows Task Scheduler registration script (NOTION-06, NOTION-07, NOTION-08)
 
 ---
@@ -136,7 +136,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete | P1: 2026-06-05, P2: 2026-06-05 |
 | 2. Dashboard Features | 3/3 | In Progress — T4 gap (skill input modal) | 2026-06-06 (partial) |
-| 3. Notion Dashboard | 2/4 | In Progress (03-02 complete; 03-03 next) | 2026-06-07 |
+| 3. Notion Dashboard | 3/4 | In Progress (03-03 complete; 03-04 next) | 2026-06-07 |
 | 4. Newsletter Workflow | TBD | Future | - |
 | 5. Skill Output + Polish | TBD | Future | - |
 | 6. Social Data Pipeline | TBD | Future | - |

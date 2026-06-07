@@ -3,21 +3,21 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Executing Phase 03
-stopped_at: 03-02 complete — types, settings, AppContext foundation ready for Plans 03-03/03-04
-last_updated: "2026-06-07T04:58:00.000Z"
+stopped_at: 03-03 complete — RefreshButton, ListRow, ProjectsPage live; 03-04 (Newsletter) is next
+last_updated: "2026-06-07T05:10:00.000Z"
 progress:
   total_phases: 6
   completed_phases: 2
   total_plans: 9
-  completed_plans: 8
-  percent: 44
+  completed_plans: 9
+  percent: 50
 ---
 
 # Project State: ClaudeOS Dashboard
 
 ## Current Status
 
-**Active Phase:** 3 — Notion Dashboard (In Progress — 03-02 complete; ready for 03-03)
+**Active Phase:** 3 — Notion Dashboard (In Progress — 03-03 complete; ready for 03-04)
 **Last Updated:** 2026-06-07
 
 ## Phase Status
@@ -26,7 +26,7 @@ progress:
 |-------|------|--------|-------|---------------|
 | 1 | Foundation | Complete | 2 (2 complete) | 2026-06-05 |
 | 2 | Dashboard Features | Complete | 3 (3 complete) | 2026-06-06 |
-| 3 | Notion Dashboard | In Progress | 4 (2 complete; 03-03 next) | 2026-06-07 |
+| 3 | Notion Dashboard | In Progress | 4 (3 complete; 03-04 next) | 2026-06-07 |
 | 4 | Newsletter Workflow (v2) | Future | TBD | — |
 | 5 | Skill Output + Polish (v2) | Future | TBD | — |
 
@@ -59,6 +59,9 @@ See: .planning/PROJECT.md (updated 2026-06-04)
 - App.tsx PAGES typed as Partial<Record<PageId, ComponentType>> with ?? HomePage fallback — allows PageId union to grow before all pages are registered (03-02)
 - DashboardRoot React function component holds refreshNonce state; class method (onOpen) renders it — cleanly separates React state lifecycle from Obsidian class boundary (03-02)
 - node_modules junction created in worktree via PowerShell New-Item -ItemType Junction — worktrees do not inherit node_modules from main checkout (03-02)
+- isSnapshotData<T> type guard used for T|null|'error' discriminated union — avoids TS2367 overlap error when comparing generic T vs string literal 'error' (03-03)
+- folder-kanban chosen as Lucide icon id for Projects nav item (03-03)
+- isStale/formatHHmm co-located in RefreshButton.tsx as named exports — Plan 4 imports them from there (03-03)
 
 ## Performance Metrics
 
@@ -71,6 +74,7 @@ See: .planning/PROJECT.md (updated 2026-06-04)
 | 02-dashboard-features | P3 | ~3min | 2 | 3 |
 | 03-notion-dashboard | P1 | ~45min | 2 auto + 1 human checkpoint | 2 |
 | 03-notion-dashboard | P2 | 6min | 3 | 5 |
+| 03-notion-dashboard | P3 | 5min | 3 | 6 |
 
 ## Notes
 
@@ -80,6 +84,6 @@ See: .planning/PROJECT.md (updated 2026-06-04)
 
 ## Last Session
 
-**Timestamp:** 2026-06-07T04:58:00Z
-**Stopped at:** 03-02 complete — types, settings, AppContext foundation ready for Plans 03-03/03-04
-**Resume file:** .planning/phases/03-notion-dashboard/03-03-PLAN.md (Projects + Newsletter pages, RefreshButton)
+**Timestamp:** 2026-06-07T05:10:00Z
+**Stopped at:** 03-03 complete — RefreshButton, ListRow, ProjectsPage live; 03-04 (Newsletter) is next
+**Resume file:** .planning/phases/03-notion-dashboard/03-04-PLAN.md (Newsletter page + Task Scheduler)

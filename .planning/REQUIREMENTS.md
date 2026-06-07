@@ -45,11 +45,11 @@
 - **NOTION-01**: A standalone Node ESM sync script (`scripts/notion-sync.mjs`) queries Tasks, Projects, and Newsletter Content Hub data sources via the Notion REST API (`2025-09-03`) and writes compact JSON snapshots to `<vault>/.dashboard-data/`
 - **NOTION-02**: The Notion integration token is read from outside the synced vault (env var `NOTION_TOKEN` or fallback `%USERPROFILE%\.claudeos\notion.env`); it never appears in plugin source, compiled output, `data.json`, or any OneDrive-synced location
 - **NOTION-03**: Snapshot files conform to the TypeScript interfaces defined in `types.ts`, are written atomically (temp file + rename), and carry a `generated_at` ISO 8601 timestamp
-- **NOTION-04**: A Refresh button in the dashboard runs the sync script via `execFile` (no shell interpolation) and on success re-reads snapshots and re-renders all pages without an Obsidian reload; it shows idle/loading/success/error states and a "last synced HH:mm" timestamp
-- **NOTION-05**: A Projects page renders active projects (status, progress %, active/overdue task counts) and a tasks list with overdue and due-soon items emphasized, each item linking to its Notion page
+- [x] **NOTION-04**: A Refresh button in the dashboard runs the sync script via `execFile` (no shell interpolation) and on success re-reads snapshots and re-renders all pages without an Obsidian reload; it shows idle/loading/success/error states and a "last synced HH:mm" timestamp — completed 03-03
+- [x] **NOTION-05**: A Projects page renders active projects (status, progress %, active/overdue task counts) and a tasks list with overdue and due-soon items emphasized, each item linking to its Notion page — completed 03-03
 - **NOTION-06**: A Newsletter page renders pipeline item counts by stage and an item list (name, stage, content type) each linking to its Notion page
 - **NOTION-07**: The sync script can be run by a Windows Task Scheduler job on a configurable cadence using the same code path as the manual Refresh button
-- **NOTION-08**: All new pages degrade to the existing no-data state when a snapshot file is missing, unreadable, or absent; stale snapshots (> 24 hours old) show a "Stale" label but still render the data
+- [x] **NOTION-08**: All new pages degrade to the existing no-data state when a snapshot file is missing, unreadable, or absent; stale snapshots (> 24 hours old) show a "Stale" label but still render the data — completed 03-03
 
 ### Newsletter Workflow Page
 
@@ -102,11 +102,11 @@
 | NOTION-01 | Phase 3 | Planned |
 | NOTION-02 | Phase 3 | Planned |
 | NOTION-03 | Phase 3 | Complete (03-01, 03-02) |
-| NOTION-04 | Phase 3 | Partial (03-02 plumbing; RefreshButton UI in 03-03) |
-| NOTION-05 | Phase 3 | Planned |
+| NOTION-04 | Phase 3 | Complete (03-03) |
+| NOTION-05 | Phase 3 | Complete (03-03) |
 | NOTION-06 | Phase 3 | Planned |
 | NOTION-07 | Phase 3 | Planned |
-| NOTION-08 | Phase 3 | Planned |
+| NOTION-08 | Phase 3 | Complete (03-03) |
 
 **Coverage:**
 
