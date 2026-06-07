@@ -53,11 +53,11 @@ export const DEFAULT_SETTINGS: ClaudeOSSettings = {
   linkedinDataPath: "",
   xDataPath: "",
   // Phase 3: Notion sync defaults
-  tasksSnapshotPath: ".dashboard-data/tasks.json",
-  projectsSnapshotPath: ".dashboard-data/projects.json",
-  newsletterSnapshotPath: ".dashboard-data/newsletter.json",
+  tasksSnapshotPath: "OS-Dashboard/.dashboard-data/tasks.json",
+  projectsSnapshotPath: "OS-Dashboard/.dashboard-data/projects.json",
+  newsletterSnapshotPath: "OS-Dashboard/.dashboard-data/newsletter.json",
   syncScriptPath: "",
-  nodePath: "node",
+  nodePath: "",
   dueSoonDays: 3,
 };
 
