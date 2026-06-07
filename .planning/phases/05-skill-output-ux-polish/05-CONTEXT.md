@@ -23,7 +23,7 @@ Requirements in scope: OUT-01, OUT-02 (v2), plus T4 re-verification gap from Pha
 ### Skill Input UX
 - **D-04:** Input-required skills use an **expandable panel below the button**. Clicking the button toggles it open; clicking again collapses it (toggle pattern). Input is cleared on collapse. No modal.
 - **D-05:** The expanded panel contains: a textarea for braindump; a textarea + optional path field for humanizer. A "Run" button inside the panel replaces the direct click trigger. The skill button label changes state to indicate "expanded" vs "idle."
-- **D-06:** Input text (or path) is passed to `execFile` via the `input` option (stdin). The CLI command stays the same: `claude -p <skill>` — no new flags needed.
+- **D-06:** Input text (or path) is passed to `claude -p <skill>` via spawn stdin (`child.stdin.write` / `child.stdin.end`) — NOT `execFile`'s `input` option, which does not exist on the async variant. See 05-RESEARCH.md §Critical Correction: D-06. The CLI command stays the same: `claude -p <skill>` — no new flags needed.
 
 ### Output Display (OUT-01)
 - **D-07:** After a skill completes successfully, the inline panel shows a **clickable vault link** — the filename or path the skill printed to stdout. Clicking it opens the file in a new Obsidian tab using `app.workspace.openLinkText()`.
@@ -82,7 +82,7 @@ Requirements in scope: OUT-01, OUT-02 (v2), plus T4 re-verification gap from Pha
 ### Established Patterns
 - **Toggle expand/collapse**: no existing toggle component — new pattern, but consistent with Obsidian's own collapsible sections
 - **AppContext shape**: currently `{ app: App, plugin: ClaudeOSDashboard }` — extending with `skillStates` map is additive, no breaking changes
-- **execFile with stdin**: `execFile(cmd, args, { input: string }, callback)` — the `input` option is standard Node.js `child_process`; SEC-03 safety (allowlist guard) is preserved
+- **spawn with stdin**: `spawn('claude', ['-p', skill])` then `child.stdin.write(input, 'utf8'); child.stdin.end()` pipes input to the skill via stdin — the async `execFile` does NOT support an `input` option (sync-only); SEC-03 safety (allowlist guard) is preserved by running the guard before any spawn call
 
 ### Integration Points
 - Status bar inserts into `App.tsx` between `<Sidebar />` and the page content `<div>` — needs to read `skillStates` from AppContext

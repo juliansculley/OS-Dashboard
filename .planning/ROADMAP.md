@@ -112,12 +112,19 @@ Plans:
 **Goal:** Add inline output display for skill executions, async status persistence across page navigation, and general UX refinements based on daily use of the v1 dashboard.
 **Depends on:** Phase 2
 **Requirements (v2):** OUT-01, OUT-02
-**Notes:** v2 output requirements deferred from Phase 2 — implement after core workflow is validated.
+**Notes:** v2 output requirements deferred from Phase 2 — implement after core workflow is validated. Design resolved during /gsd-discuss-phase: inline expandable input panel (not a modal), stdin via spawn (D-06 correction — execFile has no async `input` option), output link parsed from a skill-printed `Output:` line.
+**Plans:** 4 plans (3 waves)
 
-#### Open To-Dos (discovered during Phase 2 UAT)
+Plans:
+- [ ] 05-01-PLAN.md — Skill-side `Output:` stdout contract for braindump, humanizer (adds Cowork-mode file write), wiki-optimizer (OUT-01 prerequisite for output-link parsing)
+- [ ] 05-02-PLAN.md — Cross-page persistence foundation: skill-state types, AppContext lift, App.tsx nested provider + content-wrapper, SkillStatusBar + CSS (OUT-02)
+- [ ] 05-03-PLAN.md — SkillButton refactor (spawn+stdin / stdout-capturing execFile, output-link parsing + `..` traversal guard, context-backed state, SEC-03 preserved) + SkillInputPanel + CSS (OUT-01, OUT-02)
+- [ ] 05-04-PLAN.md — Re-run Phase 2 T4 end-to-end with file-output verification; mark the T4 gap resolved (OUT-01)
 
-- [ ] **Skill input modal** — Skills that require user text (braindump, humanizer, and any future input-required skill) need a modal/dialog to appear on button click before execution. The user types or pastes their input, then clicks Run; that text is passed to `claude -p <skill>` via stdin or as a `--message` arg. Design questions to resolve: (1) which skills require input vs. are self-contained, (2) modal vs. inline textarea, (3) how to pass input to `claude -p` (stdin piping or `--message` flag). This is a prerequisite for T4 actually passing — the current state machine passes visually but skills that need input produce no output without it.
-- [ ] **Re-run Phase 2 T4** — After the input modal is implemented, retest T4 end-to-end: click Wiki Optimizer (or braindump with input), confirm "Done" state, and verify the expected output file exists in the correct directory.
+#### Open To-Dos (discovered during Phase 2 UAT) — addressed by the plans above
+
+- [x] **Skill input modal** — Resolved as an inline expandable input panel (D-04 / D-05), implemented in 05-03. Input passed to `claude -p <skill>` via spawn stdin (D-06 correction).
+- [x] **Re-run Phase 2 T4** — Scheduled as 05-04: click braindump (or wiki-optimizer) with input, confirm "Done", verify the output file exists in the correct directory.
 
 ---
 
@@ -135,8 +142,8 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete | P1: 2026-06-05, P2: 2026-06-05 |
-| 2. Dashboard Features | 3/3 | In Progress — T4 gap (skill input modal) | 2026-06-06 (partial) |
+| 2. Dashboard Features | 3/3 | In Progress — T4 gap (resolved in Phase 5 / 05-04) | 2026-06-06 (partial) |
 | 3. Notion Dashboard | 4/4 | Complete | 2026-06-06 |
 | 4. Newsletter Workflow | TBD | Future | - |
-| 5. Skill Output + Polish | TBD | Future | - |
+| 5. Skill Output + Polish | 0/4 | Planned | - |
 | 6. Social Data Pipeline | TBD | Future | - |
