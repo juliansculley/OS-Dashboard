@@ -106,10 +106,54 @@
   flex-shrink: 0;
 }
 
+/* Content wrapper: flex column stacking status bar above main (D-11, Pitfall 4).
+   min-height:0 allows main to scroll without the bar adding to page height. */
+.claudeos-dashboard .claudeos-content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* ── Phase 5: Skill status bar ─────────────────────────────────────────────
+   Always mounted — visibility via display:none (NOT height:0 transition, D-11 anti-pattern).
+   display:none gives zero height when idle; no layout shift on page load. */
+.claudeos-dashboard .claudeos-status-bar {
+  display: none;
+}
+
+.claudeos-dashboard .claudeos-status-bar--active {
+  display: flex;
+  align-items: center;
+  gap: var(--cos-space-xs, 4px);
+  padding: var(--cos-space-xs, 4px) var(--cos-space-md, 16px);
+  background: var(--cos-surface);
+  border-bottom: 1px solid var(--cos-border);
+  font-size: 14px;
+}
+
+.claudeos-dashboard .claudeos-status-bar__text {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--cos-muted);
+}
+
+.claudeos-dashboard .claudeos-status-bar__link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cos-accent);
+  cursor: pointer;
+}
+
+.claudeos-dashboard .claudeos-status-bar__link:hover {
+  text-decoration: underline;
+}
+
 /* Main content area */
 .claudeos-dashboard .claudeos-main {
   flex: 1;
   overflow: auto;
+  min-height: 0;
   padding: 24px 32px;
 }
 
