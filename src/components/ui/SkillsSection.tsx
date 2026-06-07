@@ -1,6 +1,9 @@
 import React from 'react';
 import { SkillButton } from './SkillButton';
 
+// Each SkillButton renders its own expanded input panel below itself.
+// The row uses align-items: flex-start (CSS) so expanded panels push down
+// their own column without stretching sibling buttons.
 export function SkillsSection() {
   return (
     <section className="claudeos-skills-section">
