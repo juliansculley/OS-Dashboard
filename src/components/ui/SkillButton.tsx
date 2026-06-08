@@ -6,8 +6,17 @@ import { SkillInputPanel } from './SkillInputPanel';
 
 // SEC-03: Allowlist is a hardcoded TypeScript const — never derived from user input.
 // Per D-01: changes require a code update, enforcing security structurally.
-const ALLOWED_SKILLS = ['wiki-optimizer', 'braindump', 'humanizer'] as const;
+const ALLOWED_SKILLS = ['wiki-optimizer', 'braindump', 'humanizer', 'test-skill'] as const;
 type AllowedSkill = typeof ALLOWED_SKILLS[number];
+
+// Maps skill names to their /slash-command invocation. All skills are installed
+// globally in ~/.claude/skills/ so they resolve without a namespace prefix.
+const SKILL_INVOCATIONS: Record<AllowedSkill, string> = {
+  'wiki-optimizer': '/wiki-optimizer',
+  'braindump': '/braindump',
+  'humanizer': '/humanizer',
+  'test-skill': '/test-skill',
+} as const;
 
 interface SkillButtonProps {
   skill: AllowedSkill;
@@ -71,7 +80,14 @@ export function SkillButton({ skill, label }: SkillButtonProps) {
     setSkillState(skill, { status: 'loading', outputPath: null });
     setExpanded(false); // collapse panel on Run
 
-    const child = spawn('claude', ['-p', skill], { windowsHide: true });
+    const invocation = SKILL_INVOCATIONS[skill];
+    // On Windows, spawn requires 'claude.cmd' — the bare 'claude' resolves to the
+    // bash wrapper script which runs incorrectly in a non-shell environment.
+    const claudeExe = process.platform === 'win32' ? 'claude.cmd' : 'claude';
+    // shell: true is required on Windows for .cmd files; shell: false (default) throws EINVAL.
+    // Input flows via stdin only — no user data in the args array — so shell: true is safe.
+    const child = spawn(claudeExe, ['--allowedTools', 'Write', '--permission-mode', 'acceptEdits', '-p', invocation], { windowsHide: true, shell: true });
+    console.log(`[ClaudeOS] spawning: ${claudeExe} -p ${invocation}`);
     // Closure-scoped accumulators (Pitfall 2 — declared inside handler, never shared across runs)
     let stdout = '';
     let stderr = '';
@@ -86,11 +102,12 @@ export function SkillButton({ skill, label }: SkillButtonProps) {
     });
 
     child.on('close', (code: number | null) => {
+      console.log(`[ClaudeOS] skill "${skill}" closed. code=${code} stdout=[${stdout.trim()}] stderr=[${stderr.slice(0, 300)}]`);
       if (code === 0) {
         const raw = parseOutputPath(stdout);
         const outputPath = applyTraversalGuard(raw); // T-05-07 guard
         setSkillState(skill, { status: 'success', outputPath });
-        setTimeout(() => setSkillState(skill, { status: 'idle', outputPath: null }), 3000);
+        // No auto-reset: user dismisses by clicking the button or the Open output link.
       } else {
         console.error(`[ClaudeOS] skill "${skill}" exited ${code}. stderr: ${stderr.slice(0, 500)}`);
         setSkillState(skill, { status: 'error', outputPath: null });
@@ -115,12 +132,15 @@ export function SkillButton({ skill, label }: SkillButtonProps) {
 
     // Keep execFile for self-contained skills; upgraded to capture stdout (D-08).
     // Skill name is the validated allowlist value; shell: false (default) — args never interpreted by shell (T-05-08).
-    execFile('claude', ['-p', skill], { windowsHide: true }, (error, stdout) => {
+    const invocation = SKILL_INVOCATIONS[skill];
+    const claudeExe = process.platform === 'win32' ? 'claude.cmd' : 'claude';
+    console.log(`[ClaudeOS] execFile: ${claudeExe} -p ${invocation}`);
+    execFile(claudeExe, ['--allowedTools', 'Write', '--permission-mode', 'acceptEdits', '-p', invocation], { windowsHide: true, shell: true }, (error, stdout) => {
       if (error === null) {
         const raw = parseOutputPath(stdout);
         const outputPath = applyTraversalGuard(raw); // T-05-07 guard
         setSkillState(skill, { status: 'success', outputPath });
-        setTimeout(() => setSkillState(skill, { status: 'idle', outputPath: null }), 3000);
+        // No auto-reset: user dismisses by clicking the button or the Open output link.
       } else {
         setSkillState(skill, { status: 'error', outputPath: null });
         setTimeout(() => setSkillState(skill, { status: 'idle', outputPath: null }), 5000);
@@ -128,12 +148,17 @@ export function SkillButton({ skill, label }: SkillButtonProps) {
     });
   }
 
-  // Routing: wiki-optimizer fires directly; braindump/humanizer toggle the panel.
+  function dismiss() {
+    setSkillState(skill, { status: 'idle', outputPath: null });
+  }
+
+  // Routing: wiki-optimizer fires directly; input-required skills toggle the panel.
+  // Clicking again in success state dismisses (returns to idle).
   function handleButtonClick() {
-    if (skill === 'wiki-optimizer') {
+    if (skillState.status === 'success') { dismiss(); return; }
+    if (!isInputRequired) {
       handleClickSelfContained();
     } else {
-      // Input-required: toggle panel when idle; no-op when non-idle
       if (skillState.status !== 'idle') return;
       setExpanded(prev => !prev);
     }
@@ -141,7 +166,7 @@ export function SkillButton({ skill, label }: SkillButtonProps) {
 
   // Button label: Cancel when expanded (idle + panel open), else use provided label.
   // Spinner/Done/Failed labels override for loading/success/error states.
-  const isInputRequired = skill === 'braindump' || skill === 'humanizer';
+  const isInputRequired = skill === 'braindump' || skill === 'humanizer' || skill === 'test-skill';
   const buttonLabel = isInputRequired && expanded && skillState.status === 'idle'
     ? 'Cancel'
     : label;
@@ -176,7 +201,7 @@ export function SkillButton({ skill, label }: SkillButtonProps) {
           <IconSlot iconName="external-link" />
           <span
             className="claudeos-output-link__text"
-            onClick={() => app.workspace.openLinkText(skillState.outputPath!, '', 'tab')}
+            onClick={() => { app.workspace.openLinkText(skillState.outputPath!, '', 'tab'); dismiss(); }}
           >
             Open output
           </span>
@@ -186,7 +211,7 @@ export function SkillButton({ skill, label }: SkillButtonProps) {
       {/* Input panel: only for input-required skills (braindump, humanizer) */}
       {isInputRequired && (
         <SkillInputPanel
-          skill={skill as 'braindump' | 'humanizer'}
+          skill={skill as 'braindump' | 'humanizer' | 'test-skill'}
           isExpanded={expanded}
           onRun={handleRun}
           key={expanded ? 'open' : 'closed'}

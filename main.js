@@ -21856,13 +21856,13 @@ function SkillInputPanel({ skill, isExpanded, onRun }) {
   }
   const isEmpty = skill === "humanizer" ? text.trim() === "" && filePath.trim() === "" : text.trim() === "";
   return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: `claudeos-input-panel${isExpanded ? "" : " claudeos-input-panel--hidden"}`, children: [
-    skill === "braindump" && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "claudeos-input-panel__field", children: [
+    (skill === "braindump" || skill === "test-skill") && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "claudeos-input-panel__field", children: [
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("label", { className: "claudeos-input-panel__label", children: "Input" }),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
         "textarea",
         {
           className: "claudeos-input-panel__textarea",
-          placeholder: "Paste or type your braindump here...",
+          placeholder: skill === "test-skill" ? "Type test input..." : "Paste or type your braindump here...",
           value: text,
           onChange: (e) => setText(e.target.value)
         }
@@ -21909,7 +21909,13 @@ function SkillInputPanel({ skill, isExpanded, onRun }) {
 
 // src/components/ui/SkillButton.tsx
 var import_jsx_runtime5 = __toESM(require_jsx_runtime());
-var ALLOWED_SKILLS = ["wiki-optimizer", "braindump", "humanizer"];
+var ALLOWED_SKILLS = ["wiki-optimizer", "braindump", "humanizer", "test-skill"];
+var SKILL_INVOCATIONS = {
+  "wiki-optimizer": "/wiki-optimizer",
+  "braindump": "/braindump",
+  "humanizer": "/humanizer",
+  "test-skill": "/test-skill"
+};
 function IconSlot({ iconName }) {
   const ref = (0, import_react4.useRef)(null);
   (0, import_react4.useEffect)(() => {
@@ -21945,7 +21951,10 @@ function SkillButton({ skill, label }) {
     if (!ALLOWED_SKILLS.includes(skill)) return;
     setSkillState(skill, { status: "loading", outputPath: null });
     setExpanded(false);
-    const child = (0, import_child_process.spawn)("claude", ["-p", skill]);
+    const invocation = SKILL_INVOCATIONS[skill];
+    const claudeExe = process.platform === "win32" ? "claude.cmd" : "claude";
+    const child = (0, import_child_process.spawn)(claudeExe, ["--allowedTools", "Write", "--permission-mode", "acceptEdits", "-p", invocation], { windowsHide: true, shell: true });
+    console.log(`[ClaudeOS] spawning: ${claudeExe} -p ${invocation}`);
     let stdout = "";
     let stderr = "";
     child.stdout.on("data", (chunk) => {
@@ -21954,13 +21963,19 @@ function SkillButton({ skill, label }) {
     child.stderr.on("data", (chunk) => {
       stderr += chunk.toString("utf8");
     });
+    child.on("error", (err) => {
+      console.error(`[ClaudeOS] spawn error for skill "${skill}":`, err.message, err.code);
+      setSkillState(skill, { status: "error", outputPath: null });
+      setTimeout(() => setSkillState(skill, { status: "idle", outputPath: null }), 5e3);
+    });
     child.on("close", (code) => {
+      console.log(`[ClaudeOS] skill "${skill}" closed. code=${code} stdout=[${stdout.trim()}] stderr=[${stderr.slice(0, 300)}]`);
       if (code === 0) {
         const raw = parseOutputPath(stdout);
         const outputPath = applyTraversalGuard(raw);
         setSkillState(skill, { status: "success", outputPath });
-        setTimeout(() => setSkillState(skill, { status: "idle", outputPath: null }), 3e3);
       } else {
+        console.error(`[ClaudeOS] skill "${skill}" exited ${code}. stderr: ${stderr.slice(0, 500)}`);
         setSkillState(skill, { status: "error", outputPath: null });
         setTimeout(() => setSkillState(skill, { status: "idle", outputPath: null }), 5e3);
       }
@@ -21972,27 +21987,36 @@ function SkillButton({ skill, label }) {
     if (skillState.status !== "idle") return;
     if (!ALLOWED_SKILLS.includes(skill)) return;
     setSkillState(skill, { status: "loading", outputPath: null });
-    (0, import_child_process.execFile)("claude", ["-p", skill], (error, stdout) => {
+    const invocation = SKILL_INVOCATIONS[skill];
+    const claudeExe = process.platform === "win32" ? "claude.cmd" : "claude";
+    console.log(`[ClaudeOS] execFile: ${claudeExe} -p ${invocation}`);
+    (0, import_child_process.execFile)(claudeExe, ["--allowedTools", "Write", "--permission-mode", "acceptEdits", "-p", invocation], { windowsHide: true, shell: true }, (error, stdout) => {
       if (error === null) {
         const raw = parseOutputPath(stdout);
         const outputPath = applyTraversalGuard(raw);
         setSkillState(skill, { status: "success", outputPath });
-        setTimeout(() => setSkillState(skill, { status: "idle", outputPath: null }), 3e3);
       } else {
         setSkillState(skill, { status: "error", outputPath: null });
         setTimeout(() => setSkillState(skill, { status: "idle", outputPath: null }), 5e3);
       }
     });
   }
+  function dismiss() {
+    setSkillState(skill, { status: "idle", outputPath: null });
+  }
   function handleButtonClick() {
-    if (skill === "wiki-optimizer") {
+    if (skillState.status === "success") {
+      dismiss();
+      return;
+    }
+    if (!isInputRequired) {
       handleClickSelfContained();
     } else {
       if (skillState.status !== "idle") return;
       setExpanded((prev) => !prev);
     }
   }
-  const isInputRequired = skill === "braindump" || skill === "humanizer";
+  const isInputRequired = skill === "braindump" || skill === "humanizer" || skill === "test-skill";
   const buttonLabel = isInputRequired && expanded && skillState.status === "idle" ? "Cancel" : label;
   const btnStatusClass = skillState.status === "idle" && expanded ? "expanded" : skillState.status;
   return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
@@ -22022,7 +22046,10 @@ function SkillButton({ skill, label }) {
         "span",
         {
           className: "claudeos-output-link__text",
-          onClick: () => app.workspace.openLinkText(skillState.outputPath, "", "tab"),
+          onClick: () => {
+            app.workspace.openLinkText(skillState.outputPath, "", "tab");
+            dismiss();
+          },
           children: "Open output"
         }
       )
@@ -22047,7 +22074,8 @@ function SkillsSection() {
     /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "claudeos-skills-row", children: [
       /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SkillButton, { skill: "wiki-optimizer", label: "Wiki Optimizer" }),
       /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SkillButton, { skill: "braindump", label: "Braindump" }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SkillButton, { skill: "humanizer", label: "Humanizer" })
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SkillButton, { skill: "humanizer", label: "Humanizer" }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SkillButton, { skill: "test-skill", label: "Test Skill" })
     ] })
   ] });
 }

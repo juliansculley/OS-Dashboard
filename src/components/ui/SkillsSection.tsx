@@ -12,6 +12,7 @@ export function SkillsSection() {
         <SkillButton skill="wiki-optimizer" label="Wiki Optimizer" />
         <SkillButton skill="braindump" label="Braindump" />
         <SkillButton skill="humanizer" label="Humanizer" />
+        <SkillButton skill="test-skill" label="Test Skill" />
       </div>
     </section>
   );

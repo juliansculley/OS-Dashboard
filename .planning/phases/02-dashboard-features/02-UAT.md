@@ -26,8 +26,8 @@ result: pass
 
 ### 4. Skill Button State Machine
 expected: Click a skill button (e.g., Wiki Optimizer). Button enters loading state (spinner). On success: shows "Done" (green accent) for 3 seconds then returns to idle. On failure: shows "Failed" (red accent) for 5 seconds then returns to idle.
-result: partial
-note: Visual state machine (spinner → Done/Failed → idle) was confirmed. However, actual skill output was NOT verified — no file was produced by the skill execution. Root cause: the test criterion never required output verification, and the current implementation fires `claude -p <skill>` with no input context. Skills like braindump and humanizer require user-provided text before they can produce output. This is a test coverage gap and a design gap. See Gaps section.
+result: pass
+note: Re-verified in Phase 5 (05-04). Full end-to-end confirmed: input panel opens on click, user provides text, Run fires the skill via `claude.cmd --allowedTools Write --permission-mode acceptEdits -p /braindump`, spinner shows during execution, Done persists until user dismisses, and a real output file was written to the vault's braindumps/ folder. Open output link opened the file correctly. Previous partial result was due to missing input UI and incorrect CLI invocation — both resolved in Phase 5.
 
 ### 5. Social Stats â€” Data and Empty States
 expected: Navigate to Social Stats tab. Both cards show empty state initially (no paths configured). Configure linkedinDataPath with a valid LinkedIn JSON file with updated_at present, leave xDataPath blank. LinkedIn card shows formatted metrics with comma separators and "Updated: YYYY-MM-DD". X card still shows "No X data".
@@ -48,18 +48,16 @@ result: pass
 ## Summary
 
 total: 8
-passed: 7
-partial: 1
-issues: 1
+passed: 8
+partial: 0
+issues: 0
 pending: 0
 skipped: 0
 blocked: 0
 
 ## Gaps
 
-### T4 — Skill output not verified
-T4 passed on visual state machine behavior only. The test never asserted that the skill produced output (e.g., a file written to disk). When Wiki Optimizer was clicked and showed "Done," no output file appeared. Two contributing causes:
-1. **No input context** — skills like braindump and humanizer require user-provided text; firing `claude -p <skill>` with no stdin or args produces no meaningful output.
-2. **Test criterion gap** — the T4 success condition only described UI transitions, not skill side-effects.
+### T4 — Skill output not verified — RESOLVED in Phase 5 (05-04)
+Previously partial: visual state machine confirmed but no output file produced. Root causes: missing input UI and incorrect CLI invocation (`claude -p <skill>` treated as plain chat, not a skill call).
 
-**Required follow-up:** Skills that require input text need an input modal/dialog in the UI before execution. Tracked in ROADMAP.md under Phase 5 backlog.
+Resolution: Phase 5 added inline input panels (text piped via stdin), fixed invocation to `claude.cmd --allowedTools Write --permission-mode acceptEdits -p /skill-name`, and verified braindump produced a real output file in braindumps/ with the Open output link navigating to it correctly. T4 is now fully closed.

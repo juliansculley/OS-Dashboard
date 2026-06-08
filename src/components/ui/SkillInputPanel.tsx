@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-type SkillWithInput = 'braindump' | 'humanizer';
+type SkillWithInput = 'braindump' | 'humanizer' | 'test-skill';
 
 interface SkillInputPanelProps {
   skill: SkillWithInput;
@@ -21,16 +21,16 @@ export function SkillInputPanel({ skill, isExpanded, onRun }: SkillInputPanelPro
 
   const isEmpty = skill === 'humanizer'
     ? text.trim() === '' && filePath.trim() === ''
-    : text.trim() === '';
+    : text.trim() === '';  // braindump and test-skill both just check text
 
   return (
     <div className={`claudeos-input-panel${isExpanded ? '' : ' claudeos-input-panel--hidden'}`}>
-      {skill === 'braindump' && (
+      {(skill === 'braindump' || skill === 'test-skill') && (
         <div className="claudeos-input-panel__field">
           <label className="claudeos-input-panel__label">Input</label>
           <textarea
             className="claudeos-input-panel__textarea"
-            placeholder="Paste or type your braindump here..."
+            placeholder={skill === 'test-skill' ? 'Type test input...' : 'Paste or type your braindump here...'}
             value={text}
             onChange={e => setText(e.target.value)}
           />
