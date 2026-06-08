@@ -106,10 +106,54 @@
   flex-shrink: 0;
 }
 
+/* Content wrapper: flex column stacking status bar above main (D-11, Pitfall 4).
+   min-height:0 allows main to scroll without the bar adding to page height. */
+.claudeos-dashboard .claudeos-content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* ── Phase 5: Skill status bar ─────────────────────────────────────────────
+   Always mounted — visibility via display:none (NOT height:0 transition, D-11 anti-pattern).
+   display:none gives zero height when idle; no layout shift on page load. */
+.claudeos-dashboard .claudeos-status-bar {
+  display: none;
+}
+
+.claudeos-dashboard .claudeos-status-bar--active {
+  display: flex;
+  align-items: center;
+  gap: var(--cos-space-xs, 4px);
+  padding: var(--cos-space-xs, 4px) var(--cos-space-md, 16px);
+  background: var(--cos-surface);
+  border-bottom: 1px solid var(--cos-border);
+  font-size: 14px;
+}
+
+.claudeos-dashboard .claudeos-status-bar__text {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--cos-muted);
+}
+
+.claudeos-dashboard .claudeos-status-bar__link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cos-accent);
+  cursor: pointer;
+}
+
+.claudeos-dashboard .claudeos-status-bar__link:hover {
+  text-decoration: underline;
+}
+
 /* Main content area */
 .claudeos-dashboard .claudeos-main {
   flex: 1;
   overflow: auto;
+  min-height: 0;
   padding: 24px 32px;
 }
 
@@ -199,6 +243,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--cos-space-sm, 8px);
+  align-items: flex-start;
 }
 
 /* Skill button */
@@ -539,4 +584,108 @@
   color: var(--cos-muted);
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+/* ── Phase 5: Skill input panel ───────────────────────────────────────────────
+   Expandable panel below input-required skill buttons (braindump, humanizer).
+   Visibility controlled by class toggle — display:none when hidden. */
+
+.claudeos-dashboard .claudeos-input-panel {
+  background: var(--cos-surface);
+  border: 1px solid var(--cos-border);
+  border-radius: var(--cos-radius, 8px);
+  padding: var(--cos-space-md, 16px);
+  margin-top: var(--cos-space-sm, 8px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--cos-space-sm, 8px);
+}
+
+.claudeos-dashboard .claudeos-input-panel--hidden {
+  display: none;
+}
+
+.claudeos-dashboard .claudeos-input-panel__label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cos-muted);
+}
+
+.claudeos-dashboard .claudeos-input-panel__textarea {
+  width: 100%;
+  min-height: 80px;
+  resize: vertical;
+  font-family: var(--cos-font-display);
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid var(--cos-border);
+  border-radius: var(--cos-radius, 8px);
+  padding: var(--cos-space-sm, 8px);
+  background: var(--cos-bg);
+  color: var(--cos-text);
+}
+
+.claudeos-dashboard .claudeos-input-panel__path {
+  width: 100%;
+  height: 36px;
+  font-family: var(--cos-font-display);
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid var(--cos-border);
+  border-radius: var(--cos-radius, 8px);
+  padding: var(--cos-space-sm, 8px);
+  background: var(--cos-bg);
+  color: var(--cos-text);
+}
+
+.claudeos-dashboard .claudeos-run-btn {
+  background: var(--cos-accent);
+  color: #ffffff;
+  padding: var(--cos-space-sm, 8px) var(--cos-space-md, 16px);
+  border-radius: var(--cos-radius, 8px);
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.claudeos-dashboard .claudeos-run-btn:hover:not(:disabled) {
+  background: var(--cos-accent-hover, #6857e0);
+}
+
+.claudeos-dashboard .claudeos-run-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Phase 5: Output link ─────────────────────────────────────────────────────
+   Displayed below skill button after successful run when an Output: path was parsed. */
+
+.claudeos-dashboard .claudeos-output-link {
+  display: flex;
+  align-items: center;
+  gap: var(--cos-space-xs, 4px);
+  margin-top: var(--cos-space-sm, 8px);
+}
+
+.claudeos-dashboard .claudeos-output-link__text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cos-accent);
+  cursor: pointer;
+}
+
+.claudeos-dashboard .claudeos-output-link__text:hover {
+  text-decoration: underline;
+}
+
+/* ── Phase 5: Expanded skill button state ─────────────────────────────────────
+   Cancel visual: muted background overrides the accent idle fill. */
+
+.claudeos-dashboard .claudeos-skill-btn--expanded {
+  background: var(--cos-surface-2);
+  color: var(--cos-text);
+  border: 1px solid var(--cos-border);
 }
