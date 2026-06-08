@@ -1,0 +1,269 @@
+{
+  "_note": "Keys are normalized exercise names (lowercase + trim). primary[] is auto-seeded from Notion Prime muscle each run and overrides any value here. secondary[] is the real purpose of this file — hand-curated compound-lift assignments. Isolation movements get empty secondary []. Valid muscle names: Chest, Back, Lower Back, Shoulders, Side Delt, Biceps, Triceps, Quadriceps, Hamstrings, Glutes, Calves, Traps, Abs. Do NOT use Cardio or knee.",
+
+  "deadlift": {
+    "primary": [],
+    "secondary": ["Back", "Lower Back", "Glutes"]
+  },
+  "sldl (bar)": {
+    "primary": [],
+    "secondary": ["Glutes", "Lower Back"]
+  },
+  "rack pulls": {
+    "primary": [],
+    "secondary": ["Lower Back", "Traps"]
+  },
+  "good morning (smith)": {
+    "primary": [],
+    "secondary": ["Lower Back", "Glutes"]
+  },
+
+  "hack squat": {
+    "primary": [],
+    "secondary": ["Glutes", "Hamstrings"]
+  },
+  "db squats": {
+    "primary": [],
+    "secondary": ["Glutes", "Hamstrings"]
+  },
+  "leg press (full rom)": {
+    "primary": [],
+    "secondary": ["Glutes", "Hamstrings"]
+  },
+
+  "db bench press": {
+    "primary": [],
+    "secondary": ["Triceps", "Shoulders"]
+  },
+  "close-grip bench": {
+    "primary": [],
+    "secondary": ["Chest", "Shoulders"]
+  },
+  "db incl bench (75)": {
+    "primary": [],
+    "secondary": ["Triceps", "Shoulders"]
+  },
+  "db incl bench (60)": {
+    "primary": [],
+    "secondary": ["Triceps", "Shoulders"]
+  },
+  "db incl bench (45)": {
+    "primary": [],
+    "secondary": ["Triceps", "Shoulders"]
+  },
+  "db incl bench (30)": {
+    "primary": [],
+    "secondary": ["Triceps", "Shoulders"]
+  },
+  "db incline bench (60,45,30)": {
+    "primary": [],
+    "secondary": ["Triceps", "Shoulders"]
+  },
+  "incl smith press (60)": {
+    "primary": [],
+    "secondary": ["Triceps", "Shoulders"]
+  },
+  "peck fly": {
+    "primary": [],
+    "secondary": []
+  },
+  "cable fly (standing)": {
+    "primary": [],
+    "secondary": []
+  },
+  "db fly": {
+    "primary": [],
+    "secondary": []
+  },
+
+  "db shoulder press": {
+    "primary": [],
+    "secondary": ["Triceps"]
+  },
+  "shoulder press (hoist)": {
+    "primary": [],
+    "secondary": ["Triceps"]
+  },
+  "upright row (ezbar)": {
+    "primary": [],
+    "secondary": ["Biceps", "Traps"]
+  },
+  "db upright row": {
+    "primary": [],
+    "secondary": ["Biceps", "Traps"]
+  },
+
+  "dips (ft fwd)": {
+    "primary": [],
+    "secondary": ["Chest", "Shoulders"]
+  },
+
+  "pull-ups": {
+    "primary": [],
+    "secondary": ["Biceps"]
+  },
+  "lat pull-downs": {
+    "primary": [],
+    "secondary": ["Biceps"]
+  },
+  "bent over row (bar)": {
+    "primary": [],
+    "secondary": ["Biceps"]
+  },
+  "db rows": {
+    "primary": [],
+    "secondary": ["Biceps"]
+  },
+  "chest-supt row (machine)": {
+    "primary": [],
+    "secondary": ["Biceps"]
+  },
+  "chest-supt row (incl)": {
+    "primary": [],
+    "secondary": ["Biceps"]
+  },
+  "close grip cable row": {
+    "primary": [],
+    "secondary": ["Biceps"]
+  },
+  "flexion row": {
+    "primary": [],
+    "secondary": ["Biceps"]
+  },
+  "close-grip pd (midback)": {
+    "primary": [],
+    "secondary": ["Biceps"]
+  },
+
+  "oh tricep cable ext (bar)": {
+    "primary": [],
+    "secondary": []
+  },
+  "skull crusher (ez bar)": {
+    "primary": [],
+    "secondary": []
+  },
+  "db skulls": {
+    "primary": [],
+    "secondary": []
+  },
+  "tricep pushdown (bar)": {
+    "primary": [],
+    "secondary": []
+  },
+  "tricep ext (cable single arm kickback)": {
+    "primary": [],
+    "secondary": []
+  },
+
+  "barbell curl": {
+    "primary": [],
+    "secondary": []
+  },
+  "cable curls (iso)": {
+    "primary": [],
+    "secondary": []
+  },
+  "cable curls (bar)": {
+    "primary": [],
+    "secondary": []
+  },
+  "hammer curls": {
+    "primary": [],
+    "secondary": []
+  },
+  "lying db curls": {
+    "primary": [],
+    "secondary": []
+  },
+
+  "db lat raise (45)": {
+    "primary": [],
+    "secondary": []
+  },
+  "cable lateral raises (leaning)": {
+    "primary": [],
+    "secondary": []
+  },
+  "cross cable lat raise (behind back)": {
+    "primary": [],
+    "secondary": []
+  },
+  "cross cable lat raise (facing machine)": {
+    "primary": [],
+    "secondary": []
+  },
+
+  "shrugs (db)": {
+    "primary": [],
+    "secondary": []
+  },
+  "shrugs (bar)": {
+    "primary": [],
+    "secondary": []
+  },
+  "shrugs (cable)": {
+    "primary": [],
+    "secondary": []
+  },
+
+  "calf raise (leg press machine)": {
+    "primary": [],
+    "secondary": []
+  },
+  "standing calf raise": {
+    "primary": [],
+    "secondary": []
+  },
+  "seated calf raise": {
+    "primary": [],
+    "secondary": []
+  },
+
+  "crunches": {
+    "primary": [],
+    "secondary": []
+  },
+  "cable crunch": {
+    "primary": [],
+    "secondary": []
+  },
+  "lying leg-hip raise": {
+    "primary": [],
+    "secondary": []
+  },
+  "hanging leg raises (2:1 front + oblique total)": {
+    "primary": [],
+    "secondary": []
+  },
+  "ax chops": {
+    "primary": [],
+    "secondary": []
+  },
+  "lat prayer": {
+    "primary": [],
+    "secondary": []
+  },
+
+  "leg extensions": {
+    "primary": [],
+    "secondary": []
+  },
+  "pistol squat": {
+    "primary": [],
+    "secondary": []
+  },
+  "tib flex": {
+    "primary": [],
+    "secondary": []
+  },
+
+  "push-ups": {
+    "primary": [],
+    "secondary": ["Triceps", "Shoulders"]
+  },
+  "sphinx pushup": {
+    "primary": [],
+    "secondary": ["Triceps"]
+  }
+}
