@@ -35,6 +35,20 @@ import { join, dirname } from 'path';
 import { homedir } from 'os';
 import { fileURLToPath } from 'url';
 
+// ─── Valid muscle group names (design §3.4) ───────────────────────────────────
+// Used for case-insensitive token matching in Notion secondary text fallback.
+const KNOWN_MUSCLES = new Set([
+  'Chest', 'Back', 'Lower Back', 'Shoulders', 'Side Delt',
+  'Biceps', 'Triceps', 'Quadriceps', 'Hamstrings', 'Glutes',
+  'Calves', 'Traps', 'Abs',
+]);
+
+// Build a lowercase → canonical-case map for fast token matching
+const MUSCLE_LOWER_MAP = new Map();
+for (const m of KNOWN_MUSCLES) {
+  MUSCLE_LOWER_MAP.set(m.toLowerCase(), m);
+}
+
 // ─── Node 18+ guard ───────────────────────────────────────────────────────────
 if (typeof fetch !== 'function') {
   process.stderr.write(
@@ -219,6 +233,22 @@ async function main() {
   const outputDir = join(scriptDir, '..', '.dashboard-data');
   await mkdir(outputDir, { recursive: true });
 
+  // ── Load exercise-muscle-map.json (T-07-04: graceful degradation) ───────────
+  // Keys are normalized exercise names (lowercase + trim).
+  // If the file is absent or unparseable, secondary attribution falls back to
+  // Notion text parse or empty — script must never crash here.
+  let exerciseMuscleOverride = {};
+  try {
+    const mapPath = join(scriptDir, 'exercise-muscle-map.json');
+    const mapText = await readFile(mapPath, 'utf-8');
+    exerciseMuscleOverride = JSON.parse(mapText);
+  } catch {
+    process.stderr.write(
+      'exercise-muscle-map.json not found or unparseable — secondary muscle attribution will fall back to Notion text\n'
+    );
+    exerciseMuscleOverride = {};
+  }
+
   // ── Step 1: Fetch all six data sources ──────────────────────────────────────
   process.stdout.write('Fetching workout data from Notion...\n');
 
@@ -265,21 +295,45 @@ async function main() {
     exerciseMap.set(row.id, { name, primary, secondary_text });
   }
 
-  // ── Step 3: Build exercise→muscle map (design §6.3) ──────────────────────
-  // Primary: always from Notion Prime muscle relation (authoritative, resolved above).
-  // Secondary: extension point for 07-02 enrichment file + fallback chain.
-  // In this plan (07-01), secondary is empty — the wiring is correct, the enrichment
-  // file is added in 07-02. See EXTENSION POINT comment below.
-
-  // EXTENSION POINT (07-02): load exercise-muscle-map.json override here and merge
-  // secondary[] from it into exerciseMuscleMap. For now secondary stays empty.
+  // ── Step 3: Build exercise→muscle map (design §6.3, 07-02 enrichment) ───────
+  // Primary: always from Notion Prime muscle relation (authoritative, never overridden).
+  // Secondary: three-step fallback chain (design §6.3 build rule):
+  //   1. exercise-muscle-map.json override file (keyed by normalized name)
+  //   2. Notion Secondary muscle plain-text parse (split on commas/whitespace,
+  //      case-insensitive match against KNOWN_MUSCLES set)
+  //   3. empty []
   function resolveExerciseMuscles(exerciseId) {
     const ex = exerciseMap.get(exerciseId);
     if (!ex) return { primary: [], secondary: [] };
-    return {
-      primary: ex.primary.filter(m => !EXCLUDED_MUSCLES.has(m)),
-      secondary: [],  // 07-02 enrichment wires this
-    };
+
+    const primary = ex.primary.filter(m => !EXCLUDED_MUSCLES.has(m));
+
+    // Normalize exercise name for map lookup
+    const normalizedName = ex.name.toLowerCase().trim();
+
+    // Step 1: check override map
+    const override = exerciseMuscleOverride[normalizedName];
+    if (override && Array.isArray(override.secondary) && override.secondary.length > 0) {
+      return { primary, secondary: override.secondary.filter(m => !EXCLUDED_MUSCLES.has(m)) };
+    }
+
+    // Step 2: parse Notion Secondary muscle text (sparse free text)
+    if (ex.secondary_text && ex.secondary_text.trim()) {
+      const tokens = ex.secondary_text.split(/[\s,]+/).filter(Boolean);
+      const matched = [];
+      for (const tok of tokens) {
+        const canonical = MUSCLE_LOWER_MAP.get(tok.toLowerCase());
+        if (canonical && !EXCLUDED_MUSCLES.has(canonical)) {
+          matched.push(canonical);
+        }
+      }
+      if (matched.length > 0) {
+        return { primary, secondary: matched };
+      }
+    }
+
+    // Step 3: empty
+    return { primary, secondary: [] };
   }
 
   // ── Step 4: Join logbook lines (design §6.1) ──────────────────────────────
