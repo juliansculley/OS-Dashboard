@@ -17,7 +17,7 @@
 
 - [x] **Phase 3: Notion Dashboard** — Sync script + Notion pages (Projects, Tasks, Newsletter) surfaced inside the dashboard (completed 2026-06-06)
 - [ ] **Phase 4: Newsletter Workflow Page** — Occam's Leader drafting pipeline UI inside the dashboard
-- [ ] **Phase 5: Skill Output + UX Polish** — Inline output display, async status, cross-page persistence, UX refinements
+- [x] **Phase 5: Skill Output + UX Polish** — Inline output display, async status, cross-page persistence, UX refinements (completed 2026-06-07)
 - [ ] **Phase 6: Social Data Pipeline** — Design and implement connectors/MCPs to feed social stats data automatically
 
 ---
@@ -121,7 +121,7 @@ Plans:
 - [x] 05-01-PLAN.md — Skill-side `Output:` stdout contract for braindump, humanizer (adds Cowork-mode file write), wiki-optimizer (OUT-01 prerequisite for output-link parsing)
 - [x] 05-02-PLAN.md — Cross-page persistence foundation: skill-state types, AppContext lift, App.tsx nested provider + content-wrapper, SkillStatusBar + CSS (OUT-02)
 - [x] 05-03-PLAN.md — SkillButton refactor (spawn+stdin / stdout-capturing execFile, output-link parsing + `..` traversal guard, context-backed state, SEC-03 preserved) + SkillInputPanel + CSS (OUT-01, OUT-02)
-- [ ] 05-04-PLAN.md — Re-run Phase 2 T4 end-to-end with file-output verification; mark the T4 gap resolved (OUT-01)
+- [x] 05-04-PLAN.md — Re-run Phase 2 T4 end-to-end with file-output verification; mark the T4 gap resolved (OUT-01) — completed 2026-06-07
 
 #### Open To-Dos (discovered during Phase 2 UAT) — addressed by the plans above
 
@@ -144,8 +144,8 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete | P1: 2026-06-05, P2: 2026-06-05 |
-| 2. Dashboard Features | 3/3 | In Progress — T4 gap (resolved in Phase 5 / 05-04) | 2026-06-06 (partial) |
+| 2. Dashboard Features | 3/3 | Complete | 2026-06-06 (T4 gap closed in Phase 5) |
 | 3. Notion Dashboard | 4/4 | Complete | 2026-06-06 |
 | 4. Newsletter Workflow | TBD | Future | - |
-| 5. Skill Output + Polish | 3/4 | In Progress|  |
+| 5. Skill Output + Polish | 4/4 | Complete | 2026-06-07 |
 | 6. Social Data Pipeline | TBD | Future | - |
