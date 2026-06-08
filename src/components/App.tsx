@@ -4,15 +4,17 @@ import { HomePage } from './pages/HomePage';
 import { SocialPage } from './pages/SocialPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import { NewsletterPage } from './pages/NewsletterPage';
+import { WorkoutsPage } from './pages/WorkoutsPage';
 import { SkillStatusBar } from './ui/SkillStatusBar';
 import type { PageId } from '../types';
 
-// All PageId entries registered — PageId = 'home' | 'social' | 'projects' | 'newsletter'.
+// All PageId entries registered — PageId = 'home' | 'social' | 'projects' | 'newsletter' | 'workouts'.
 const PAGES: Partial<Record<PageId, React.ComponentType>> = {
   home: HomePage,
   social: SocialPage,
   projects: ProjectsPage,
   newsletter: NewsletterPage,
+  workouts: WorkoutsPage,
 };
 
 export function App(): React.JSX.Element {
