@@ -43,6 +43,26 @@
 
   /* Skill button dimensions */
   --cos-skill-btn-min-width: 100px;
+
+  /* ── Phase 7: Chart.js color palette ──────────────────────────────────────────
+     Declared inside .claudeos-dashboard (not :root) so getComputedStyle resolves
+     them when the canvas is inside the dashboard wrapper (Pattern 4 — 07-RESEARCH.md).
+     Muscle group assignments:
+       0 Chest, 1 Back, 2 Triceps, 3 Biceps, 4 Shoulders, 5 Side Delt,
+       6 Quadriceps, 7 Hamstrings, 8 Glutes, 9 Lower Back, 10 Traps, 11 Abs, 12 Calves */
+  --cos-chart-0:   #7c6af7; /* Chest — accent purple */
+  --cos-chart-1:   #38a169; /* Back — green */
+  --cos-chart-2:   #e53e3e; /* Triceps — red */
+  --cos-chart-3:   #dd6b20; /* Biceps — orange */
+  --cos-chart-4:   #3182ce; /* Shoulders — blue */
+  --cos-chart-5:   #805ad5; /* Side Delt — purple */
+  --cos-chart-6:   #d69e2e; /* Quadriceps — yellow */
+  --cos-chart-7:   #319795; /* Hamstrings — teal */
+  --cos-chart-8:   #e84393; /* Glutes — pink */
+  --cos-chart-9:   #718096; /* Lower Back — grey */
+  --cos-chart-10:  #63b3ed; /* Traps — light blue */
+  --cos-chart-11:  #68d391; /* Abs — light green */
+  --cos-chart-12:  #b794f4; /* Calves — lavender */
 }
 
 /* Sidebar */
@@ -688,4 +708,271 @@
   background: var(--cos-surface-2);
   color: var(--cos-text);
   border: 1px solid var(--cos-border);
+}
+
+/* ── Phase 7: Workouts page ───────────────────────────────────────────────────
+   All selectors scoped under .claudeos-dashboard per D-10.
+   No hardcoded hex values — all color references use --cos-* tokens
+   except the chart palette tokens declared in the token block above. */
+
+/* Workouts page wrapper */
+.claudeos-dashboard .claudeos-page--workouts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cos-space-lg, 24px);
+}
+
+/* ── Tab bar ── */
+
+.claudeos-dashboard .claudeos-workouts-tabs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--cos-border);
+  background: var(--cos-surface);
+}
+
+.claudeos-dashboard .claudeos-workouts-tab {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: var(--cos-space-sm, 8px) var(--cos-space-md, 16px);
+  color: var(--cos-muted);
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.claudeos-dashboard .claudeos-workouts-tab:hover {
+  background: var(--cos-surface-2);
+  color: var(--cos-text);
+  transition: background 150ms;
+}
+
+.claudeos-dashboard .claudeos-workouts-tab.active {
+  color: var(--cos-accent);
+  border-bottom: 3px solid var(--cos-accent);
+}
+
+/* ── Tab content area ── */
+
+.claudeos-dashboard .claudeos-workouts-tab-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-top: var(--cos-space-md, 16px);
+}
+
+/* ── Window + attribution controls ── */
+
+.claudeos-dashboard .claudeos-workouts-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cos-space-sm, 8px);
+}
+
+.claudeos-dashboard .claudeos-workouts-control-row {
+  display: flex;
+  align-items: center;
+  gap: var(--cos-space-sm, 8px);
+}
+
+.claudeos-dashboard .claudeos-workouts-control-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cos-muted);
+  min-width: fit-content;
+}
+
+.claudeos-dashboard .claudeos-workouts-btn-group {
+  display: flex;
+  flex-direction: row;
+  gap: var(--cos-space-xs, 4px);
+}
+
+.claudeos-dashboard .claudeos-workouts-preset-btn {
+  background: var(--cos-surface);
+  border: 1px solid var(--cos-border);
+  border-radius: var(--cos-radius, 8px);
+  font-size: 12px;
+  font-weight: 600;
+  padding: var(--cos-space-xs, 4px) var(--cos-space-sm, 8px);
+  color: var(--cos-muted);
+  cursor: pointer;
+}
+
+.claudeos-dashboard .claudeos-workouts-preset-btn.active {
+  background: var(--cos-surface-2);
+  border-color: var(--cos-accent);
+  color: var(--cos-accent);
+}
+
+.claudeos-dashboard .claudeos-workouts-preset-btn:disabled {
+  color: var(--cos-faint);
+  pointer-events: none;
+  cursor: default;
+}
+
+/* ── Chart containers ── */
+
+.claudeos-dashboard .claudeos-workouts-chart-container {
+  background: var(--cos-surface);
+  border: 1px solid var(--cos-border);
+  border-radius: var(--cos-radius, 8px);
+  padding: var(--cos-space-md, 16px);
+}
+
+.claudeos-dashboard .claudeos-workouts-chart-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cos-text);
+  margin: 0 0 var(--cos-space-sm, 8px) 0;
+}
+
+/* ── Exercise + filter dropdowns ── */
+
+.claudeos-dashboard .claudeos-workouts-exercise-select,
+.claudeos-dashboard .claudeos-workouts-filter-select {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: var(--cos-font-display);
+  border: 1px solid var(--cos-border);
+  border-radius: var(--cos-radius, 8px);
+  padding: var(--cos-space-sm, 8px) var(--cos-space-md, 16px);
+  background: var(--cos-bg);
+  color: var(--cos-text);
+}
+
+/* ── History filter row ── */
+
+.claudeos-dashboard .claudeos-workouts-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cos-space-sm, 8px);
+  margin-bottom: var(--cos-space-md, 16px);
+}
+
+.claudeos-dashboard .claudeos-workouts-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cos-space-xs, 4px);
+}
+
+/* ── Split / tag pill buttons ── */
+
+.claudeos-dashboard .claudeos-workouts-split-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cos-space-xs, 4px);
+}
+
+.claudeos-dashboard .claudeos-workouts-split-btn {
+  background: var(--cos-surface);
+  border: 1px solid var(--cos-border);
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: var(--cos-space-xs, 4px) var(--cos-space-sm, 8px);
+  color: var(--cos-muted);
+  cursor: pointer;
+}
+
+.claudeos-dashboard .claudeos-workouts-split-btn.active {
+  background: var(--cos-surface-2);
+  border-color: var(--cos-accent);
+  color: var(--cos-accent);
+}
+
+/* ── PR tiles ── */
+
+.claudeos-dashboard .claudeos-pr-tiles {
+  display: flex;
+  gap: var(--cos-space-md, 16px);
+  margin-top: var(--cos-space-md, 16px);
+}
+
+.claudeos-dashboard .claudeos-pr-tile {
+  background: var(--cos-surface);
+  border: 1px solid var(--cos-border);
+  border-radius: var(--cos-radius, 8px);
+  padding: var(--cos-space-sm, 8px) var(--cos-space-md, 16px);
+  flex: 1;
+}
+
+.claudeos-dashboard .claudeos-pr-tile__label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cos-muted);
+}
+
+.claudeos-dashboard .claudeos-pr-tile__value {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--cos-text);
+  margin-top: var(--cos-space-xs, 4px);
+}
+
+/* ── Mesocycle context card ── */
+
+.claudeos-dashboard .claudeos-workouts-meso-card {
+  background: var(--cos-surface);
+  border: 1px solid var(--cos-border);
+  border-radius: var(--cos-radius, 8px);
+  padding: var(--cos-space-md, 16px);
+}
+
+.claudeos-dashboard .claudeos-workouts-meso-card__label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cos-muted);
+  margin-bottom: var(--cos-space-xs, 4px);
+}
+
+.claudeos-dashboard .claudeos-workouts-meso-card__name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cos-text);
+  margin-bottom: var(--cos-space-xs, 4px);
+}
+
+.claudeos-dashboard .claudeos-workouts-meso-card__detail {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--cos-muted);
+  margin-bottom: var(--cos-space-xs, 4px);
+}
+
+.claudeos-dashboard .claudeos-workouts-meso-card__overdue {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--cos-error);
+}
+
+/* ── Bodyweight sparkline ── */
+
+.claudeos-dashboard .claudeos-workouts-sparkline-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cos-muted);
+  margin-bottom: var(--cos-space-xs, 4px);
+}
+
+.claudeos-dashboard .claudeos-workouts-sparkline-latest {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--cos-muted);
+  margin-top: var(--cos-space-xs, 4px);
 }
