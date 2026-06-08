@@ -20,8 +20,6 @@ OS-Dashboard is your command center for system health, automation, and digital o
 
 ## Editorial Rules
 
-Follow my voice principles in `00_Resources/voice-principles.md`.
-
 When documenting system configurations or automations, be direct about what changed and why. Avoid technical jargon unless necessary; explain the impact in user-facing terms. For automation workflows, always include what triggers the action and what it produces.
 
 
