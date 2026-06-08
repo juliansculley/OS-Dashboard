@@ -551,7 +551,7 @@ async function main() {
   // Bodyweight series — measurements where Measurement == "Weight" (design §3.6)
   const bodyweight = measurementRows
     .filter(row => {
-      const measureName = row.properties?.Measurement?.title?.[0]?.plain_text ?? '';
+      const measureName = (row.properties?.Measurement?.title?.[0]?.plain_text ?? '').trim();
       return measureName === 'Weight';
     })
     .map(row => ({
