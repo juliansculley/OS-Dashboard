@@ -840,7 +840,7 @@
 .claudeos-dashboard .claudeos-workouts-exercise-select,
 .claudeos-dashboard .claudeos-workouts-filter-select {
   width: 100%;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
   font-family: var(--cos-font-display);
   border: 1px solid var(--cos-border);

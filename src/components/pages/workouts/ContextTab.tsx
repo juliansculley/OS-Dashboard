@@ -87,10 +87,10 @@ export function ContextTab({ meta }: { meta: WorkoutsMetaSnapshot }) {
     chartRef.current = new Chart(canvasRef.current, {
       type: 'line',
       data: {
-        labels: bwWindow.map(p => p.date),
         datasets: [
           {
-            data: bwWindow.map(p => p.value),
+            // Use {x: timestamp, y: value} so gaps between entries reflect real time
+            data: bwWindow.map(p => ({ x: new Date(p.date + 'T00:00:00').getTime(), y: p.value })),
             borderColor: lineColor,
             borderWidth: 2,
             pointRadius: 2,
@@ -108,13 +108,17 @@ export function ContextTab({ meta }: { meta: WorkoutsMetaSnapshot }) {
           legend: { display: false },
           tooltip: {
             callbacks: {
-              // Tooltip format: "{YYYY-MM-DD}: {N} lbs" (UI-SPEC §Tooltip copy)
-              label: (ctx) => `${ctx.label}: ${ctx.raw} lbs`,
+              label: (ctx) => {
+                const raw = ctx.raw as { x: number; y: number };
+                const d = new Date(raw.x);
+                const date = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+                return `${date}: ${raw.y} lbs`;
+              },
             },
           },
         },
         scales: {
-          x: { display: false },
+          x: { type: 'linear', display: false },
           y: { display: false },
         },
       },

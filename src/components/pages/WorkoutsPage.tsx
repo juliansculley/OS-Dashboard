@@ -120,6 +120,9 @@ export function WorkoutsPage() {
   // Active tab — resets to 'muscle-volume' on navigation away/back (local state)
   const [activeTab, setActiveTab] = useState<WorkoutsTab>('muscle-volume');
 
+  // Selected exercise persists across tab switches
+  const [selectedExerciseId, setSelectedExerciseId] = useState<string>('');
+
   // Four snapshot states — each starts null (no-data) until read completes
   const [muscleVolume, setMuscleVolume] = useState<SnapshotState<MuscleVolumeSnapshot>>(null);
   const [exercises, setExercises] = useState<SnapshotState<ExercisesSnapshot>>(null);
@@ -240,7 +243,8 @@ export function WorkoutsPage() {
         return (
           <ProgressionTab
             exercises={exercises}
-            meta={isSnapshotData(meta) ? meta : null}
+            selectedExerciseId={selectedExerciseId}
+            onExerciseChange={setSelectedExerciseId}
           />
         );
 
