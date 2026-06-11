@@ -27,8 +27,8 @@ decisions:
   - "MuscleVolumeTab receives meta=null when meta snapshot not loaded — handled gracefully per 07-04 existing logic"
 metrics:
   duration: "~4 min"
-  completed: "2026-06-08"
-  tasks_completed: 2
+  completed: "2026-06-11"
+  tasks_completed: 3
   tasks_total: 3
   files_created: 1
   files_modified: 2
@@ -36,7 +36,7 @@ metrics:
 
 # Phase 7 Plan 06: Workouts Page Shell Summary
 
-WorkoutsPage assembled and deployed: four-tab page shell wired to all four snapshot files, routed via dumbbell nav item, deploying to Obsidian plugin directory. Awaiting human UAT (Task 3 checkpoint).
+WorkoutsPage assembled and deployed: four-tab page shell wired to all four snapshot files, routed via dumbbell nav item. UAT checkpoint passed (2026-06-11) after two fix rounds.
 
 ## Tasks Completed
 
@@ -44,6 +44,7 @@ WorkoutsPage assembled and deployed: four-tab page shell wired to all four snaps
 |---|------|--------|-------|
 | 1 | WorkoutsPage shell — snapshot loading, tab bar, routing, states | 2e186ba | src/components/pages/WorkoutsPage.tsx (created) |
 | 2 | Register page in App.tsx + add Sidebar nav item | 2f30626 | src/components/App.tsx, src/components/ui/Sidebar.tsx |
+| 3 | UAT checkpoint — two fix rounds, approved 2026-06-11 | 8592030, bddf608 | ProgressionTab, ContextTab, WorkoutsPage, styles.css |
 
 ## What Was Built
 
@@ -75,9 +76,21 @@ No new threat surface beyond what the plan's threat model covers. WorkoutsPage p
 
 None. All tab components receive live snapshot data (or EmptyState when not loaded). No hardcoded placeholder values.
 
+## UAT Fix Rounds
+
+**Round 1 (commit 8592030):**
+- ProgressionTab rewritten: BW dataset removed, Volume moved to right y-axis, two charts (per-workout + real calendar spacing via `type: 'linear'` x-axis), exercise selection lifted to parent as controlled props
+- ContextTab sparkline: switched from category x to `type: 'linear'` with `{x: timestamp, y: value}` data objects
+- Dropdown font-size reduced 14px → 13px
+
+**Round 2 (commit bddf608):**
+- ContextTab sparkline: changed from last-60-entries slice to actual last-90 calendar days (`date >= cutoff` filter)
+- Sparkline tooltip: added `title: () => ''` callback to suppress raw timestamp shown as tooltip header
+- Dropdown: added `line-height: 1.6` + explicit `padding: 6px` to fix text clipping on Windows
+
 ## Self-Check: PASSED
 
 - FOUND: `src/components/pages/WorkoutsPage.tsx`
-- FOUND: commit `2e186ba` (Task 1)
-- FOUND: commit `2f30626` (Task 2)
+- FOUND: commits `2e186ba`, `2f30626`, `8592030`, `bddf608`
+- UAT approved: 2026-06-11
 - Deploy: `main.js` + `styles.css` copied to Obsidian plugin directory
