@@ -841,11 +841,12 @@
 .claudeos-dashboard .claudeos-workouts-filter-select {
   width: 100%;
   font-size: 13px;
+  line-height: 1.6;
   font-weight: 400;
   font-family: var(--cos-font-display);
   border: 1px solid var(--cos-border);
   border-radius: var(--cos-radius, 8px);
-  padding: var(--cos-space-sm, 8px) var(--cos-space-md, 16px);
+  padding: 6px var(--cos-space-md, 16px);
   background: var(--cos-bg);
   color: var(--cos-text);
 }

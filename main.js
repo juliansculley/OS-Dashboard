@@ -37544,7 +37544,16 @@ function dayDiff(startStr, endStr) {
 function ContextTab({ meta }) {
   const canvasRef = (0, import_react15.useRef)(null);
   const chartRef = (0, import_react15.useRef)(null);
-  const bwWindow = [...meta.bodyweight].sort((a, b) => a.date < b.date ? -1 : a.date > b.date ? 1 : 0).slice(-60);
+  const allSorted = [...meta.bodyweight].sort((a, b) => a.date < b.date ? -1 : a.date > b.date ? 1 : 0);
+  const cutoffDate = (() => {
+    const d = /* @__PURE__ */ new Date();
+    d.setDate(d.getDate() - 90);
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+  })();
+  const bwWindow = allSorted.filter((p) => p.date >= cutoffDate);
   const latestBw = bwWindow.length > 0 ? bwWindow[bwWindow.length - 1] ?? null : null;
   (0, import_react15.useEffect)(() => {
     if (!canvasRef.current || bwWindow.length === 0) return;
@@ -37578,6 +37587,7 @@ function ContextTab({ meta }) {
           legend: { display: false },
           tooltip: {
             callbacks: {
+              title: () => "",
               label: (ctx) => {
                 const raw = ctx.raw;
                 const d = new Date(raw.x);
@@ -37638,7 +37648,7 @@ function ContextTab({ meta }) {
       ] })
     ] }),
     /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "claudeos-workouts-sparkline", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "claudeos-workouts-sparkline-label", children: "BODYWEIGHT (last 60 days)" }),
+      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "claudeos-workouts-sparkline-label", children: "BODYWEIGHT (last 90 days)" }),
       bwWindow.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "claudeos-list-empty", children: "No bodyweight measurements found." }) : /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_jsx_runtime18.Fragment, { children: [
         /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
           "div",

@@ -58,9 +58,20 @@ export function ContextTab({ meta }: { meta: WorkoutsMetaSnapshot }) {
 
   // ── Last 60 bodyweight points, sorted ascending by date ───────────────────────
 
-  const bwWindow: BodyPoint[] = [...meta.bodyweight]
-    .sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0))
-    .slice(-60);
+  const allSorted: BodyPoint[] = [...meta.bodyweight]
+    .sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+
+  // Filter to actual last 90 calendar days (not last 90 entries)
+  const cutoffDate = (() => {
+    const d = new Date();
+    d.setDate(d.getDate() - 90);
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  })();
+
+  const bwWindow: BodyPoint[] = allSorted.filter(p => p.date >= cutoffDate);
 
   const latestBw: BodyPoint | null =
     bwWindow.length > 0 ? (bwWindow[bwWindow.length - 1] ?? null) : null;
@@ -108,6 +119,7 @@ export function ContextTab({ meta }: { meta: WorkoutsMetaSnapshot }) {
           legend: { display: false },
           tooltip: {
             callbacks: {
+              title: () => '',
               label: (ctx) => {
                 const raw = ctx.raw as { x: number; y: number };
                 const d = new Date(raw.x);
@@ -179,7 +191,7 @@ export function ContextTab({ meta }: { meta: WorkoutsMetaSnapshot }) {
       {/* ── Bodyweight sparkline (UI-SPEC 7b) ── */}
       <div className="claudeos-workouts-sparkline">
         <div className="claudeos-workouts-sparkline-label">
-          BODYWEIGHT (last 60 days)
+          BODYWEIGHT (last 90 days)
         </div>
 
         {bwWindow.length === 0 ? (
