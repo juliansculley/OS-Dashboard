@@ -7,6 +7,7 @@ const NAV_ITEMS: NavItem[] = [
   { id: 'social',     label: 'Social',     iconId: 'bar-chart-2' },
   { id: 'projects',   label: 'Projects',   iconId: 'folder-kanban' },
   { id: 'newsletter', label: 'Newsletter', iconId: 'newspaper' },
+  { id: 'workouts',   label: 'Workouts',   iconId: 'dumbbell' },
 ];
 
 interface SidebarProps {

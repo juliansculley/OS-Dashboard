@@ -1,6 +1,6 @@
 // Shared TypeScript types for ClaudeOS Dashboard
 
-export type PageId = 'home' | 'social' | 'projects' | 'newsletter';
+export type PageId = 'home' | 'social' | 'projects' | 'newsletter' | 'workouts';
 
 export interface NavItem {
   id: PageId;
@@ -45,6 +45,14 @@ export interface ClaudeOSSettings {
   syncScriptPath: string;         // default: "" (user must set once — D-09)
   nodePath: string;               // default: "node" (override with full path if not on Obsidian's PATH)
   dueSoonDays: number;            // default: 3 (D-05)
+  // Phase 7: Workouts Data settings
+  workoutsSyncScriptPath: string;      // default: "" (user must set — absolute path to notion-workouts-sync.mjs)
+  workoutsMuscleVolumePath: string;    // default: "OS-Dashboard/.dashboard-data/workouts-muscle-volume.json"
+  workoutsExercisesPath: string;       // default: "OS-Dashboard/.dashboard-data/workouts-exercises.json"
+  workoutsSessionsPath: string;        // default: "OS-Dashboard/.dashboard-data/workouts-sessions.json"
+  workoutsMetaPath: string;            // default: "OS-Dashboard/.dashboard-data/workouts-meta.json"
+  muscleWindowDays: number;            // default: 28 (window for muscle-volume aggregation)
+  secondaryMuscleWeight: number;       // default: 1.0 (attribution weight for secondary muscles)
 }
 
 export const DEFAULT_SETTINGS: ClaudeOSSettings = {
@@ -59,6 +67,14 @@ export const DEFAULT_SETTINGS: ClaudeOSSettings = {
   syncScriptPath: "",
   nodePath: "",
   dueSoonDays: 3,
+  // Phase 7: Workouts Data defaults
+  workoutsSyncScriptPath: "",
+  workoutsMuscleVolumePath: "OS-Dashboard/.dashboard-data/workouts-muscle-volume.json",
+  workoutsExercisesPath: "OS-Dashboard/.dashboard-data/workouts-exercises.json",
+  workoutsSessionsPath: "OS-Dashboard/.dashboard-data/workouts-sessions.json",
+  workoutsMetaPath: "OS-Dashboard/.dashboard-data/workouts-meta.json",
+  muscleWindowDays: 28,
+  secondaryMuscleWeight: 1.0,
 };
 
 // Phase 5: Skill execution state types (per D-10, OUT-02)
@@ -124,4 +140,100 @@ export interface NewsletterItem {
 export interface NewsletterSnapshot extends SnapshotMeta {
   by_stage: Record<string, number>; // stage name → count (only stages with items)
   items: NewsletterItem[];          // all non-Published/non-Deleted items
+}
+
+// Phase 7: Workouts snapshot interfaces (field names match notion-workouts-sync.mjs output exactly — 07-01-SUMMARY.md)
+
+/** One cell in the per-ISO-week-per-muscle matrix */
+export interface MuscleWeekCell {
+  week: string;   // ISO week string e.g. "2026-W23"
+  muscle: string; // muscle group name e.g. "Chest"
+  sets: number;   // attributed set count
+}
+
+/** Per-session muscle breakdown (for the "this workout" view) */
+export interface SessionMuscleBreakdown {
+  session_id: string;
+  date: string;
+  name: string;
+  sets_by_muscle: Record<string, number>; // muscle name → attributed sets
+}
+
+/**
+ * Snapshot written by notion-workouts-sync.mjs — muscle group set volume.
+ * Contains both primary-only and primary+secondary attribution arrays so
+ * the UI attribution toggle is a simple array swap (see 07-RESEARCH.md Pitfall 6).
+ */
+export interface MuscleVolumeSnapshot extends SnapshotMeta {
+  muscles: string[];                          // ordered display list (Cardio/knee excluded)
+  weekly_with_secondary: MuscleWeekCell[];    // per ISO week per muscle — all attribution
+  weekly_primary_only: MuscleWeekCell[];      // per ISO week per muscle — primary muscles only
+  by_session: SessionMuscleBreakdown[];
+  window_default_days: number;                // e.g. 28
+  secondary_weight: number;                   // attribution weight used (default 1.0)
+}
+
+/** One data point in an exercise progression series */
+export interface ExercisePoint {
+  date: string;
+  weight: number | null;
+  volume: number | null;
+  est_1rm: number | null;
+}
+
+/** Per-exercise progression series with PR summary */
+export interface ExerciseSeries {
+  exercise_id: string;
+  name: string;
+  primary: string[];
+  secondary: string[];
+  best_weight: number | null;
+  best_1rm: number | null;
+  points: ExercisePoint[];
+}
+
+/** Snapshot written by notion-workouts-sync.mjs — per-exercise progression */
+export interface ExercisesSnapshot extends SnapshotMeta {
+  exercises: ExerciseSeries[];
+}
+
+/** One session row in the session history list */
+export interface SessionRow {
+  session_id: string;
+  date: string;
+  name: string;
+  template?: string;      // Name minus trailing MMDDYY date token (e.g. "Hyp-25-Push-C")
+  tags: string[];         // tokens matched in Name: Push/Pull/Full/Arms/Hyp/Str
+  difficulty: string[];
+  results: string[];
+  location?: string;
+  meso_name?: string;
+  total_sets: number;
+  url: string;
+}
+
+/** Snapshot written by notion-workouts-sync.mjs — session history */
+export interface SessionsSnapshot extends SnapshotMeta {
+  sessions: SessionRow[];
+}
+
+/** One bodyweight data point */
+export interface BodyPoint {
+  date: string;
+  value: number;
+}
+
+/**
+ * Snapshot written by notion-workouts-sync.mjs — meta context
+ * (current mesocycle + bodyweight series)
+ */
+export interface WorkoutsMetaSnapshot extends SnapshotMeta {
+  current_meso?: {
+    name: string;
+    wo_type: string;
+    focus: string;
+    status: string;
+    end: string;
+  };
+  bodyweight: BodyPoint[];
 }
