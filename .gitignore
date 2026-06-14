@@ -3,3 +3,7 @@ main.js.map
 data.json
 # Notion snapshot files (runtime output, not secret)
 .dashboard-data/
+
+# Throwaway test outputs and UAT fixtures
+test-files/
+test-fixtures/
