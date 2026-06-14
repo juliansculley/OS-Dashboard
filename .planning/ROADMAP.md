@@ -145,15 +145,15 @@ Plans:
 **Depends on:** Phase 3 (pipeline pattern), Phase 2 (component library)
 **Requirements (v2):** WORKOUT-01 (muscle-group volume), WORKOUT-02 (exercise progression), WORKOUT-03 (session history), WORKOUT-04 (mesocycle context), WORKOUT-05 (manual refresh)
 **Notes:** Full design documented in `.planning/WORKOUTS-DASHBOARD-DESIGN.md` (main checkout). All design decisions resolved 2026-06-07 — Chart.js charting, separate sync script, manual-only refresh, exercise-muscle enrichment map. Notion integration must be shared with all six workout data sources before Wave 1 testing.
-**Plans:** 6 plans (5 waves)
+**Plans:** 6/6 plans complete
 
 Plans:
-- [ ] 07-01-PLAN.md — Sync script: notion-workouts-sync.mjs (6 REST queries, in-memory joins, §6 aggregations, both attribution arrays, 4 atomic snapshots) + worked-example checkpoint (WORKOUT-01/02/03/04)
-- [ ] 07-02-PLAN.md — Enrichment map: exercise-muscle-map.json + fallback chain (override → Notion text → empty) (WORKOUT-01)
-- [ ] 07-03-PLAN.md — Foundation: install chart.js + dompurify (legitimacy checkpoint), §8 types, settings, sanitizeText util, all Workouts CSS + 13 chart palette tokens (WORKOUT-01..05)
-- [ ] 07-04-PLAN.md — Leaf components: WorkoutsRefreshButton + MuscleVolumeTab + ProgressionTab (Chart.js canvas lifecycle, window/attribution controls, PR tiles) (WORKOUT-01/02/05)
-- [ ] 07-05-PLAN.md — Leaf components: HistoryTab (filters + ListRow) + ContextTab (meso card + bodyweight sparkline) (WORKOUT-03/04)
-- [ ] 07-06-PLAN.md — Page shell: WorkoutsPage (snapshot loading, tab routing, states) + App.tsx + Sidebar wiring + deploy + UAT (WORKOUT-01..05)
+- [x] 07-01-PLAN.md — Sync script: notion-workouts-sync.mjs (6 REST queries, in-memory joins, §6 aggregations, both attribution arrays, 4 atomic snapshots) + worked-example checkpoint (WORKOUT-01/02/03/04)
+- [x] 07-02-PLAN.md — Enrichment map: exercise-muscle-map.json + fallback chain (override → Notion text → empty) (WORKOUT-01)
+- [x] 07-03-PLAN.md — Foundation: install chart.js + dompurify (legitimacy checkpoint), §8 types, settings, sanitizeText util, all Workouts CSS + 13 chart palette tokens (WORKOUT-01..05)
+- [x] 07-04-PLAN.md — Leaf components: WorkoutsRefreshButton + MuscleVolumeTab + ProgressionTab (Chart.js canvas lifecycle, window/attribution controls, PR tiles) (WORKOUT-01/02/05)
+- [x] 07-05-PLAN.md — Leaf components: HistoryTab (filters + ListRow) + ContextTab (meso card + bodyweight sparkline) (WORKOUT-03/04)
+- [x] 07-06-PLAN.md — Page shell: WorkoutsPage (snapshot loading, tab routing, states) + App.tsx + Sidebar wiring + deploy + UAT (WORKOUT-01..05)
 
 ---
 
@@ -167,4 +167,4 @@ Plans:
 | 4. Newsletter Workflow | TBD | Future | - |
 | 5. Skill Output + Polish | 4/4 | Complete | 2026-06-07 |
 | 6. Social Data Pipeline | TBD | Future | - |
-| 7. Workouts Dashboard | 0/6 | Planned | - |
+| 7. Workouts Dashboard | 6/6 | Complete | 2026-06-13 |
